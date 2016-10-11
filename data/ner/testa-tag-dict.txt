@@ -1,0 +1,10 @@
+_PAD
+_GO
+_EOS
+_UNK
+O
+I-PER
+I-LOC
+I-ORG
+I-MISC
+B-MISC

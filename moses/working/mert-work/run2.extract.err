@@ -1,0 +1,12 @@
+Binary write mode is NOT selected
+Scorer type: BLEU
+name: case value: true
+Loading reference from /home/hoang/Desktop/Alt+/moses/data/tune/clean.tune.tag
+.........Data::m_score_type BLEU
+Data::Scorer type from Scorer: BLEU
+loading nbest from run2.best100.out.gz
+Loaded N-best lists : [Wall 0.626828 CPU 0.628] seconds.
+Binary write mode is NOT selected
+saving the array into run2.features.dat
+saving the array into run2.scores.dat
+Stopping... : [Wall 1.10873 CPU 1.108] seconds.
