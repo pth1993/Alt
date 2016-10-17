@@ -176,6 +176,7 @@ if __name__ == "__main__":
     """
     print 'Export unknown word'
     export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
+    """
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'testa-word-id.txt', 'testb-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'testa-tag-id.txt', 'testb-tag-id.txt')
@@ -186,4 +187,3 @@ if __name__ == "__main__":
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', 5, 'tag')
     cut_data('train-tag-id.txt', 'testa-tag-id-pad.txt', 5, 'tag')
     cut_data('testb-tag-id.txt', 'testb-tag-id-pad.txt', 5, 'tag')
-    """
