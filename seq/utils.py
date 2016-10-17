@@ -1,7 +1,7 @@
 import codecs
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
-import pickle
+import cPickle
 
 
 num_word = 24886
@@ -28,10 +28,10 @@ def convert_word_to_id(filename1, filename2, word_name):
     word_dict = list(le.classes_)
     if word_name == 'word':
         with open('word_dict.pkl', 'wb') as output:
-            pickle.dump(word_dict, output, pickle.HIGHEST_PROTOCOL)
+            cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
     elif word_name == 'tag':
         with open('tag_dict.pkl', 'wb') as output:
-            pickle.dump(word_dict, output, pickle.HIGHEST_PROTOCOL)
+            cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
     return word_dict
 
 
@@ -39,18 +39,18 @@ def cut_data(filename1, filename2, max_len, word_name):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
     if word_name == 'word':
-        temp = (u'24886 ' * 5)[0:-1]
+        temp = ((unicode(num_word) + u' ') * 5)[0:-1]
     elif word_name == 'tag':
-        temp = (u'46 ' * 5)[0:-1]
+        temp = ((unicode(num_tag) + u' ') * 5)[0:-1]
     for line in f1:
         line = line.split()
         num_bulk = len(line)/max_len+1
         if word_name == 'word':
             for i in range(max_len-len(line)%max_len):
-                line.append(u'24886')
+                line.append(unicode(num_word))
         elif word_name == 'tag':
             for i in range(max_len-len(line)%max_len):
-                line.append(u'46')
+                line.append(unicode(num_tag))
         #print line
         for i in range(num_bulk):
             #print line
@@ -126,12 +126,12 @@ def create_word_vector_dict(word_dict, filename):
     vector_list = [x for (y, x) in sorted(zip(index_list, vector_list))]
     for i in range(len(word_dict)):
         if i in index_list:
-            word_vector_dict.append(vector_list)
+            word_vector_dict.append(vector_list[index_list.index(i)])
         else:
             word_vector_dict.append(np.random.normal(loc=0.0, scale=1.0, size=vector_length).tolist())
     word_vector_dict.append(np.random.normal(loc=0.0, scale=1.0, size=vector_length).tolist())
     with open('word_vector_dict.pkl', 'wb') as output:
-        pickle.dump(word_vector_dict, output, pickle.HIGHEST_PROTOCOL)
+        cPickle.dump(word_vector_dict, output, cPickle.HIGHEST_PROTOCOL)
     return word_vector_dict
 
 
@@ -173,6 +173,7 @@ if __name__ == "__main__":
     tag_dict = convert_word_to_id('corpus-tag.txt', 'corpus-tag-id.txt', 'tag')
     print 'Create word vector dict'
     create_word_vector_dict(word_dict, 'GoogleNews-vectors-negative300.txt')
+    """
     print 'Export unknown word'
     export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
     print 'Split data'
@@ -185,7 +186,4 @@ if __name__ == "__main__":
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', 5, 'tag')
     cut_data('train-tag-id.txt', 'testa-tag-id-pad.txt', 5, 'tag')
     cut_data('testb-tag-id.txt', 'testb-tag-id-pad.txt', 5, 'tag')
-    #data = load_data('train-word-id-new.txt')
-    #print np.shape(data)
-    #print 'haha'
-    #data_onehot = convert_to_onehot(data)
+    """
