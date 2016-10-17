@@ -20,7 +20,7 @@ with open('word_vector_dict.pkl', 'rb') as input:
 count2 = 0
 for line in word_vector_dict:
     if len(line) != 300:
-        #print len(line)
+        print len(line)
         count2 += 1
 print count2
 

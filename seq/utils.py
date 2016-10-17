@@ -117,7 +117,7 @@ def create_word_vector_dict(word_dict, filename):
         line = line.split()
         try:
             index = word_dict.index(line[0])
-            vector = line[1:vector_length]
+            vector = line[1:(vector_length+1)]
             vector = [float(i) for i in vector]
             vector_list.append(vector)
             index_list.append(index)
