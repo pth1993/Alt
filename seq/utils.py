@@ -2,6 +2,8 @@ import codecs
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import cPickle
+from datetime import datetime
+import itertools
 
 
 num_word = 24886
@@ -164,7 +166,31 @@ def export_unknown_word(filename_word2vec, filename_unknown_word, word_dict):
     f.close()
 
 
+def predict_to_file(filename, output):
+    f = codecs.open(filename, 'w', 'utf-8')
+    for line in output:
+        for word in line:
+            f.write(unicode(word) + u' ')
+        f.write(u'\n')
+
+
+def evaluate(predict, test):
+    count1 = 0
+    count2 = 0
+    for line1, line2 in itertools.izip(predict, test):
+        for word1, word2 in itertools.izip(line1, line2):
+            if word2 != 46:
+                count1 += 1
+                if word2 == word1:
+                    count2 += 1
+    acc = count2/float(count1)
+    print 'Accuracy: ' + str(acc)
+    return acc
+
+
 if __name__ == "__main__":
+    startTime = datetime.now()
+
     print 'Reduce number'
     convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
     print 'Convert word to id'
@@ -173,17 +199,21 @@ if __name__ == "__main__":
     tag_dict = convert_word_to_id('corpus-tag.txt', 'corpus-tag-id.txt', 'tag')
     print 'Create word vector dict'
     create_word_vector_dict(word_dict, 'GoogleNews-vectors-negative300.txt')
-    """
+
     print 'Export unknown word'
     export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
-    """
+
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'testa-word-id.txt', 'testb-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'testa-tag-id.txt', 'testb-tag-id.txt')
+
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', 5, 'word')
-    cut_data('train-word-id.txt', 'testa-word-id-pad.txt', 5, 'word')
+    cut_data('testa-word-id.txt', 'testa-word-id-pad.txt', 5, 'word')
     cut_data('testb-word-id.txt', 'testb-word-id-pad.txt', 5, 'word')
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', 5, 'tag')
-    cut_data('train-tag-id.txt', 'testa-tag-id-pad.txt', 5, 'tag')
+    cut_data('testa-tag-id.txt', 'testa-tag-id-pad.txt', 5, 'tag')
     cut_data('testb-tag-id.txt', 'testb-tag-id-pad.txt', 5, 'tag')
+    endTime = datetime.now()
+    print "Running time: "
+    print (endTime - startTime)
