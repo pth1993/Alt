@@ -9,9 +9,9 @@ from datetime import datetime
 import itertools
 
 
-time_step = 5
+time_step = 124
 data_dim = 300
-num_tag = 47
+num_tag = 9
 num_hidden_node = 100
 batch_size = 100
 
@@ -57,7 +57,7 @@ model.compile(optimizer='rmsprop',
               metrics=['accuracy'])
 print model.summary()
 print np.shape(model.get_weights())
-"""
+
 print 'Training'
 history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=10, validation_data=(input_val, output_val),
                     callbacks=[])
@@ -69,7 +69,7 @@ utils.predict_to_file('testb-predict-id-pad.txt', answer)
 print('Test score:', score)
 print('Test accuracy:', acc)
 acc1 = utils.evaluate(answer, test)
-"""
+
 endTime = datetime.now()
 print "Running time: "
 print (endTime - startTime)

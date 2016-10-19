@@ -9,7 +9,7 @@ import itertools
 num_word = 24886
 num_tag = 8
 vector_length = 300
-num_padding = 5
+num_padding = 124
 
 
 def convert_word_to_id(filename1, filename2, word_name):
@@ -192,10 +192,10 @@ def evaluate(predict, test):
 if __name__ == "__main__":
     startTime = datetime.now()
 
-    print 'Reduce number'
+    """print 'Reduce number'
     convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
-    #print 'Convert word to id'
-    #word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
+    print 'Convert word to id'
+    word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
     print 'Convert tag to id'
     tag_dict = convert_word_to_id('corpus-tag.txt', 'corpus-tag-id.txt', 'tag')
     #print 'Create word vector dict'
@@ -207,7 +207,7 @@ if __name__ == "__main__":
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'testa-word-id.txt', 'testb-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'testa-tag-id.txt', 'testb-tag-id.txt')
-
+"""
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', num_padding, 'word')
     cut_data('testa-word-id.txt', 'testa-word-id-pad.txt', num_padding, 'word')
