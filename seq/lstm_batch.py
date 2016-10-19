@@ -12,7 +12,8 @@ import itertools
 time_step = 5
 data_dim = 300
 num_tag = 47
-num_hidden_node = 500
+num_hidden_node = 300
+batch_size = 100
 
 
 def create_data(word_file, tag_file, word_vector_dict):
@@ -55,10 +56,10 @@ model.compile(optimizer='rmsprop',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=100, nb_epoch=20, validation_data=(input_val, output_val),
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=10, validation_data=(input_val, output_val),
                     callbacks=[])
-score, acc = model.evaluate(input_test, output_test, batch_size=100)
-answer = model.predict_classes(input_test, batch_size=100)
+score, acc = model.evaluate(input_test, output_test, batch_size=batch_size)
+answer = model.predict_classes(input_test, batch_size=batch_size)
 #print np.shape(answer)
 test = np.argmax(output_test, axis=2)
 utils.predict_to_file('testb-predict-id-pad.txt', answer)

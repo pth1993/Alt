@@ -9,6 +9,7 @@ import itertools
 num_word = 24886
 num_tag = 46
 vector_length = 300
+num_padding = 5
 
 
 def convert_word_to_id(filename1, filename2, word_name):
@@ -41,9 +42,9 @@ def cut_data(filename1, filename2, max_len, word_name):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
     if word_name == 'word':
-        temp = ((unicode(num_word) + u' ') * 5)[0:-1]
+        temp = ((unicode(num_word) + u' ') * max_len)[0:-1]
     elif word_name == 'tag':
-        temp = ((unicode(num_tag) + u' ') * 5)[0:-1]
+        temp = ((unicode(num_tag) + u' ') * max_len)[0:-1]
     for line in f1:
         line = line.split()
         num_bulk = len(line)/max_len+1
@@ -191,7 +192,7 @@ def evaluate(predict, test):
 if __name__ == "__main__":
     startTime = datetime.now()
 
-    print 'Reduce number'
+    """print 'Reduce number'
     convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
     print 'Convert word to id'
     word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
@@ -206,14 +207,14 @@ if __name__ == "__main__":
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'testa-word-id.txt', 'testb-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'testa-tag-id.txt', 'testb-tag-id.txt')
-
+"""
     print 'Padding data'
-    cut_data('train-word-id.txt', 'train-word-id-pad.txt', 5, 'word')
-    cut_data('testa-word-id.txt', 'testa-word-id-pad.txt', 5, 'word')
-    cut_data('testb-word-id.txt', 'testb-word-id-pad.txt', 5, 'word')
-    cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', 5, 'tag')
-    cut_data('testa-tag-id.txt', 'testa-tag-id-pad.txt', 5, 'tag')
-    cut_data('testb-tag-id.txt', 'testb-tag-id-pad.txt', 5, 'tag')
+    cut_data('train-word-id.txt', 'train-word-id-pad.txt', num_padding, 'word')
+    cut_data('testa-word-id.txt', 'testa-word-id-pad.txt', num_padding, 'word')
+    cut_data('testb-word-id.txt', 'testb-word-id-pad.txt', num_padding, 'word')
+    cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', num_padding, 'tag')
+    cut_data('testa-tag-id.txt', 'testa-tag-id-pad.txt', num_padding, 'tag')
+    cut_data('testb-tag-id.txt', 'testb-tag-id-pad.txt', num_padding, 'tag')
     endTime = datetime.now()
     print "Running time: "
     print (endTime - startTime)
