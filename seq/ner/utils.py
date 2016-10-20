@@ -35,6 +35,8 @@ def convert_word_to_id(filename1, filename2, word_name):
     elif word_name == 'tag':
         with open('tag_dict.pkl', 'wb') as output:
             cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
+        with open('le.pkl', 'wb') as output:
+            cPickle.dump(le, output, cPickle.HIGHEST_PROTOCOL)
     return word_dict
 
 
@@ -175,7 +177,7 @@ def predict_to_file(filename, output):
         f.write(u'\n')
 
 
-def evaluate(predict, test):
+def evaluate_pos(predict, test):
     count1 = 0
     count2 = 0
     for line1, line2 in itertools.izip(predict, test):
@@ -189,13 +191,44 @@ def evaluate(predict, test):
     return acc
 
 
+def convert_to_conll_format(filename_predict, filename_test, filename_word,le):
+    word_list = []
+    predict_list = []
+    test_list = []
+    f1 = codecs.open(filename_predict, 'r', 'utf-8')
+    f2 = codecs.open(filename_test, 'r', 'utf-8')
+    f3 = codecs.open(filename_word, 'r', 'utf-8')
+    f4 = codecs.open('output.txt', 'w', 'utf-8')
+    for line in f1:
+        line = map(int, line.split())
+        #print num_tag
+        line = [x for x in line if x != num_tag]
+        line = le.inverse_transform(line)
+        line = map(unicode, line)
+        predict_list.append(line)
+    for line in f2:
+        line = line.split()
+        test_list.append(line)
+    for line in f3:
+        line = line.split()
+        word_list.append(line)
+    for line1, line2, line3 in itertools.izip(word_list,predict_list, test_list):
+        for word, predict_tag, test_tag in itertools.izip(line1,line2, line3):
+            f4.write(word + u' ' + u'NP' + u' ' + predict_tag + u' ' + test_tag + u'\n')
+        f4.write(u'\n')
+    f1.close()
+    f2.close()
+    f3.close()
+    f4.close()
+
+
 if __name__ == "__main__":
     startTime = datetime.now()
 
-    """print 'Reduce number'
-    convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
-    print 'Convert word to id'
-    word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
+    #print 'Reduce number'
+    #convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
+    #print 'Convert word to id'
+    #word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
     print 'Convert tag to id'
     tag_dict = convert_word_to_id('corpus-tag.txt', 'corpus-tag-id.txt', 'tag')
     #print 'Create word vector dict'
@@ -204,10 +237,10 @@ if __name__ == "__main__":
     #print 'Export unknown word'
     #export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
 
-    print 'Split data'
+    """print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'testa-word-id.txt', 'testb-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'testa-tag-id.txt', 'testb-tag-id.txt')
-"""
+
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', num_padding, 'word')
     cut_data('testa-word-id.txt', 'testa-word-id-pad.txt', num_padding, 'word')
@@ -215,6 +248,7 @@ if __name__ == "__main__":
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', num_padding, 'tag')
     cut_data('testa-tag-id.txt', 'testa-tag-id-pad.txt', num_padding, 'tag')
     cut_data('testb-tag-id.txt', 'testb-tag-id-pad.txt', num_padding, 'tag')
+"""
     endTime = datetime.now()
     print "Running time: "
     print (endTime - startTime)

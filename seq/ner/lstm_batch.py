@@ -36,7 +36,7 @@ def create_data(word_file, tag_file, word_vector_dict):
 
 
 startTime = datetime.now()
-
+"""
 print 'Load word vector dict'
 with open('word_vector_dict.pkl', 'rb') as input:
     word_vector_dict = cPickle.load(input)
@@ -69,7 +69,10 @@ utils.predict_to_file('testb-predict-id-pad.txt', answer)
 print('Test score:', score)
 print('Test accuracy:', acc)
 acc1 = utils.evaluate(answer, test)
-
+"""
+with open('le.pkl', 'rb') as input:
+    le = cPickle.load(input)
+utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
 endTime = datetime.now()
 print "Running time: "
 print (endTime - startTime)
