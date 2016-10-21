@@ -172,7 +172,8 @@ def predict_to_file(filename, output):
     f = codecs.open(filename, 'w', 'utf-8')
     for line in output:
         for word in line:
-            f.write(unicode(word) + u' ')
+            if word != num_tag:
+                f.write(unicode(word) + u' ')
         f.write(u'\n')
 
 
@@ -269,7 +270,7 @@ if __name__ == "__main__":
     startTime = datetime.now()
 
     print 'Convert Jap corpus'
-    convert_jap_corpus('nuc_conll_ouput.tsv', 'corpus-word.txt', 'corpus-tag.txt')
+    convert_jap_corpus('nuc_conll_ouput_new.tsv', 'corpus-word.txt', 'corpus-tag.txt')
     convert_test_file('hironsan_token.txt', 'corpus-word.txt')
     #print 'Reduce number'
     #convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')

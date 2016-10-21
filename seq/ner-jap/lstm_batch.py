@@ -48,7 +48,6 @@ def create_data_1(word_file, word_vector_dict):
 
 
 startTime = datetime.now()
-
 print 'Load word vector dict'
 with open('word_vector_dict.pkl', 'rb') as input:
     word_vector_dict = cPickle.load(input)
@@ -77,13 +76,13 @@ history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=1
 answer = model.predict_classes(input_test, batch_size=batch_size)
 #print np.shape(answer)
 #test = np.argmax(output_test, axis=2)
+
 utils.predict_to_file('test-predict-id-pad.txt', answer)
 #print('Test score:', score)
 #print('Test accuracy:', acc)
 #acc1 = utils.evaluate(answer, test)
-
-#with open('le.pkl', 'rb') as input:
-#    le = cPickle.load(input)
+with open('le.pkl', 'rb') as input:
+    le = cPickle.load(input)
 #utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
 endTime = datetime.now()
 print "Running time: "
