@@ -7,7 +7,7 @@ import itertools
 import math
 
 
-num_word = 13138
+num_word = 12198
 num_tag = 14
 vector_length = 200
 num_padding = 205
