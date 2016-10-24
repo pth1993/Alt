@@ -7,7 +7,7 @@ import itertools
 import math
 
 
-num_word = 12198
+num_word = 12195
 num_tag = 14
 vector_length = 200
 num_padding = 205
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     print 'Convert Jap corpus'
     convert_jap_corpus('nuc_conll_ouput_new.tsv', 'corpus-word.txt', 'corpus-tag.txt')
     convert_test_file('hironsan_token.txt', 'corpus-word.txt')
-    """
+    
     #print 'Reduce number'
     #convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
 
@@ -294,7 +294,7 @@ if __name__ == "__main__":
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', num_padding, 'word')
     cut_data('test-word-id.txt', 'test-word-id-pad.txt', num_padding, 'word')
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', num_padding, 'tag')
-"""
+
     endTime = datetime.now()
     print "Running time: "
     print (endTime - startTime)
