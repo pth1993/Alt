@@ -18,6 +18,13 @@ num_tag = parameter[2] + 1
 num_hidden_node = 100
 batch_size = 1000
 
+print parameter
+print 'Time step: ' + str(time_step)
+print 'Data dim: ' + str(data_dim)
+print 'Num tag: : ' + str(num_tag)
+print 'Num hidden node: ' + str(num_hidden_node)
+print 'Batch size: ' + str(batch_size)
+
 
 def create_data(word_file, tag_file, word_vector_dict):
     input_data = []
@@ -74,7 +81,7 @@ print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=10, validation_split=0.0,
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=5, validation_split=0.0,
                     callbacks=[])
 #score, acc = model.evaluate(input_test, output_test, batch_size=batch_size)
 answer = model.predict_classes(input_test, batch_size=batch_size)
