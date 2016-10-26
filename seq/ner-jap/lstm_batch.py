@@ -9,9 +9,12 @@ from datetime import datetime
 import itertools
 
 
-time_step = 205
+with open('parameter.pkl', 'rb') as input:
+    parameter = cPickle.load(input)
+
+time_step = parameter[0]
 data_dim = 200
-num_tag = 15
+num_tag = parameter[2] + 1
 num_hidden_node = 100
 batch_size = 1000
 
@@ -53,9 +56,10 @@ with open('word_vector_dict.pkl', 'rb') as input:
     word_vector_dict = cPickle.load(input)
 print 'Create data to train'
 input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', word_vector_dict)
+input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', word_vector_dict)
 #input_val, output_val = create_data('testa-word-id-pad.txt', 'testa-tag-id-pad.txt', word_vector_dict)
-input_test = create_data_1('test-word-id-pad.txt', word_vector_dict)
-print np.shape(input_train), np.shape(output_train), np.shape(input_test)
+#input_test = create_data_1('test-word-id-pad.txt', word_vector_dict)
+print np.shape(input_train), np.shape(output_train), np.shape(input_test), np.shape(output_test)
 print 'Create model'
 early_stopping = EarlyStopping()
 model = Sequential()
@@ -78,12 +82,15 @@ answer = model.predict_classes(input_test, batch_size=batch_size)
 #test = np.argmax(output_test, axis=2)
 
 utils.predict_to_file('test-predict-id-pad.txt', answer)
+
 #print('Test score:', score)
 #print('Test accuracy:', acc)
 #acc1 = utils.evaluate(answer, test)
+
 with open('le.pkl', 'rb') as input:
     le = cPickle.load(input)
-#utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
+#utils.convert_to_alt_format('test-predict-id-pad.txt', le)
+utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
 endTime = datetime.now()
 print "Running time: "
 print (endTime - startTime)

@@ -7,10 +7,7 @@ import itertools
 import math
 
 
-num_word = 12195
-num_tag = 14
 vector_length = 200
-num_padding = 205
 
 
 def convert_word_to_id(filename1, filename2, word_name):
@@ -41,7 +38,7 @@ def convert_word_to_id(filename1, filename2, word_name):
     return word_dict
 
 
-def cut_data(filename1, filename2, max_len, word_name):
+def cut_data(filename1, filename2, max_len, word_name, num_word, num_tag):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
     if word_name == 'word':
@@ -150,7 +147,7 @@ def split_data(filename_corpus, filename_train, filename_test):
     count = 0
     for line in f1:
         count += 1
-        if count <= 15069:
+        if count <= 12106:
             f2.write(line)
         else:
             f4.write(line)
@@ -222,32 +219,72 @@ def convert_to_conll_format(filename_predict, filename_test, filename_word,le):
     f4.close()
 
 
-def convert_jap_corpus(filename_raw, filename_word, filename_tag):
+def convert_to_alt_format(filename_predict, le):
+    predict_list = []
+    f1 = codecs.open(filename_predict, 'r', 'utf-8')
+    f2 = codecs.open('output.txt', 'w', 'utf-8')
+    for line in f1:
+        line = map(int, line.split())
+        line = le.inverse_transform(line)
+        line = map(unicode, line)
+        f2.write(' '.join(line) + u'\n')
+    f1.close()
+    f2.close()
+
+
+def read_conll_format_train(filename_raw, filename_word, filename_tag):
     f1 = codecs.open(filename_raw, 'r', 'utf-8')
     f2 = codecs.open(filename_word, 'w', 'utf-8')
     f3 = codecs.open(filename_tag, 'w', 'utf-8')
+    temp = []
     word_list = []
     tag_list = []
-    count = 0
+    num_sent = 0
+    for line in f1:
+        #print line
+        if len(line) > 1:
+            line = line.split()
+            word_list.append(line[0])
+            tag_list.append(line[2].strip())
+        else:
+            temp.append(len(tag_list))
+            f2.write(' '.join(word_list) + '\n')
+            f3.write(' '.join(tag_list) + '\n')
+            word_list = []
+            tag_list = []
+            num_sent += 1
+    f1.close()
+    f2.close()
+    f3.close()
+    print num_sent
+    max_len = max(temp)
+    print max_len
+    return num_sent, max_len
+
+
+def read_conll_format_test(filename_raw, filename_word, filename_tag):
+    f1 = codecs.open(filename_raw, 'r', 'utf-8')
+    f2 = codecs.open(filename_word, 'a', 'utf-8')
+    f3 = codecs.open(filename_tag, 'a', 'utf-8')
+    word_list = []
+    tag_list = []
+    num_sent = 0
     for line in f1:
         if len(line) > 1:
-            #print line
             line = line.split('\t')
-            #count += 1
-            #print count
-            #print len(line)
             word_list.append(line[0])
-            #print line[3]
-            tag_list.append(line[3].strip())
+            tag_list.append(line[2].strip())
         else:
             f2.write(' '.join(word_list) + '\n')
             f3.write(' '.join(tag_list) + '\n')
             word_list = []
             tag_list = []
-    #print count
+            num_sent += 1
     f1.close()
     f2.close()
     f3.close()
+    print num_sent
+    return num_sent
 
 
 def convert_test_file(filename1, filename2):
@@ -268,21 +305,26 @@ def convert_test_file(filename1, filename2):
 
 if __name__ == "__main__":
     startTime = datetime.now()
-
-    print 'Convert Jap corpus'
-    convert_jap_corpus('nuc_conll_ouput_new.tsv', 'corpus-word.txt', 'corpus-tag.txt')
-    convert_test_file('hironsan_token.txt', 'corpus-word.txt')
+    parameter = []
+    print 'Read corpus'
+    num_sent, max_len = read_conll_format_train('kwdlc.conll', 'corpus-word.txt', 'corpus-tag.txt')
+    parameter.append(max_len)
+    #num_sent_test = read_conll_format_train('test.conll', 'corpus-word.txt', 'corpus-tag.txt')
+    #convert_test_file('hironsan_token.txt', 'corpus-word.txt')
     
     #print 'Reduce number'
     #convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
 
     print 'Convert word to id'
     word_dict = convert_word_to_id('corpus-word.txt', 'corpus-word-id.txt', 'word')
+    num_word = len(word_dict)
+    parameter.append(num_word)
     print 'Convert tag to id'
     tag_dict = convert_word_to_id('corpus-tag.txt', 'corpus-tag-id.txt', 'tag')
+    num_tag = len(tag_dict)
+    parameter.append(num_tag)
     print 'Create word vector dict'
     create_word_vector_dict(word_dict, 'jawiki_vector.txt')
-
     print 'Export unknown word'
     export_unknown_word('jawiki_vector.txt', 'unknown_words.txt', word_dict)
 
@@ -291,10 +333,12 @@ if __name__ == "__main__":
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'test-tag-id.txt')
 
     print 'Padding data'
-    cut_data('train-word-id.txt', 'train-word-id-pad.txt', num_padding, 'word')
-    cut_data('test-word-id.txt', 'test-word-id-pad.txt', num_padding, 'word')
-    cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', num_padding, 'tag')
-
+    cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, 'word', num_word, num_tag)
+    cut_data('test-word-id.txt', 'test-word-id-pad.txt', max_len, 'word', num_word, num_tag)
+    cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
+    cut_data('test-tag-id.txt', 'test-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
+    with open('parameter.pkl', 'wb') as output:
+        cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)
     endTime = datetime.now()
     print "Running time: "
     print (endTime - startTime)
