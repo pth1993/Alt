@@ -81,16 +81,16 @@ answer = model.predict_classes(input_test, batch_size=batch_size)
 #print np.shape(answer)
 #test = np.argmax(output_test, axis=2)
 
-utils.predict_to_file('test-predict-id-pad.txt', answer, num_tag-1)
+utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer, num_tag-1)
 
 #print('Test score:', score)
 #print('Test accuracy:', acc)
 #acc1 = utils.evaluate(answer, test)
 
-with open('le.pkl', 'rb') as input:
-    le = cPickle.load(input)
+#with open('le.pkl', 'rb') as input:
+#    le = cPickle.load(input)
 #utils.convert_to_alt_format('test-predict-id-pad.txt', le)
-utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
+#utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
 endTime = datetime.now()
 print "Running time: "
 print (endTime - startTime)

@@ -30,10 +30,12 @@ def convert_word_to_id(filename1, filename2, word_name):
     if word_name == 'word':
         with open('word_dict.pkl', 'wb') as output:
             cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
+        with open('le_word.pkl', 'wb') as output:
+            cPickle.dump(le, output, cPickle.HIGHEST_PROTOCOL)
     elif word_name == 'tag':
         with open('tag_dict.pkl', 'wb') as output:
             cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
-        with open('le.pkl', 'wb') as output:
+        with open('le_tag.pkl', 'wb') as output:
             cPickle.dump(le, output, cPickle.HIGHEST_PROTOCOL)
     return word_dict
 
@@ -165,13 +167,15 @@ def export_unknown_word(filename_word2vec, filename_unknown_word, word_dict):
     f.close()
 
 
-def predict_to_file(filename, output, num_tag):
-    f = codecs.open(filename, 'w', 'utf-8')
-    for line in output:
-        for word in line:
-            if word != num_tag:
-                f.write(unicode(word) + u' ')
-        f.write(u'\n')
+def predict_to_file(filename1, filename2, output, num_tag):
+    f1 = codecs.open(filename1, 'w', 'utf-8')
+    f2 = codecs.open(filename2, 'r', 'utf-8')
+    for line1, line2 in itertools.izip(output, f2):
+        num = len(line2.split())
+        line1 = line1[0:num]
+        for word in line1:
+            f1.write(unicode(word) + u' ')
+        f1.write(u'\n')
 
 
 def evaluate_pos(predict, test):
@@ -204,8 +208,12 @@ def convert_to_conll_format(filename_predict, filename_test, filename_word,le):
         line = map(unicode, line)
         predict_list.append(line)
     for line in f2:
-        line = line.split()
-        test_list.append(line)
+        lline = map(int, line.split())
+        #print num_tag
+        line = [x for x in line if x != num_tag]
+        line = le.inverse_transform(line)
+        line = map(unicode, line)
+        predict_list.append(line)
     for line in f3:
         line = line.split()
         word_list.append(line)
