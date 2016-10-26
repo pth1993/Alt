@@ -192,30 +192,34 @@ def evaluate_pos(predict, test):
     return acc
 
 
-def convert_to_conll_format(filename_predict, filename_test, filename_word,le):
+def convert_to_conll_format(filename_predict, filename_test, filename_word, le_word, le_tag, num_tag):
     word_list = []
     predict_list = []
     test_list = []
     f1 = codecs.open(filename_predict, 'r', 'utf-8')
     f2 = codecs.open(filename_test, 'r', 'utf-8')
     f3 = codecs.open(filename_word, 'r', 'utf-8')
-    f4 = codecs.open('output.txt', 'w', 'utf-8')
+    f4 = codecs.open('conll_output.txt', 'w', 'utf-8')
     for line in f1:
         line = map(int, line.split())
-        #print num_tag
-        line = [x for x in line if x != num_tag]
-        line = le.inverse_transform(line)
+        line = [x if x != num_tag else 11 for x in line]
+        #print set(line)
+        line = le_tag.inverse_transform(line)
         line = map(unicode, line)
+        line = [x if x != u'OTHER' else u'O' for x in line]
         predict_list.append(line)
     for line in f2:
-        lline = map(int, line.split())
-        #print num_tag
-        line = [x for x in line if x != num_tag]
-        line = le.inverse_transform(line)
+        line = map(int, line.split())
+        #line = [x for x in line if x != num_tag]
+        line = le_tag.inverse_transform(line)
         line = map(unicode, line)
-        predict_list.append(line)
+        line = [x if x != u'OTHER' else u'O' for x in line]
+        test_list.append(line)
     for line in f3:
-        line = line.split()
+        line = map(int, line.split())
+        #line = [x for x in line if x != num_word]
+        line = le_word.inverse_transform(line)
+        line = map(unicode, line)
         word_list.append(line)
     for line1, line2, line3 in itertools.izip(word_list,predict_list, test_list):
         for word, predict_tag, test_tag in itertools.izip(line1,line2, line3):
