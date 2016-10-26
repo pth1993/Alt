@@ -165,7 +165,7 @@ def export_unknown_word(filename_word2vec, filename_unknown_word, word_dict):
     f.close()
 
 
-def predict_to_file(filename, output):
+def predict_to_file(filename, output, num_tag):
     f = codecs.open(filename, 'w', 'utf-8')
     for line in output:
         for word in line:

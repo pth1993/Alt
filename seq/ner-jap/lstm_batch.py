@@ -81,7 +81,7 @@ answer = model.predict_classes(input_test, batch_size=batch_size)
 #print np.shape(answer)
 #test = np.argmax(output_test, axis=2)
 
-utils.predict_to_file('test-predict-id-pad.txt', answer)
+utils.predict_to_file('test-predict-id-pad.txt', answer, num_tag-1)
 
 #print('Test score:', score)
 #print('Test accuracy:', acc)
