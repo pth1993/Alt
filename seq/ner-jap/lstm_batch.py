@@ -81,7 +81,7 @@ print 'Training'
 history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=5, validation_split=0.0,
                     callbacks=[])
 weights = model.get_weights()
-np.save('model/weight' + str(num_hidden_node) + '_' + str(dropout), weights)
+np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 answer = model.predict_classes(input_test, batch_size=batch_size)
 utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer, num_tag-1)
 with open('le_word.pkl', 'rb') as input:
