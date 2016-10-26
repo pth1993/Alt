@@ -90,7 +90,7 @@ utils.predict_to_file('test-predict-id-pad.txt', answer, num_tag-1)
 with open('le.pkl', 'rb') as input:
     le = cPickle.load(input)
 #utils.convert_to_alt_format('test-predict-id-pad.txt', le)
-utils.convert_to_conll_format('testb-predict-id-pad.txt', 'testb-tag.txt', 'testb-word.txt', le)
+utils.convert_to_conll_format('test-predict-id-pad.txt', 'test-tag.txt', 'test-word.txt', le)
 endTime = datetime.now()
 print "Running time: "
 print (endTime - startTime)
