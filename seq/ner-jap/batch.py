@@ -1,8 +1,6 @@
 import subprocess
 
 
-dropout_list = []
-num_hidden_node_list = []
 f = open('input_para.txt', 'r')
 num_hidden_node_list = f.readline().strip().split()
 dropout_list = f.readline().strip().split()

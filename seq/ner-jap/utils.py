@@ -5,6 +5,7 @@ import cPickle
 from datetime import datetime
 import itertools
 import math
+import argparse
 
 
 vector_length = 200
@@ -317,9 +318,13 @@ def convert_test_file(filename1, filename2):
 
 if __name__ == "__main__":
     startTime = datetime.now()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("corpus", help="corpus name")
+    args = parser.parse_args()
+    corpus = args.corpus
     parameter = []
     print 'Read corpus'
-    num_sent, max_len = read_conll_format_train('data/kwdlc_old.conll', 'corpus-word.txt', 'corpus-tag.txt')
+    num_sent, max_len = read_conll_format_train('data/'+corpus+'.conll', 'corpus-word.txt', 'corpus-tag.txt')
     parameter.append(max_len)
     #num_sent_test = read_conll_format_train('test.conll', 'corpus-word.txt', 'corpus-tag.txt')
     #convert_test_file('hironsan_token.txt', 'corpus-word.txt')
