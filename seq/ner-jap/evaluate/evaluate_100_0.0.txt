@@ -1,0 +1,11 @@
+processed 32731 tokens with 178 phrases; found: 973 phrases; correct: 75.
+accuracy:  94.40%; precision:   7.71%; recall:  42.13%; FB1:  13.03
+         ARTIFACT: precision:   0.00%; recall:   0.00%; FB1:   0.00  120
+             DATE: precision:  33.51%; recall:  41.94%; FB1:  37.25  194
+         LOCATION: precision:   2.92%; recall:  43.48%; FB1:   5.46  343
+            MONEY: precision:   0.00%; recall:   0.00%; FB1:   0.00  20
+     ORGANIZATION: precision:   0.00%; recall:   0.00%; FB1:   0.00  137
+          PERCENT: precision:   0.00%; recall:   0.00%; FB1:   0.00  12
+           PERSON: precision:   0.00%; recall:   0.00%; FB1:   0.00  136
+             TIME: precision:   0.00%; recall:   0.00%; FB1:   0.00  11
+Running time: 0:01:15.379069
