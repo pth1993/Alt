@@ -143,14 +143,15 @@ def create_word_vector_dict(word_dict, filename):
     return word_vector_dict
 
 
-def split_data(filename_corpus, filename_train, filename_test):
+def split_data(filename_corpus, filename_train, filename_test, num_sent):
+    num_sent_train = int(0.8*num_sent)
     f1 = codecs.open(filename_corpus, 'r', 'utf-8')
     f2 = codecs.open(filename_train, 'w', 'utf-8')
     f4 = codecs.open(filename_test, 'w', 'utf-8')
     count = 0
     for line in f1:
         count += 1
-        if count <= 12106:
+        if count <= num_sent_train:
             f2.write(line)
         else:
             f4.write(line)
@@ -346,8 +347,8 @@ if __name__ == "__main__":
     export_unknown_word('jawiki_vector.txt', 'unknown_words.txt', word_dict)
 
     print 'Split data'
-    split_data('corpus-word-id.txt', 'train-word-id.txt', 'test-word-id.txt')
-    split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'test-tag-id.txt')
+    split_data('corpus-word-id.txt', 'train-word-id.txt', 'test-word-id.txt', num_sent)
+    split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'test-tag-id.txt', num_sent)
 
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, 'word', num_word, num_tag)

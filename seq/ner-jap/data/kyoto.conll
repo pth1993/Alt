@@ -1499,7 +1499,6 @@
 
 純金 名詞 OTHER
 製 接尾辞 OTHER
-　 特殊 OTHER
 百人一首 名詞 OTHER
 に 助詞 OTHER
 サッカー 名詞 OTHER
@@ -1786,7 +1785,6 @@
 Ｇ 未定義語 OTHER
 ’ 特殊 OTHER
 ｚ 特殊 OTHER
-　 特殊 OTHER
 ｏｎｅ 未定義語 OTHER
 と 助詞 OTHER
 いう 動詞 OTHER
@@ -5178,17 +5176,13 @@
 は 助詞 OTHER
 「 特殊 OTHER
 Ｓｏｕｎｄ 名詞 OTHER
-　 特殊 OTHER
 Ｏｆ 名詞 OTHER
-　 特殊 OTHER
 Ｍｕｓｉｃ 名詞 OTHER
 」 特殊 OTHER
 の 助詞 OTHER
 「 特殊 OTHER
 Ｍｙ 名詞 OTHER
-　 特殊 OTHER
 Ｆａｖｏｒｉｔｅ 未定義語 OTHER
-　 特殊 OTHER
 Ｔｈｉｎｇｓ 未定義語 OTHER
 」 特殊 OTHER
 。 特殊 OTHER
@@ -5330,9 +5324,7 @@
 は 助詞 OTHER
 「 特殊 OTHER
 Ｍｙ 名詞 OTHER
-　 特殊 OTHER
 Ｆａｖｏｒｉｔｅ 未定義語 OTHER
-　 特殊 OTHER
 Ｔｈｉｎｇｓ 未定義語 OTHER
 」 特殊 OTHER
 だった 判定詞 OTHER
@@ -7628,7 +7620,6 @@
 。 特殊 OTHER
 
 ｃａｆｆｅ 未定義語 OTHER
-　 特殊 OTHER
 ｃｏｓｔａ 未定義語 OTHER
 も 助詞 OTHER
 いい 形容詞 OTHER
@@ -7653,7 +7644,6 @@
 Ｃａｆｅ 未定義語 I-LOCATION
 ＆ 特殊 I-LOCATION
 Ｃａｆｅ 未定義語 I-LOCATION
-　 特殊 I-LOCATION
 Ｓｕｇａｒｙ 未定義語 I-LOCATION
 
 ホット 形容詞 OTHER
@@ -7737,7 +7727,6 @@
 に 助詞 OTHER
 ある 動詞 OTHER
 ｃａｆｅ 未定義語 OTHER
-　 特殊 OTHER
 ｉｎｄｅｐｅｎｄｅｎｔ 未定義語 OTHER
 ！ 特殊 OTHER
 ！ 特殊 OTHER
@@ -7885,7 +7874,6 @@
 あと 名詞 OTHER
 は 助詞 OTHER
 ｂｏｏｇａｌｏｏ 未定義語 OTHER
-　 特殊 OTHER
 ｃａｆｅ 未定義語 OTHER
 ’ 特殊 OTHER
 も 助詞 OTHER
@@ -7896,7 +7884,6 @@
 ［ 特殊 OTHER
 グルメ 名詞 OTHER
 ］ 特殊 OTHER
-　 特殊 OTHER
 ■ 特殊 OTHER
 ■ 特殊 OTHER
 ■ 特殊 OTHER
@@ -9612,8 +9599,7 @@
 携帯 名詞 OTHER
 電話 名詞 OTHER
 ］ 特殊 OTHER
-　 特殊 OTHER
-Ｓｏｎｙ 名詞 I-ORGANIZATION
+Ｓｏｎｙ 名詞 OTHER
 ・ 特殊 OTHER
 ・ 特殊 OTHER
 ・ 特殊 OTHER
@@ -11941,7 +11927,6 @@
 「 特殊 OTHER
 絶景 名詞 OTHER
 ＧＲＥＡＴ 未定義語 OTHER
-　 特殊 OTHER
 ＶＩＥＷ 名詞 OTHER
 」 特殊 OTHER
 と 助詞 OTHER
@@ -15953,7 +15938,6 @@
 だ 判定詞 OTHER
 と 助詞 OTHER
 ＵＮＩＴＥＤ 名詞 OTHER
-　 特殊 OTHER
 ＡＲＲＯＷＳ 名詞 OTHER
 や 助詞 OTHER
 ｎａｎｏ 未定義語 OTHER
@@ -15975,7 +15959,6 @@
 
 あと 名詞 OTHER
 ＵＮＴＩＴＬＥＤ 未定義語 OTHER
-　 特殊 OTHER
 ＭＥＮ 名詞 OTHER
 は 助詞 OTHER
 関西 名詞 OTHER
@@ -15985,8 +15968,8 @@
 と 助詞 OTHER
 最近 名詞 OTHER
 できた 動詞 OTHER
-なんば 名詞 I-LOCATION
-マルイ 名詞 I-LOCATION
+なんば 名詞 OTHER
+マルイ 名詞 OTHER
 に 助詞 OTHER
 しか 助詞 OTHER
 入って 動詞 OTHER
@@ -20304,9 +20287,7 @@
 京都 名詞 I-LOCATION
 観光 名詞 OTHER
 ｗｉｔｈ 未定義語 OTHER
-　 特殊 OTHER
 ｍｙ 未定義語 OTHER
-　 特殊 OTHER
 ｆｒｉｅｎｄ 未定義語 OTHER
 
 これ 指示詞 OTHER
@@ -22612,7 +22593,6 @@
 ． 特殊 OTHER
 
 ０８０ 名詞 OTHER
-　 特殊 OTHER
 ０９０ 名詞 OTHER
 
 以前 名詞 OTHER
@@ -25226,19 +25206,15 @@
 。 特殊 OTHER
 
 待ちぼうけ 名詞 OTHER
-　 特殊 OTHER
 メール 名詞 OTHER
 受信 名詞 OTHER
 の 助詞 OTHER
-　 特殊 OTHER
 バイブ 名詞 OTHER
 音 名詞 OTHER
-　 特殊 OTHER
 鳴った 動詞 OTHER
 気 名詞 OTHER
 が 助詞 OTHER
 して 動詞 OTHER
-　 特殊 OTHER
 カバン 名詞 OTHER
 を 助詞 OTHER
 探る 動詞 OTHER
@@ -29062,7 +29038,6 @@
 れて 接尾辞 OTHER
 いる 接尾辞 OTHER
 Ｗｉｎｄｏｗｓ 名詞 OTHER
-　 特殊 OTHER
 Ｍｏｂｉｌｅ 未定義語 OTHER
 に 助詞 OTHER
 対して 動詞 OTHER
@@ -35639,17 +35614,11 @@
 。 特殊 OTHER
 
 （ 特殊 OTHER
-　 特殊 OTHER
 父 名詞 OTHER
-　 特殊 OTHER
 ＞ 特殊 OTHER
-　 特殊 OTHER
 母 名詞 OTHER
-　 特殊 OTHER
 ＞ 特殊 OTHER
-　 特殊 OTHER
 弟 名詞 OTHER
-　 特殊 OTHER
 ＞ 特殊 OTHER
 ＞ 特殊 OTHER
 乗り越え 動詞 OTHER
@@ -35666,9 +35635,7 @@
 猫 名詞 OTHER
 ） 特殊 OTHER
 ＞ 特殊 OTHER
-　 特殊 OTHER
 私 名詞 OTHER
-　 特殊 OTHER
 ） 特殊 OTHER
 
 毎日 名詞 OTHER
@@ -48340,7 +48307,6 @@
 京都 名詞 I-LOCATION
 観光 名詞 OTHER
 ］ 特殊 OTHER
-　 特殊 OTHER
 １ 名詞 OTHER
 回生 接尾辞 OTHER
 のころ 動詞 OTHER
@@ -49783,7 +49749,6 @@
 ええ 感動詞 OTHER
 、 特殊 OTHER
 水 名詞 OTHER
-　 特殊 OTHER
 入れて 動詞 OTHER
 やり 動詞 OTHER
 ました 接尾辞 OTHER
@@ -50299,15 +50264,11 @@
 メアリー 名詞 OTHER
 ” 特殊 OTHER
 Ｎｅｘｔ 名詞 OTHER
-　 特殊 OTHER
 ｓｔｏｐ 未定義語 OTHER
-　 特殊 OTHER
 ｉｓ 未定義語 OTHER
-　 特殊 OTHER
 … 特殊 OTHER
-　 特殊 OTHER
 Ｈｉｇａｓｈｉｙａｍａ 未定義語 OTHER
-　 特殊 OTHER
+Ｓａｎｊｙｏ． 未定義語 OTHER
 ” 特殊 OTHER
 って 助詞 OTHER
 やつ 名詞 OTHER
@@ -50367,8 +50328,7 @@
 、 特殊 OTHER
 「 特殊 OTHER
 ヒガッシヤーマ 未定義語 OTHER
-　 特殊 OTHER
-サンジョー 未定義語 I-LOCATION
+サンジョー 未定義語 OTHER
 ♪ 特殊 OTHER
 」 特殊 OTHER
 です 判定詞 OTHER
@@ -52887,11 +52847,8 @@
 と 助詞 OTHER
 は 助詞 OTHER
 Ｓａｌｏｎ 未定義語 I-LOCATION
-　 特殊 I-LOCATION
 ｄｅ 未定義語 I-LOCATION
-　 特殊 I-LOCATION
 Ｔｈｅ 名詞 I-LOCATION
-　 特殊 I-LOCATION
 Ｃｌｉｅｎｔｅｌｅ 未定義語 I-LOCATION
 です 判定詞 OTHER
 ． 特殊 OTHER
