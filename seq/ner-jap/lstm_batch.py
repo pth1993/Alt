@@ -55,7 +55,7 @@ def categorical_crossentropy_new(y_true, y_pred):
     output = T.clip(output, _EPSILON, 1.0 - _EPSILON)
     coding_dist = output
     true_dist = target
-    bias = shared(np.array([1,1,1,1,100,100]))
+    bias = shared(np.array([100,100,100,100,1,1]))
     return -tensor.sum(true_dist * tensor.log(coding_dist) * bias,
                        axis=coding_dist.ndim - 1)
 
@@ -109,7 +109,7 @@ print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=5, validation_split=0.0,
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=20, validation_split=0.0,
                     callbacks=[])
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
