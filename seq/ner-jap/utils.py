@@ -204,7 +204,7 @@ def convert_to_conll_format(filename_predict, filename_test, filename_word, le_w
     f4 = codecs.open('conll_output.txt', 'w', 'utf-8')
     for line in f1:
         line = map(int, line.split())
-        line = [x if x != num_tag else 4 for x in line]
+        line = [x if x != num_tag else num_tag-1 for x in line]
         #print set(line)
         line = le_tag.inverse_transform(line)
         line = map(unicode, line)
