@@ -319,7 +319,7 @@ if __name__ == "__main__":
     startTime = datetime.now()
     parameter = []
     print 'Read corpus'
-    num_sent, max_len = read_conll_format_train('kwdlc.conll', 'corpus-word.txt', 'corpus-tag.txt')
+    num_sent, max_len = read_conll_format_train('data/kwdlc_old.conll', 'corpus-word.txt', 'corpus-tag.txt')
     parameter.append(max_len)
     #num_sent_test = read_conll_format_train('test.conll', 'corpus-word.txt', 'corpus-tag.txt')
     #convert_test_file('hironsan_token.txt', 'corpus-word.txt')
