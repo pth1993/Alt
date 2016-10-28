@@ -1,6 +1,7 @@
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, TimeDistributed, Activation, Bidirectional
 from keras.callbacks import EarlyStopping
+from keras import objectives
 import cPickle
 import codecs
 import utils
@@ -10,6 +11,9 @@ import itertools
 import subprocess, shlex
 import os
 import argparse
+from keras import backend as K
+from theano import tensor as T
+from theano.tensor import basic as tensor
 
 
 parser = argparse.ArgumentParser()
@@ -24,6 +28,7 @@ num_tag = parameter[2]
 num_hidden_node = int(args.num_hidden_node)
 batch_size = 1000
 dropout = float(args.dropout)
+_EPSILON = 10e-8
 
 print 'Time step: ' + str(time_step)
 print 'Data dim: ' + str(data_dim)
@@ -32,6 +37,25 @@ print 'Num tag: : ' + str(num_tag)
 print 'Num hidden node: ' + str(num_hidden_node)
 print 'Batch size: ' + str(batch_size)
 print 'Dropout: ' + str(dropout)
+
+
+def categorical_crossentropy_new(y_true, y_pred):
+    '''Expects a binary class matrix instead of a vector of scalar classes.
+    '''
+    output = y_pred
+    target = y_true
+    from_logits = False
+    if from_logits:
+        output = T.nnet.softmax(output)
+    else:
+        # scale preds so that the class probas of each sample sum to 1
+        output /= output.sum(axis=-1, keepdims=True)
+    # avoid numerical instability with _EPSILON clipping
+    output = T.clip(output, _EPSILON, 1.0 - _EPSILON)
+    coding_dist = output
+    true_dist = target
+    return -tensor.sum(true_dist * tensor.log(coding_dist),
+                       axis=coding_dist.ndim - 1)
 
 
 def create_data(word_file, tag_file, word_vector_dict):
@@ -73,8 +97,11 @@ model = Sequential()
 model.add(Bidirectional(LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout), merge_mode='concat', input_shape=(time_step, data_dim)))
 model.add(TimeDistributed(Dense(num_tag+1)))
 model.add(Activation('softmax'))
+#model.compile(optimizer='rmsprop',
+#              loss='categorical_crossentropy',
+#              metrics=['accuracy'])
 model.compile(optimizer='rmsprop',
-              loss='categorical_crossentropy',
+              loss=categorical_crossentropy_new,
               metrics=['accuracy'])
 print model.summary()
 print np.shape(model.get_weights())
