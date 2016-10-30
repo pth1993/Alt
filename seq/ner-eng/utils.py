@@ -136,20 +136,25 @@ def create_word_vector_dict(word_dict, filename):
     return word_vector_dict
 
 
-def split_data(filename_corpus, filename_train, filename_test, num_sent):
-    num_sent_train = int(0.8*num_sent)
+def split_data(filename_corpus, filename_train, filename_dev, filename_test):
+    num_sent_train = 14987
+    num_sent_dev = 3466
     f1 = codecs.open(filename_corpus, 'r', 'utf-8')
     f2 = codecs.open(filename_train, 'w', 'utf-8')
+    f3 = codecs.open(filename_dev, 'w', 'utf-8')
     f4 = codecs.open(filename_test, 'w', 'utf-8')
     count = 0
     for line in f1:
         count += 1
         if count <= num_sent_train:
             f2.write(line)
-        else:
+        elif num_sent_train < count <= num_sent_train + num_sent_dev:
+            f3.write(line)
+        elif num_sent_train + num_sent_dev < count:
             f4.write(line)
     f1.close()
     f2.close()
+    f3.close()
     f4.close()
 
 
@@ -242,6 +247,15 @@ def count_corpus(filename):
 if __name__ == "__main__":
     startTime = datetime.now()
     parameter = []
+    """max_len = 124
+    with open('word_dict.pkl', 'rb') as input:
+        word_dict = cPickle.load(input)
+    with open('tag_dict.pkl', 'rb') as input:
+        tag_dict = cPickle.load(input)
+    num_word = len(word_dict)
+    parameter.append(num_word)
+    num_tag = len(tag_dict)
+    parameter.append(num_tag)"""
     print 'Read corpus'
     num_sent, max_len = count_corpus('corpus-tag.txt')
     parameter.append(max_len)
@@ -262,9 +276,9 @@ if __name__ == "__main__":
     print 'Export unknown word'
     export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
 
-    """print 'Split data'
-    split_data('corpus-word-id.txt', 'train-word-id.txt', 'test-word-id.txt', num_sent)
-    split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'test-tag-id.txt', num_sent)
+    print 'Split data'
+    split_data('corpus-word-id.txt', 'train-word-id.txt', 'dev-word-id.txt', 'test-word-id.txt')
+    split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'dev-tag-id.txt', 'test-tag-id.txt')
 
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, 'word', num_word, num_tag)
@@ -272,7 +286,7 @@ if __name__ == "__main__":
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
     cut_data('test-tag-id.txt', 'test-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
     with open('parameter.pkl', 'wb') as output:
-        cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)"""
+        cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)
     endTime = datetime.now()
     print "Running time: "
     print (endTime - startTime)
