@@ -247,7 +247,8 @@ def count_corpus(filename):
 if __name__ == "__main__":
     startTime = datetime.now()
     parameter = []
-    """max_len = 124
+    max_len = 124
+    parameter.append(max_len)
     with open('word_dict.pkl', 'rb') as input:
         word_dict = cPickle.load(input)
     with open('tag_dict.pkl', 'rb') as input:
@@ -255,8 +256,8 @@ if __name__ == "__main__":
     num_word = len(word_dict)
     parameter.append(num_word)
     num_tag = len(tag_dict)
-    parameter.append(num_tag)"""
-    print 'Read corpus'
+    parameter.append(num_tag)
+    """print 'Read corpus'
     num_sent, max_len = count_corpus('corpus-tag.txt')
     parameter.append(max_len)
     
@@ -274,7 +275,7 @@ if __name__ == "__main__":
     print 'Create word vector dict'
     create_word_vector_dict(word_dict, 'GoogleNews-vectors-negative300.txt')
     print 'Export unknown word'
-    export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
+    export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)"""
 
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'dev-word-id.txt', 'test-word-id.txt')
@@ -282,8 +283,10 @@ if __name__ == "__main__":
 
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, 'word', num_word, num_tag)
+    cut_data('dev-word-id.txt', 'dev-word-id-pad.txt', max_len, 'word', num_word, num_tag)
     cut_data('test-word-id.txt', 'test-word-id-pad.txt', max_len, 'word', num_word, num_tag)
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
+    cut_data('dev-tag-id.txt', 'dev-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
     cut_data('test-tag-id.txt', 'test-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
     with open('parameter.pkl', 'wb') as output:
         cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)

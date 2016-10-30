@@ -87,11 +87,12 @@ with open('word_vector_dict.pkl', 'rb') as input:
 
 print 'Create data to train'
 input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', word_vector_dict)
+input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', word_vector_dict)
 input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', word_vector_dict)
 #input_test = input_train
 #output_test = output_train
 
-print np.shape(input_train), np.shape(output_train), np.shape(input_test), np.shape(output_test)
+print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev), np.shape(input_test), np.shape(output_test)
 
 print 'Create model'
 early_stopping = EarlyStopping()
@@ -109,8 +110,8 @@ print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=20, validation_split=0.0,
-                    callbacks=[])
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=30, validation_data=(input_dev, output_dev),
+                    callbacks=[early_stopping])
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 answer = model.predict_classes(input_test, batch_size=batch_size)
