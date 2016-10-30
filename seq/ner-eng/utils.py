@@ -98,7 +98,7 @@ def convert_number_data(filename1, filename2):
         line_new = []
         for word in line:
             if any(char.isdigit() for char in word):
-                line_new.append('<number>')
+                line_new.append('0')
             else:
                 line_new.append(word)
         line_new = ' '.join(line_new)
@@ -258,11 +258,11 @@ if __name__ == "__main__":
     num_tag = len(tag_dict)
     parameter.append(num_tag)
     print 'Create word vector dict'
-    create_word_vector_dict(word_dict, 'jawiki_vector.txt')
+    create_word_vector_dict(word_dict, 'GoogleNews-vectors-negative300.txt')
     print 'Export unknown word'
-    export_unknown_word('jawiki_vector.txt', 'unknown_words.txt', word_dict)
+    export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
 
-    print 'Split data'
+    """print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'test-word-id.txt', num_sent)
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'test-tag-id.txt', num_sent)
 
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
     cut_data('test-tag-id.txt', 'test-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
     with open('parameter.pkl', 'wb') as output:
-        cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)"""
     endTime = datetime.now()
     print "Running time: "
     print (endTime - startTime)
