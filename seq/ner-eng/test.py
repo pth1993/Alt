@@ -42,31 +42,26 @@ def check_word_vector_dict(filename):
     print index
     print word_dict[index]
     print word_vector_dict[index]
-    """for line in word_dict:
-        line = line.split()
-        if len(line) > 1:
-            print line
-    #print word_dict
-    index_list = []
-    vector_list = []
-    f = codecs.open(filename, 'r', 'utf-8')
-    for line in f:
-        line = line.split()
-        try:
-            index = word_dict.index(line[0])
-            vector = line[1:301]
-            vector = [float(i) for i in vector]
-            vector_list.append(vector)
-            index_list.append(index)
-        except:
-            pass
-    print len(vector_list)
-    print len(index_list)"""
+
+
+def generate_sample_word2vec(filename1, filename2):
+    f1 = codecs.open(filename1, 'r', 'utf-8')
+    f2 = codecs.open(filename1, 'w', 'utf-8')
+    count = 0
+    for line in f1:
+        count += 1
+        if count <= 100:
+            f2.write(line)
+        else:
+            break
+    f1.close()
+    f2.close()
 
 
 
 if __name__ == "__main__":
-    read_corpus('corpus-word-reduce-num.txt')
-    read_corpus('corpus-word-id.txt')
-    compare_line('corpus-word.txt', 'corpus-word-id.txt', 'corpus-word-reduce-num.txt')
-    check_word_vector_dict('GoogleNews-vectors-negative300.txt')
+    #read_corpus('corpus-word-reduce-num.txt')
+    #read_corpus('corpus-word-id.txt')
+    #compare_line('corpus-word.txt', 'corpus-word-id.txt', 'corpus-word-reduce-num.txt')
+    #check_word_vector_dict('GoogleNews-vectors-negative300.txt')
+    generate_sample_word2vec('GoogleNews-vectors-negative300.txt', 'word2vec_sample.txt')
