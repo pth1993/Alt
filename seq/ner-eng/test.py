@@ -46,7 +46,7 @@ def check_word_vector_dict(filename):
 
 def generate_sample_word2vec(filename1, filename2):
     f1 = codecs.open(filename1, 'r', 'utf-8')
-    f2 = codecs.open(filename1, 'w', 'utf-8')
+    f2 = codecs.open(filename2, 'w', 'utf-8')
     count = 0
     for line in f1:
         count += 1
