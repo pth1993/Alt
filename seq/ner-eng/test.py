@@ -38,7 +38,11 @@ def check_word_vector_dict(filename):
         word_dict = cPickle.load(input)
     print np.shape(word_vector_dict)
     print np.shape(word_dict)
-    for line in word_dict:
+    index = word_dict.index('for')
+    print index
+    print word_dict[index]
+    print word_vector_dict[index]
+    """for line in word_dict:
         line = line.split()
         if len(line) > 1:
             print line
@@ -57,7 +61,7 @@ def check_word_vector_dict(filename):
         except:
             pass
     print len(vector_list)
-    print len(index_list)
+    print len(index_list)"""
 
 
 
