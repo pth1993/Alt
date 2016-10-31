@@ -122,7 +122,7 @@ def create_word_vector_dict(word_dict, filename):
             index_list.append(index)
         except:
             pass
-    vector_list = [x for (y, x) in sorted(zip(index_list, vector_list))]
+    #vector_list = [x for (y, x) in sorted(zip(index_list, vector_list))]
     for i in range(len(word_dict)):
         if i in index_list:
             word_vector_dict.append(vector_list[index_list.index(i)])
