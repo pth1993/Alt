@@ -24,10 +24,10 @@ args = parser.parse_args()
 with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
 time_step = parameter[0]
-data_dim = 200
+data_dim = 300
 num_tag = parameter[2]
 num_hidden_node = int(args.num_hidden_node)
-batch_size = 1000
+batch_size = 500
 dropout = float(args.dropout)
 _EPSILON = 10e-8
 
@@ -55,7 +55,7 @@ def categorical_crossentropy_new(y_true, y_pred):
     output = T.clip(output, _EPSILON, 1.0 - _EPSILON)
     coding_dist = output
     true_dist = target
-    bias = shared(np.array([100,100,100,100,1,1]))
+    bias = shared(np.array([50,50,50,50,50,50,50,1,1]))
     return -tensor.sum(true_dist * tensor.log(coding_dist) * bias,
                        axis=coding_dist.ndim - 1)
 
@@ -103,15 +103,15 @@ model.add(Activation('softmax'))
 #model.compile(optimizer='rmsprop',
 #              loss='categorical_crossentropy',
 #              metrics=['accuracy'])
-model.compile(optimizer='rmsprop',
+model.compile(optimizer='adagrad',
               loss=categorical_crossentropy_new,
               metrics=['accuracy'])
 print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=30, validation_data=(input_dev, output_dev),
-                    callbacks=[early_stopping])
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=100, validation_data=(input_dev, output_dev), callbacks=[])
+#history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=10)
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 answer = model.predict_classes(input_test, batch_size=batch_size)
