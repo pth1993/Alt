@@ -100,17 +100,17 @@ model = Sequential()
 model.add(Bidirectional(LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout), merge_mode='concat', input_shape=(time_step, data_dim)))
 model.add(TimeDistributed(Dense(num_tag+1)))
 model.add(Activation('softmax'))
-#model.compile(optimizer='rmsprop',
-#              loss='categorical_crossentropy',
-#              metrics=['accuracy'])
-model.compile(optimizer='adagrad',
-              loss=categorical_crossentropy_new,
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
               metrics=['accuracy'])
+#model.compile(optimizer='adagrad',
+#              loss=categorical_crossentropy_new,
+#              metrics=['accuracy'])
 print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=100, validation_data=(input_dev, output_dev), callbacks=[])
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=50, validation_data=(input_dev, output_dev), callbacks=[])
 #history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=10)
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
