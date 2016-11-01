@@ -18,6 +18,7 @@ from theano.tensor import basic as tensor
 
 
 parser = argparse.ArgumentParser()
+parser.add_argument("corpus", help="corpus name")
 parser.add_argument("num_hidden_node", help="number of hidden node")
 parser.add_argument("dropout", help="dropout number")
 args = parser.parse_args()
@@ -30,6 +31,7 @@ num_hidden_node = int(args.num_hidden_node)
 batch_size = 500
 dropout = float(args.dropout)
 _EPSILON = 10e-8
+corpus_name = args.corpus
 
 print 'Time step: ' + str(time_step)
 print 'Data dim: ' + str(data_dim)
@@ -123,7 +125,7 @@ with open('le_tag.pkl', 'rb') as input:
 utils.convert_to_conll_format('test-predict-id.txt', 'test-tag-id.txt', 'test-word-id.txt', le_word, le_tag, num_tag)
 #utils.convert_to_conll_format('test-predict-id.txt', 'train-tag-id.txt', 'train-word-id.txt', le_word, le_tag, num_tag)
 input = open('conll_output.txt')
-output = open(os.path.join('evaluate', 'evaluate' + '_' + str(num_hidden_node) + '_' + str(dropout) + '.txt'), 'w')
+output = open(os.path.join('evaluate', 'evaluate' + '_' + corpus_name + '_' + str(num_hidden_node) + '_' + str(dropout) + '.txt'), 'w')
 subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
