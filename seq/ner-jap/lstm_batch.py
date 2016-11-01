@@ -27,7 +27,7 @@ time_step = parameter[0]
 data_dim = 200
 num_tag = parameter[2]
 num_hidden_node = int(args.num_hidden_node)
-batch_size = 1000
+batch_size = 500
 dropout = float(args.dropout)
 _EPSILON = 10e-8
 
@@ -109,7 +109,7 @@ print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=20, validation_split=0.0,
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=40,
                     callbacks=[])
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
