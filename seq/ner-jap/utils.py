@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import codecs
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
@@ -104,8 +107,9 @@ def convert_number_data(filename1, filename2):
         line = line.split()
         line_new = []
         for word in line:
-            if any(char.isdigit() for char in word):
-                line_new.append('<number>')
+            #if any(char.isdigit() for char in word):
+            if any(char in [u'０', u'１', u'２', u'３', u'4', u'５', u'６', u'７', u'８', u'９'] for char in word):
+                line_new.append(u'０')
             else:
                 line_new.append(word)
         line_new = ' '.join(line_new)
@@ -330,11 +334,11 @@ if __name__ == "__main__":
     #num_sent_test = read_conll_format_train('test.conll', 'corpus-word.txt', 'corpus-tag.txt')
     #convert_test_file('hironsan_token.txt', 'corpus-word.txt')
     
-    #print 'Reduce number'
-    #convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
+    print 'Reduce number'
+    convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
 
     print 'Convert word to id'
-    word_dict = convert_word_to_id('corpus-word.txt', 'corpus-word-id.txt', 'word')
+    word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
     num_word = len(word_dict)
     parameter.append(num_word)
     print 'Convert tag to id'
