@@ -111,7 +111,7 @@ print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=40,
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=30,
                     callbacks=[])
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
