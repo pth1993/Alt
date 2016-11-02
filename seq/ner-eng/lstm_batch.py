@@ -1,7 +1,7 @@
 from keras.models import Sequential
+from keras.regularizers import l1, l2
 from keras.layers import LSTM, Dense, TimeDistributed, Activation, Bidirectional
 from keras.callbacks import EarlyStopping
-from keras import objectives
 import cPickle
 import codecs
 import utils
@@ -18,11 +18,29 @@ from theano.tensor import basic as tensor
 
 
 parser = argparse.ArgumentParser()
+parser.add_argument("word_embedding", help="word embedding type: word2vec, glove or senna")
+parser.add_argument("num_epoch", help="number of epoch")
 parser.add_argument("num_hidden_node", help="number of hidden node")
-parser.add_argument("dropout", help="dropout number")
+parser.add_argument("regularization_type", help="regularization type: None or L1, L2")
+parser.add_argument("regularization_number", help="regularization number")
+parser.add_argument("dropout", help="dropout number: between 0 and 1")
+parser.add_argument("optimizer", help="optimizer algorithm")
+parser.add_argument("loss", help="loss function")
 args = parser.parse_args()
 with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
+loss = args.loss
+optimizer = args.optimizer
+word_embedding_name = args.word_embedding
+nb_epoch = int(args.num_epoch)
+regularization_type = args.regularization_type
+regularization_number = float(args.regularization_number)
+if regularization_type == 'None':
+    regularization = None
+elif regularization_type == 'L1':
+    regularization = l1(regularization_number)
+elif regularization_type == 'L2':
+    regularization = l2(regularization_number)
 time_step = parameter[0]
 data_dim = 300
 num_tag = parameter[2]
@@ -92,25 +110,25 @@ input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.t
 #input_test = input_train
 #output_test = output_train
 
-print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev), np.shape(input_test), np.shape(output_test)
+print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev),\
+    np.shape(input_test), np.shape(output_test)
 
 print 'Create model'
 early_stopping = EarlyStopping()
 model = Sequential()
-model.add(Bidirectional(LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout), merge_mode='concat', input_shape=(time_step, data_dim)))
-model.add(TimeDistributed(Dense(num_tag+1)))
+model.add(Bidirectional(LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
+                             W_regularizer=regularization, U_regularizer=regularization), merge_mode='concat',
+                        input_shape=(time_step, data_dim)))
+model.add(TimeDistributed(Dense(num_tag+1, W_regularizer=regularization)))
 model.add(Activation('softmax'))
-model.compile(optimizer='adam',
-              loss='categorical_crossentropy',
+model.compile(optimizer=optimizer,
+              loss=loss,
               metrics=['accuracy'])
-#model.compile(optimizer='adagrad',
-#              loss=categorical_crossentropy_new,
-#              metrics=['accuracy'])
 print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=100, validation_data=(input_dev, output_dev), callbacks=[])
+history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=nb_epoch, validation_data=(input_dev, output_dev), callbacks=[])
 #history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=10)
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
@@ -124,10 +142,12 @@ with open('le_tag.pkl', 'rb') as input:
 utils.convert_to_conll_format('test-predict-id.txt', 'test-tag-id.txt', 'test-word-id.txt', le_word, le_tag, num_tag)
 #utils.convert_to_conll_format('test-predict-id.txt', 'train-tag-id.txt', 'train-word-id.txt', le_word, le_tag, num_tag)
 input = open('conll_output.txt')
-output = open(os.path.join('evaluate', 'evaluate' + '_' + str(num_hidden_node) + '_' + str(dropout) + '.txt'), 'w')
+output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + 'num_epoch_' + str(nb_epoch) + '_' +
+                           'num_hidden_node_' + str(num_hidden_node) + '_' + 'regularization_' + regularization_type +
+                           '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer + '_' +
+                           loss + '.txt'), 'w')
 subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
 print "Running time: "
 print (endTime - startTime)
-
