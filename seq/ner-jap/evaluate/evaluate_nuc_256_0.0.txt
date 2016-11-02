@@ -1,0 +1,6 @@
+processed 46013 tokens with 208 phrases; found: 211 phrases; correct: 133.
+accuracy:  99.60%; precision:  63.03%; recall:  63.94%; FB1:  63.48
+         LOCATION: precision:  44.44%; recall:  31.37%; FB1:  36.78  36
+     ORGANIZATION: precision:  31.58%; recall:  36.36%; FB1:  33.80  38
+           PERSON: precision:  76.64%; recall:  84.68%; FB1:  80.46  137
+Running time: 0:23:03.319001
