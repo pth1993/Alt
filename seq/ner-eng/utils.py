@@ -78,7 +78,7 @@ def load_data(filename):
 
 
 def load_word2vec(filename):
-    f = codecs.open(filename, 'r', 'utf-8', 'ignore')
+    f = codecs.open('embedding/'+filename, 'r', 'utf-8', 'ignore')
     word2vec_list = []
     f.readline()
     for line in f:
@@ -107,11 +107,11 @@ def convert_number_data(filename1, filename2):
     f2.close()
 
 
-def create_word_vector_dict(word_dict, filename):
+def create_word_vector_dict(word_dict, filename, embedding):
     vector_list = []
     index_list = []
     word_vector_dict = []
-    f = codecs.open(filename, 'r', 'utf-8', 'ignore')
+    f = codecs.open('embedding/' + filename, 'r', 'utf-8', 'ignore')
     for line in f:
         line = line.split()
         try:
@@ -122,7 +122,6 @@ def create_word_vector_dict(word_dict, filename):
             index_list.append(index)
         except:
             pass
-    #vector_list = [x for (y, x) in sorted(zip(index_list, vector_list))]
     for i in range(len(word_dict)):
         if i in index_list:
             word_vector_dict.append(vector_list[index_list.index(i)])
@@ -131,9 +130,8 @@ def create_word_vector_dict(word_dict, filename):
                                                       size=vector_length).tolist())
     word_vector_dict.append(np.random.uniform(-math.sqrt(3 / float(vector_length)), math.sqrt(3 / float(vector_length)),
                                               size=vector_length).tolist())
-    with open('word_vector_dict.pkl', 'wb') as output:
+    with open('word_vector_dict_'+embedding+'.pkl', 'wb') as output:
         cPickle.dump(word_vector_dict, output, cPickle.HIGHEST_PROTOCOL)
-    return word_vector_dict
 
 
 def split_data(filename_corpus, filename_train, filename_dev, filename_test):
@@ -260,10 +258,8 @@ if __name__ == "__main__":
     print 'Read corpus'
     num_sent, max_len = count_corpus('corpus-tag.txt')
     parameter.append(max_len)
-    
     print 'Reduce number'
     convert_number_data('corpus-word.txt', 'corpus-word-reduce-num.txt')
-
     print 'Convert word to id'
     word_dict = convert_word_to_id('corpus-word-reduce-num.txt', 'corpus-word-id.txt', 'word')
     num_word = len(word_dict)
@@ -273,14 +269,18 @@ if __name__ == "__main__":
     num_tag = len(tag_dict)
     parameter.append(num_tag)
     print 'Create word vector dict'
-    create_word_vector_dict(word_dict, 'GoogleNews-vectors-negative300.txt')
+    print 'word2vec'
+    create_word_vector_dict(word_dict, 'word2vec_embedding.txt', 'word2vec')
+    print 'glove'
+    create_word_vector_dict(word_dict, 'glove_embedding.txt', 'glove')
     print 'Export unknown word'
-    export_unknown_word('GoogleNews-vectors-negative300.txt', 'unknown_words.txt', word_dict)
-
+    print 'word2vec'
+    export_unknown_word('word2vec_embedding.txt', 'unknown_words_word2vec.txt', word_dict)
+    print 'glove'
+    export_unknown_word('glove_embedding.txt', 'unknown_words_glove.txt', word_dict)
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'dev-word-id.txt', 'test-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'dev-tag-id.txt', 'test-tag-id.txt')
-
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, 'word', num_word, num_tag)
     cut_data('dev-word-id.txt', 'dev-word-id-pad.txt', max_len, 'word', num_word, num_tag)
