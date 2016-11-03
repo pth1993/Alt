@@ -94,8 +94,12 @@ def create_data(word_file, tag_file, word_vector_dict):
 startTime = datetime.now()
 
 print 'Load word vector dict'
-with open('word_vector_dict.pkl', 'rb') as input:
-    word_vector_dict = cPickle.load(input)
+if word_embedding_name == 'word2vec':
+    with open('word_vector_dict_word2vec.pkl', 'rb') as input:
+        word_vector_dict = cPickle.load(input)
+elif word_embedding_name == 'glove':
+    with open('word_vector_dict_glove.pkl', 'rb') as input:
+        word_vector_dict = cPickle.load(input)
 
 print 'Create data to train'
 input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', word_vector_dict)
