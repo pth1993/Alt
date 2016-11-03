@@ -67,7 +67,7 @@ def categorical_crossentropy_bias(y_true, y_pred):
     output = T.clip(output, _EPSILON, 1.0 - _EPSILON)
     coding_dist = output
     true_dist = target
-    bias = shared(np.array([50,50,50,50,50,50,50,1,1]))
+    bias = shared(np.array([10,10,10,10,10,10,10,1,1]))
     return -tensor.sum(true_dist * tensor.log(coding_dist) * bias,
                        axis=coding_dist.ndim - 1)
 
