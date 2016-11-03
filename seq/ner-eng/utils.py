@@ -8,7 +8,7 @@ import math
 import argparse
 
 
-vector_length = 300
+#vector_length = 300
 
 
 def convert_word_to_id(filename1, filename2, word_name):
@@ -90,6 +90,19 @@ def load_word2vec(filename):
     return word2vec_list
 
 
+def load_word2vec_senna(filename):
+    f = codecs.open('embedding/'+filename, 'r', 'utf-8', 'ignore')
+    word2vec_list = []
+    f.readline()
+    for line in f:
+        try:
+            word2vec_list.append(line.split()[0].lower())
+        except:
+            pass
+    f.close()
+    return word2vec_list
+
+
 def convert_number_data(filename1, filename2):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
@@ -107,7 +120,7 @@ def convert_number_data(filename1, filename2):
     f2.close()
 
 
-def create_word_vector_dict(word_dict, filename, embedding):
+def create_word_vector_dict(word_dict, filename, embedding, vector_length):
     vector_list = []
     index_list = []
     word_vector_dict = []
@@ -121,6 +134,37 @@ def create_word_vector_dict(word_dict, filename, embedding):
             vector_list.append(vector)
             index_list.append(index)
         except:
+            pass
+    for i in range(len(word_dict)):
+        if i in index_list:
+            word_vector_dict.append(vector_list[index_list.index(i)])
+        else:
+            word_vector_dict.append(np.random.uniform(-math.sqrt(3/float(vector_length)), math.sqrt(3/float(vector_length)),
+                                                      size=vector_length).tolist())
+    word_vector_dict.append(np.random.uniform(-math.sqrt(3 / float(vector_length)), math.sqrt(3 / float(vector_length)),
+                                              size=vector_length).tolist())
+    with open('word_vector_dict_'+embedding+'.pkl', 'wb') as output:
+        cPickle.dump(word_vector_dict, output, cPickle.HIGHEST_PROTOCOL)
+
+
+def create_word_vector_dict_senna(word_dict, filename, embedding, vector_length):
+    vector_list = []
+    index_list = []
+    word_vector_dict = []
+    word_dict_senna = []
+    for word in word_dict:
+        word_dict_senna.append(word.lower())
+    f = codecs.open('embedding/' + filename, 'r', 'utf-8', 'ignore')
+    for line in f:
+        line = line.split()
+        index = [i for i, x in enumerate(word_dict_senna) if x == line[0]]
+        if len(index) > 0:
+            vector = line[1:(vector_length + 1)]
+            vector = [float(i) for i in vector]
+            for item in index:
+                vector_list.append(vector)
+            index_list += index
+        else:
             pass
     for i in range(len(word_dict)):
         if i in index_list:
@@ -158,6 +202,15 @@ def split_data(filename_corpus, filename_train, filename_dev, filename_test):
 
 def export_unknown_word(filename_word2vec, filename_unknown_word, word_dict):
     word2vec_list = load_word2vec(filename_word2vec)
+    temp = list(set(word_dict) - set(word2vec_list))
+    f = codecs.open(filename_unknown_word, 'w', 'utf-8')
+    for item in temp:
+        f.write(item + '\n')
+    f.close()
+
+
+def export_unknown_word_senna(filename_word2vec, filename_unknown_word, word_dict):
+    word2vec_list = load_word2vec_senna(filename_word2vec)
     temp = list(set(word_dict) - set(word2vec_list))
     f = codecs.open(filename_unknown_word, 'w', 'utf-8')
     for item in temp:
@@ -269,15 +322,19 @@ if __name__ == "__main__":
     num_tag = len(tag_dict)
     parameter.append(num_tag)
     print 'Create word vector dict'
-    print 'word2vec'
-    create_word_vector_dict(word_dict, 'word2vec_embedding.txt', 'word2vec')
-    print 'glove'
-    create_word_vector_dict(word_dict, 'glove_embedding.txt', 'glove')
+    #print 'word2vec'
+    #create_word_vector_dict(word_dict, 'word2vec_embedding.txt', 'word2vec', 300)
+    #print 'glove'
+    #create_word_vector_dict(word_dict, 'glove_embedding.txt', 'glove', 300)
+    print 'senna'
+    create_word_vector_dict_senna(word_dict, 'senna_embedding.txt', 'senna', 50)
     print 'Export unknown word'
-    print 'word2vec'
-    export_unknown_word('word2vec_embedding.txt', 'unknown_words_word2vec.txt', word_dict)
-    print 'glove'
-    export_unknown_word('glove_embedding.txt', 'unknown_words_glove.txt', word_dict)
+    #print 'word2vec'
+    #export_unknown_word('word2vec_embedding.txt', 'unknown_words_word2vec.txt', word_dict)
+    #print 'glove'
+    #export_unknown_word('glove_embedding.txt', 'unknown_words_glove.txt', word_dict)
+    print 'senna'
+    export_unknown_word_senna('senna_embedding.txt', 'unknown_words_senna.txt', word_dict)
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'dev-word-id.txt', 'test-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'dev-tag-id.txt', 'test-tag-id.txt')

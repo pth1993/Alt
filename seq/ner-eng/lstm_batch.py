@@ -154,7 +154,7 @@ with open('le_tag.pkl', 'rb') as input:
     le_tag = cPickle.load(input)
 utils.convert_to_conll_format('test-predict-id.txt', 'test-tag-id.txt', 'test-word-id.txt', le_word, le_tag, num_tag)
 input = open('conll_output.txt')
-output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + 'num_epoch_' + str(nb_epoch) + '_' +
+output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' +
                            'num_hidden_node_' + str(num_hidden_node) + '_' + 'regularization_' + regularization_type +
                            '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer + '_' +
                            loss + '.txt'), 'w')
