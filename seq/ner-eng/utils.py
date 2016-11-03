@@ -90,19 +90,6 @@ def load_word2vec(filename):
     return word2vec_list
 
 
-def load_word2vec_senna(filename):
-    f = codecs.open('embedding/'+filename, 'r', 'utf-8', 'ignore')
-    word2vec_list = []
-    f.readline()
-    for line in f:
-        try:
-            word2vec_list.append(line.split()[0].lower())
-        except:
-            pass
-    f.close()
-    return word2vec_list
-
-
 def convert_number_data(filename1, filename2):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
@@ -210,8 +197,9 @@ def export_unknown_word(filename_word2vec, filename_unknown_word, word_dict):
 
 
 def export_unknown_word_senna(filename_word2vec, filename_unknown_word, word_dict):
-    word2vec_list = load_word2vec_senna(filename_word2vec)
-    temp = list(set(word_dict) - set(word2vec_list))
+    word_dict_lower = [i.lower() for i in word_dict]
+    word2vec_list = load_word2vec(filename_word2vec)
+    temp = list(set(word_dict_lower) - set(word2vec_list))
     f = codecs.open(filename_unknown_word, 'w', 'utf-8')
     for item in temp:
         f.write(item + '\n')
