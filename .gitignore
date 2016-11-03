@@ -1,5 +1,6 @@
 GoogleNews-vectors-negative300.txt
 glove_embedding.txt
 word2vec_embedding.txt
+senna_embedding.txt
 .idea/
 jawiki_vector.txt

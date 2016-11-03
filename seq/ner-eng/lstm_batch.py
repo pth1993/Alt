@@ -36,7 +36,12 @@ nb_epoch = int(args.num_epoch)
 regularization_type = args.regularization_type
 regularization_number = float(args.regularization_number)
 time_step = parameter[0]
-data_dim = 300
+if word_embedding_name == 'word2vec':
+    data_dim = 300
+elif word_embedding_name == 'glove':
+    data_dim = 300
+elif word_embedding_name == 'senna':
+    data_dim = 50
 num_tag = parameter[2]
 num_hidden_node = int(args.num_hidden_node)
 batch_size = 500
@@ -99,6 +104,9 @@ if word_embedding_name == 'word2vec':
         word_vector_dict = cPickle.load(input)
 elif word_embedding_name == 'glove':
     with open('word_vector_dict_glove.pkl', 'rb') as input:
+        word_vector_dict = cPickle.load(input)
+elif word_embedding_name == 'senna':
+    with open('word_vector_dict_senna.pkl', 'rb') as input:
         word_vector_dict = cPickle.load(input)
 
 print 'Create data to train'
