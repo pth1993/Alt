@@ -2,7 +2,6 @@ from keras.models import Sequential
 from keras.regularizers import l1, l2
 from keras.layers import LSTM, Dense, TimeDistributed, Activation, Bidirectional
 from keras.callbacks import EarlyStopping
-from keras.optimizers import SGD
 import cPickle
 import codecs
 import utils
@@ -12,7 +11,6 @@ import itertools
 import subprocess, shlex
 import os
 import argparse
-from keras import backend as K
 from theano import tensor as T
 from theano import shared
 from theano.tensor import basic as tensor
@@ -21,19 +19,20 @@ from theano.tensor import basic as tensor
 parser = argparse.ArgumentParser()
 parser.add_argument("word_embedding", help="word embedding type: word2vec, glove, senna")
 parser.add_argument("num_epoch", help="number of epoch")
+parser.add_argument("num_lstm_layer", help="number of lstm layer")
 parser.add_argument("num_hidden_node", help="number of hidden node")
 parser.add_argument("regularization_type", help="regularization type: none, l1, l2")
 parser.add_argument("regularization_number", help="regularization number")
 parser.add_argument("dropout", help="dropout number: between 0 and 1")
+parser.add_argument("batch_size", help="batch size for training")
 parser.add_argument("optimizer", help="optimizer algorithm: sgd, rmsprop, adagrad, adadelta, adam, adamax, nadam")
 parser.add_argument("loss", help="loss function: categorical_crossentropy, categorical_crossentropy_bias")
 args = parser.parse_args()
 with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
+num_lstm_layer = int(args.num_lstm_layer)
 loss = args.loss
 optimizer = args.optimizer
-#if optimizer == 'sgd':
-#    optimizer = SGD(lr=0.015, clipvalue=0.5, momentum=0.9, decay=0.05)
 word_embedding_name = args.word_embedding
 nb_epoch = int(args.num_epoch)
 regularization_type = args.regularization_type
@@ -47,17 +46,22 @@ elif word_embedding_name == 'senna':
     data_dim = 50
 num_tag = parameter[2]
 num_hidden_node = int(args.num_hidden_node)
-batch_size = 100
+batch_size = int(args.batch_size)
 dropout = float(args.dropout)
 _EPSILON = 10e-8
 
+print 'Word Embedding: ' + word_embedding_name
+print 'Num epoch: ' + str(nb_epoch)
+print 'Num hidden node: ' + str(num_hidden_node)
+print 'Regularization type: ' + regularization_type
+print 'Regularization number: ' + str(regularization_number)
+print 'Dropout: ' + str(dropout)
+print 'Optimizer: ' + optimizer
+print 'Batch size: ' + str(batch_size)
 print 'Time step: ' + str(time_step)
 print 'Data dim: ' + str(data_dim)
 print 'Num word: ' + str(parameter[1])
 print 'Num tag: : ' + str(num_tag)
-print 'Num hidden node: ' + str(num_hidden_node)
-print 'Batch size: ' + str(batch_size)
-print 'Dropout: ' + str(dropout)
 
 
 def categorical_crossentropy_bias(y_true, y_pred):
@@ -123,27 +127,51 @@ print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.sha
 print 'Create model'
 early_stopping = EarlyStopping(patience=5)
 model = Sequential()
-if regularization_type == 'none':
+if regularization_type == 'none' and num_lstm_layer == 1:
     model.add(Bidirectional(
         LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout),
         merge_mode='concat', input_shape=(time_step, data_dim)))
     model.add(TimeDistributed(Dense(num_tag + 1)))
-elif regularization_type == 'l1':
+elif regularization_type == 'l1' and num_lstm_layer == 1:
     model.add(Bidirectional(
         LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
              W_regularizer=l1(regularization_number), U_regularizer=l1(regularization_number)),
         merge_mode='concat', input_shape=(time_step, data_dim)))
     model.add(TimeDistributed(Dense(num_tag + 1, W_regularizer=l1(regularization_number))))
-elif regularization_type == 'l2':
+elif regularization_type == 'l2' and num_lstm_layer == 1:
     model.add(Bidirectional(
         LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
              W_regularizer=l2(regularization_number), U_regularizer=l2(regularization_number)),
         merge_mode='concat', input_shape=(time_step, data_dim)))
     model.add(TimeDistributed(Dense(num_tag + 1, W_regularizer=l2(regularization_number))))
-#model.add(Bidirectional(LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
-#                             W_regularizer=regularization, U_regularizer=regularization), merge_mode='concat',
-#                        input_shape=(time_step, data_dim)))
-#model.add(TimeDistributed(Dense(num_tag+1, W_regularizer=regularization)))
+elif regularization_type == 'none' and num_lstm_layer == 2:
+    model.add(Bidirectional(
+        LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout),
+        input_shape=(time_step, data_dim)))
+    model.add(Bidirectional(
+        LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout),
+        merge_mode='concat'))
+    model.add(TimeDistributed(Dense(num_tag + 1)))
+elif regularization_type == 'l1' and num_lstm_layer == 1:
+    model.add(Bidirectional(
+        LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
+             W_regularizer=l1(regularization_number), U_regularizer=l1(regularization_number)),
+        input_shape=(time_step, data_dim)))
+    model.add(Bidirectional(
+        LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
+             W_regularizer=l1(regularization_number), U_regularizer=l1(regularization_number)),
+        merge_mode='concat'))
+    model.add(TimeDistributed(Dense(num_tag + 1, W_regularizer=l1(regularization_number))))
+elif regularization_type == 'l2' and num_lstm_layer == 1:
+    model.add(Bidirectional(
+        LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
+             W_regularizer=l2(regularization_number), U_regularizer=l2(regularization_number)),
+        input_shape=(time_step, data_dim)))
+    model.add(Bidirectional(
+        LSTM(num_hidden_node, return_sequences=True, dropout_W=dropout, dropout_U=dropout,
+             W_regularizer=l2(regularization_number), U_regularizer=l2(regularization_number)),
+        merge_mode='concat'))
+    model.add(TimeDistributed(Dense(num_tag + 1, W_regularizer=l2(regularization_number))))
 model.add(Activation('softmax'))
 if loss == 'categorical_crossentropy':
     model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
@@ -165,10 +193,11 @@ with open('le_tag.pkl', 'rb') as input:
     le_tag = cPickle.load(input)
 utils.convert_to_conll_format('test-predict-id.txt', 'test-tag-id.txt', 'test-word-id.txt', le_word, le_tag, num_tag)
 input = open('conll_output.txt')
-output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' +
-                           'num_hidden_node_' + str(num_hidden_node) + '_' + 'regularization_' + regularization_type +
-                           '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer + '_' +
-                           loss + '.txt'), 'w')
+output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) +
+                           '_' + 'num_lstm_layer_' + str(num_lstm_layer) + '_' 'num_hidden_node_' + str(num_hidden_node)
+                           + '_' + 'regularization_' + regularization_type + '_' + str(regularization_number) + '_' +
+                           'dropout_' + str(dropout) + '_' + optimizer + '_' + loss + '_batch_size_' + str(batch_size)
+                           + '.txt'), 'w')
 subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
