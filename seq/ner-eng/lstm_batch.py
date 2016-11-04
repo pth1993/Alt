@@ -2,6 +2,7 @@ from keras.models import Sequential
 from keras.regularizers import l1, l2
 from keras.layers import LSTM, Dense, TimeDistributed, Activation, Bidirectional
 from keras.callbacks import EarlyStopping
+from keras.optimizers import SGD
 import cPickle
 import codecs
 import utils
@@ -31,6 +32,8 @@ with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
 loss = args.loss
 optimizer = args.optimizer
+if optimizer == 'sgd':
+    optimizer = SGD(lr=0.015, clipvalue=0.5, momentum=0.9, decay=0.05)
 word_embedding_name = args.word_embedding
 nb_epoch = int(args.num_epoch)
 regularization_type = args.regularization_type
