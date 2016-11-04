@@ -32,8 +32,8 @@ with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
 loss = args.loss
 optimizer = args.optimizer
-if optimizer == 'sgd':
-    optimizer = SGD(lr=0.015, clipvalue=0.5, momentum=0.9, decay=0.05)
+#if optimizer == 'sgd':
+#    optimizer = SGD(lr=0.015, clipvalue=0.5, momentum=0.9, decay=0.05)
 word_embedding_name = args.word_embedding
 nb_epoch = int(args.num_epoch)
 regularization_type = args.regularization_type
@@ -47,7 +47,7 @@ elif word_embedding_name == 'senna':
     data_dim = 50
 num_tag = parameter[2]
 num_hidden_node = int(args.num_hidden_node)
-batch_size = 500
+batch_size = 100
 dropout = float(args.dropout)
 _EPSILON = 10e-8
 
