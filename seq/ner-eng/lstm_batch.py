@@ -121,7 +121,7 @@ print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.sha
     np.shape(input_test), np.shape(output_test)
 
 print 'Create model'
-early_stopping = EarlyStopping()
+early_stopping = EarlyStopping(patience=5)
 model = Sequential()
 if regularization_type == 'none':
     model.add(Bidirectional(
@@ -154,7 +154,7 @@ print np.shape(model.get_weights())
 
 print 'Training'
 history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=nb_epoch,
-                    validation_data=(input_dev, output_dev), callbacks=[])
+                    validation_data=(input_dev, output_dev), callbacks=[early_stopping])
 weights = model.get_weights()
 np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 answer = model.predict_classes(input_test, batch_size=batch_size)
