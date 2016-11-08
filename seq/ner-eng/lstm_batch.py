@@ -129,11 +129,11 @@ def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
         output = map(int, line2.split())
         input_vector_word = [word_vector_dict[i] for i in input_word]
         #input_vector_pos = np.eye(num_pos + 1)[input_pos]
-        input_vector_pos = [list(bin(x)[2:].zfill(6)) for x in input_pos]
-        input_vector_pos = [int(x) for x in input_vector_pos]
+        input_vector_pos = [int(y) for y in [list(bin(x)[2:].zfill(6))] for x in input_pos]
+        #input_vector_pos = [int(x) for x in input_vector_pos]
         #input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
-        input_vector_chunk = [list(bin(x)[2:].zfill(5)) for x in input_chunk]
-        input_vector_chunk = [int(x) for x in input_vector_chunk]
+        input_vector_chunk = [int(y) for y in [list(bin(x)[2:].zfill(5))] for x in input_chunk]
+        #input_vector_chunk = [int(x) for x in input_vector_chunk]
         output_vector = np.eye(num_tag + 1)[output]
         input_vector = input_vector_word
         if pos:
