@@ -138,8 +138,8 @@ def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
             input_vector = np.concatenate((input_vector, input_vector_chunk), axis=1)
         input_data.append(input_vector)
         output_data.append(output_vector)
-    #input_data = np.asarray(input_data)
-    #output_data = np.asarray(output_data)
+    input_data = np.asarray(input_data)
+    output_data = np.asarray(output_data)
     f1.close()
     f2.close()
     return input_data, output_data
@@ -170,7 +170,7 @@ print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.sha
     np.shape(input_test), np.shape(output_test)
 
 print 'Create model'
-early_stopping = EarlyStopping(patience=5)
+early_stopping = EarlyStopping(patience=3)
 model = Sequential()
 if regularization_type == 'none' and num_lstm_layer == 1:
     model.add(Bidirectional(
@@ -242,7 +242,7 @@ output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + 
                            '_' + 'num_lstm_layer_' + str(num_lstm_layer) + '_' 'num_hidden_node_' + str(num_hidden_node)
                            + '_' + 'regularization_' + regularization_type + '_' + str(regularization_number) + '_' +
                            'dropout_' + str(dropout) + '_' + optimizer + '_' + loss + '_batch_size_' + str(batch_size)
-                           + '.txt'), 'w')
+                           + '_pos_' + str(pos) + '_chunk_' + str(chunk) + '.txt'), 'w')
 subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
