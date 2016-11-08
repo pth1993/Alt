@@ -52,9 +52,9 @@ elif word_embedding_name == 'glove':
 elif word_embedding_name == 'senna':
     data_dim = 50
 if pos:
-    data_dim += (num_pos+1)
+    data_dim += 6
 if chunk:
-    data_dim += (num_chunk+1)
+    data_dim += 5
 num_hidden_node = int(args.num_hidden_node)
 batch_size = int(args.batch_size)
 dropout = float(args.dropout)
