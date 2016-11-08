@@ -4,6 +4,7 @@ from gensim import corpora
 import cPickle
 import numpy as np
 import math
+import utils
 
 vector_length=300
 
@@ -99,4 +100,5 @@ if __name__ == "__main__":
     #with open('word_dict.pkl', 'rb') as input:
     #    word_dict = cPickle.load(input)
     #create_word_vector_dict(word_dict, 'word2vec_sample.txt')
-    check_word_vector_dict()
+    #check_word_vector_dict()
+    utils.read_conll_format('conll_2003.txt', 'corpus_word_new.txt', 'corpus_pos.txt', 'corpus_chunk.txt', 'corpus_tag_new.txt')

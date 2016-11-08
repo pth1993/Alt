@@ -28,35 +28,42 @@ def convert_word_to_id(filename1, filename2, word_name):
     f1.close()
     f2.close()
     word_dict = list(le.classes_)
-    if word_name == 'word':
-        with open('word_dict.pkl', 'wb') as output:
-            cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
-        with open('le_word.pkl', 'wb') as output:
-            cPickle.dump(le, output, cPickle.HIGHEST_PROTOCOL)
-    elif word_name == 'tag':
-        with open('tag_dict.pkl', 'wb') as output:
-            cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
-        with open('le_tag.pkl', 'wb') as output:
-            cPickle.dump(le, output, cPickle.HIGHEST_PROTOCOL)
+    with open(word_name + '_dict.pkl', 'wb') as output:
+        cPickle.dump(word_dict, output, cPickle.HIGHEST_PROTOCOL)
+    with open('le_' + word_name + '.pkl', 'wb') as output:
+        cPickle.dump(le, output, cPickle.HIGHEST_PROTOCOL)
     return word_dict
 
 
-def cut_data(filename1, filename2, max_len, word_name, num_word, num_tag):
+def cut_data(filename1, filename2, max_len, num_word):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
-    if word_name == 'word':
-        temp = ((unicode(num_word) + u' ') * max_len)[0:-1]
-    elif word_name == 'tag':
-        temp = ((unicode(num_tag) + u' ') * max_len)[0:-1]
+    temp = ((unicode(num_word) + u' ') * max_len)[0:-1]
+    #if word_name == 'word':
+    #    temp = ((unicode(num_word) + u' ') * max_len)[0:-1]
+    #elif word_name == 'tag':
+    #    temp = ((unicode(num_tag) + u' ') * max_len)[0:-1]
+    #elif word_name == 'pos':
+    #    temp = ((unicode(num_pos) + u' ') * max_len)[0:-1]
+    #elif word_name == 'chunk':
+    #    temp = ((unicode(num_chunk) + u' ') * max_len)[0:-1]
     for line in f1:
         line = line.split()
         num_bulk = len(line)/max_len+1
-        if word_name == 'word':
-            for i in range(max_len-len(line)%max_len):
-                line.append(unicode(num_word))
-        elif word_name == 'tag':
-            for i in range(max_len-len(line)%max_len):
-                line.append(unicode(num_tag))
+        for i in range(max_len - len(line) % max_len):
+            line.append(unicode(num_word))
+        #if word_name == 'word':
+        #    for i in range(max_len-len(line)%max_len):
+        #        line.append(unicode(num_word))
+        #elif word_name == 'tag':
+        #    for i in range(max_len-len(line)%max_len):
+        #        line.append(unicode(num_tag))
+        #elif word_name == 'pos':
+        #    for i in range(max_len - len(line) % max_len):
+        #        line.append(unicode(num_pos))
+        #elif word_name == 'chunk':
+        #    for i in range(max_len - len(line) % max_len):
+        #        line.append(unicode(num_chunk))
         #print line
         for i in range(num_bulk):
             #print line
@@ -283,9 +290,44 @@ def count_corpus(filename):
     return num_line, max(num_word_list)
 
 
+def read_conll_format(filename1, filename2, filename3, filename4, filename5):
+    f1 = codecs.open(filename1, 'r', 'utf-8')
+    f2 = codecs.open(filename2, 'w', 'utf-8')
+    f3 = codecs.open(filename3, 'w', 'utf-8')
+    f4 = codecs.open(filename4, 'w', 'utf-8')
+    f5 = codecs.open(filename5, 'w', 'utf-8')
+    word_list = []
+    chunk_list = []
+    pos_list = []
+    tag_list = []
+    for line in f1:
+        line = line.split()
+        if len(line) > 0:
+            word_list.append(line[0])
+            pos_list.append(line[1])
+            chunk_list.append(line[2])
+            tag_list.append(line[3])
+        else:
+            f2.write(' '.join(word_list) + u'\n')
+            f3.write(' '.join(pos_list) + u'\n')
+            f4.write(' '.join(chunk_list) + u'\n')
+            f5.write(' '.join(tag_list) + u'\n')
+            word_list = []
+            chunk_list = []
+            pos_list = []
+            tag_list = []
+    f1.close()
+    f2.close()
+    f3.close()
+    f4.close()
+    f5.close()
+
+
 if __name__ == "__main__":
     startTime = datetime.now()
     parameter = []
+    read_conll_format('conll_2003.txt', 'corpus-word.txt', 'corpus-pos.txt', 'corpus-chunk.txt',
+                      'corpus-tag.txt')
     """max_len = 124
     parameter.append(max_len)
     with open('word_dict.pkl', 'rb') as input:
@@ -309,30 +351,46 @@ if __name__ == "__main__":
     tag_dict = convert_word_to_id('corpus-tag.txt', 'corpus-tag-id.txt', 'tag')
     num_tag = len(tag_dict)
     parameter.append(num_tag)
-    print 'Create word vector dict'
+    print 'Convert pos to id'
+    pos_dict = convert_word_to_id('corpus-pos.txt', 'corpus-pos-id.txt', 'pos')
+    num_pos = len(pos_dict)
+    parameter.append(num_pos)
+    print 'Convert chunk to id'
+    chunk_dict = convert_word_to_id('corpus-chunk.txt', 'corpus-chunk-id.txt', 'chunk')
+    num_chunk = len(chunk_dict)
+    parameter.append(num_chunk)
+    #print 'Create word vector dict'
     #print 'word2vec'
     #create_word_vector_dict(word_dict, 'word2vec_embedding.txt', 'word2vec', 300)
     #print 'glove'
     #create_word_vector_dict(word_dict, 'glove_embedding.txt', 'glove', 300)
-    print 'senna'
-    create_word_vector_dict_senna(word_dict, 'senna_embedding.txt', 'senna', 50)
-    print 'Export unknown word'
+    #print 'senna'
+    #create_word_vector_dict_senna(word_dict, 'senna_embedding.txt', 'senna', 50)
+    #print 'Export unknown word'
     #print 'word2vec'
     #export_unknown_word('word2vec_embedding.txt', 'unknown_words_word2vec.txt', word_dict)
     #print 'glove'
     #export_unknown_word('glove_embedding.txt', 'unknown_words_glove.txt', word_dict)
-    print 'senna'
-    export_unknown_word_senna('senna_embedding.txt', 'unknown_words_senna.txt', word_dict)
+    #print 'senna'
+    #export_unknown_word_senna('senna_embedding.txt', 'unknown_words_senna.txt', word_dict)
     print 'Split data'
     split_data('corpus-word-id.txt', 'train-word-id.txt', 'dev-word-id.txt', 'test-word-id.txt')
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'dev-tag-id.txt', 'test-tag-id.txt')
+    split_data('corpus-pos-id.txt', 'train-pos-id.txt', 'dev-pos-id.txt', 'test-pos-id.txt')
+    split_data('corpus-chunk-id.txt', 'train-chunk-id.txt', 'dev-chunk-id.txt', 'test-chunk-id.txt')
     print 'Padding data'
-    cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, 'word', num_word, num_tag)
-    cut_data('dev-word-id.txt', 'dev-word-id-pad.txt', max_len, 'word', num_word, num_tag)
-    cut_data('test-word-id.txt', 'test-word-id-pad.txt', max_len, 'word', num_word, num_tag)
-    cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
-    cut_data('dev-tag-id.txt', 'dev-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
-    cut_data('test-tag-id.txt', 'test-tag-id-pad.txt', max_len, 'tag', num_word, num_tag)
+    cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, num_word)
+    cut_data('dev-word-id.txt', 'dev-word-id-pad.txt', max_len, num_word)
+    cut_data('test-word-id.txt', 'test-word-id-pad.txt', max_len, num_word)
+    cut_data('train-tag-id.txt', 'train-tag-id-pad.txt', max_len, num_tag)
+    cut_data('dev-tag-id.txt', 'dev-tag-id-pad.txt', max_len, num_tag)
+    cut_data('test-tag-id.txt', 'test-tag-id-pad.txt', max_len, num_tag)
+    cut_data('train-pos-id.txt', 'train-pos-id-pad.txt', max_len, num_pos)
+    cut_data('dev-pos-id.txt', 'dev-pos-id-pad.txt', max_len, num_pos)
+    cut_data('test-pos-id.txt', 'test-pos-id-pad.txt', max_len, num_pos)
+    cut_data('train-chunk-id.txt', 'train-chunk-id-pad.txt', max_len, num_chunk)
+    cut_data('dev-chunk-id.txt', 'dev-chunk-id-pad.txt', max_len, num_chunk)
+    cut_data('test-chunk-id.txt', 'test-chunk-id-pad.txt', max_len, num_chunk)
     with open('parameter.pkl', 'wb') as output:
         cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)
     endTime = datetime.now()

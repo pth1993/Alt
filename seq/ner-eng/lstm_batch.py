@@ -27,6 +27,8 @@ parser.add_argument("dropout", help="dropout number: between 0 and 1")
 parser.add_argument("batch_size", help="batch size for training")
 parser.add_argument("optimizer", help="optimizer algorithm: sgd, rmsprop, adagrad, adadelta, adam, adamax, nadam")
 parser.add_argument("loss", help="loss function: categorical_crossentropy, categorical_crossentropy_bias")
+parser.add_argument("pos", help="pos feature: 1 for using and 0 for vice versa")
+parser.add_argument("chunk", help="chunk feature: 1 for using and 0 for vice versa")
 args = parser.parse_args()
 with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
@@ -37,14 +39,22 @@ word_embedding_name = args.word_embedding
 nb_epoch = int(args.num_epoch)
 regularization_type = args.regularization_type
 regularization_number = float(args.regularization_number)
+pos = int(args.pos)
+chunk = int(args.chunk)
 time_step = parameter[0]
+num_tag = parameter[2]
+num_pos = parameter[3]
+num_chunk = parameter[4]
 if word_embedding_name == 'word2vec':
     data_dim = 300
 elif word_embedding_name == 'glove':
     data_dim = 300
 elif word_embedding_name == 'senna':
     data_dim = 50
-num_tag = parameter[2]
+if pos:
+    data_dim += (num_pos+1)
+if chunk:
+    data_dim += (num_chunk+1)
 num_hidden_node = int(args.num_hidden_node)
 batch_size = int(args.batch_size)
 dropout = float(args.dropout)
@@ -60,8 +70,10 @@ print 'Optimizer: ' + optimizer
 print 'Batch size: ' + str(batch_size)
 print 'Time step: ' + str(time_step)
 print 'Data dim: ' + str(data_dim)
-print 'Num word: ' + str(parameter[1])
-print 'Num tag: : ' + str(num_tag)
+print 'Word dict size: ' + str(parameter[1])
+print 'POS dict size: ' + str(num_pos)
+print 'Chunk dict size: ' + str(num_chunk)
+print 'Tag dict size: : ' + str(num_tag)
 
 
 def categorical_crossentropy_bias(y_true, y_pred):
@@ -84,7 +96,7 @@ def categorical_crossentropy_bias(y_true, y_pred):
                        axis=coding_dist.ndim - 1)
 
 
-def create_data(word_file, tag_file, word_vector_dict):
+def create_data_old(word_file, tag_file, word_vector_dict):
     input_data = []
     output_data = []
     f1 = codecs.open(word_file, 'r', 'utf-8')
@@ -98,6 +110,36 @@ def create_data(word_file, tag_file, word_vector_dict):
         output_data.append(output_vector)
     input_data = np.asarray(input_data)
     output_data = np.asarray(output_data)
+    f1.close()
+    f2.close()
+    return input_data, output_data
+
+
+def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
+    input_data = []
+    output_data = []
+    f1 = codecs.open(word_file, 'r', 'utf-8')
+    f2 = codecs.open(tag_file, 'r', 'utf-8')
+    f3 = codecs.open(pos_file, 'r', 'utf-8')
+    f4 = codecs.open(chunk_file, 'r', 'utf-8')
+    for line1, line2, line3, line4 in itertools.izip(f1, f2, f3, f4):
+        input_word = map(int, line1.split())
+        input_pos = map(int, line3.split())
+        input_chunk = map(int, line4.split())
+        output = map(int, line2.split())
+        input_vector_word = [word_vector_dict[i] for i in input_word]
+        input_vector_pos = np.eye(num_pos + 1)[input_pos]
+        input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
+        output_vector = np.eye(num_tag + 1)[output]
+        input_vector = input_vector_word
+        if pos:
+            input_vector = np.concatenate((input_vector, input_vector_pos), axis=1)
+        if chunk:
+            input_vector = np.concatenate((input_vector, input_vector_chunk), axis=1)
+        input_data.append(input_vector)
+        output_data.append(output_vector)
+    #input_data = np.asarray(input_data)
+    #output_data = np.asarray(output_data)
     f1.close()
     f2.close()
     return input_data, output_data
@@ -117,9 +159,12 @@ elif word_embedding_name == 'senna':
         word_vector_dict = cPickle.load(input)
 
 print 'Create data to train'
-input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', word_vector_dict)
-input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', word_vector_dict)
-input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', word_vector_dict)
+input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt',
+                                        'train-chunk-id-pad.txt', word_vector_dict)
+input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
+                                    'dev-chunk-id-pad.txt', word_vector_dict)
+input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
+                                      'test-chunk-id-pad.txt', word_vector_dict)
 
 print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev),\
     np.shape(input_test), np.shape(output_test)
