@@ -41,8 +41,8 @@ against NP O O
 Syria NP I-LOC I-LOC
 in NP O O
 a NP O O
-Group NP I-MISC O
-C NP I-MISC O
+Group NP I-ORG O
+C NP O O
 championship NP O O
 match NP O O
 on NP O O
@@ -1540,7 +1540,7 @@ b NP O O
 Vaughan NP I-PER I-PER
 0 NP O O
 
-Inzamamul NP O I-PER
+Inzamamul NP I-PER I-PER
 Haq NP I-PER I-PER
 st NP O O
 Germon NP I-PER I-PER
@@ -1909,7 +1909,7 @@ Exeter NP I-ORG I-ORG
 SOCCER NP O O
 - NP O O
 BLINKER NP I-PER I-PER
-BAN NP O O
+BAN NP I-PER O
 LIFTED NP O O
 . NP O O
 
@@ -2031,7 +2031,7 @@ under NP O O
 contract NP O O
 . NP O O
 
-Blinker NP I-PER I-PER
+Blinker NP I-ORG I-PER
 was NP O O
 fined NP O O
 0 NP O O
@@ -2425,7 +2425,7 @@ Spain NP I-LOC I-LOC
 0 NP O O
 0 NP O O
 
-Split NP I-PER I-ORG
+Split NP O I-ORG
 ( NP O O
 Croatia NP I-LOC I-LOC
 ) NP O O
@@ -2510,9 +2510,9 @@ Russia NP I-LOC I-LOC
 RUGBY NP I-ORG I-ORG
 UNION NP I-ORG I-ORG
 - NP O O
-LITTLE NP O I-PER
+LITTLE NP I-LOC I-PER
 TO NP O O
-MISS NP O O
+MISS NP I-MISC O
 CAMPESE NP O I-PER
 FAREWELL NP O O
 . NP O O
@@ -2541,7 +2541,7 @@ on NP O O
 Saturday NP O O
 . NP O O
 
-Little NP I-PER I-PER
+Little NP I-LOC I-PER
 has NP O O
 opted NP O O
 not NP O O
@@ -2723,7 +2723,7 @@ Town NP I-LOC I-LOC
 . NP O O
 
 " NP O O
-Campo NP I-PER I-PER
+Campo NP I-LOC I-PER
 has NP O O
 a NP O O
 massive NP O O
@@ -2799,8 +2799,8 @@ League NP I-MISC O
 duties NP O O
 restricted NP O O
 the NP O O
-Barbarians NP I-MISC I-ORG
-' NP I-MISC O
+Barbarians NP I-ORG I-ORG
+' NP O O
 selectorial NP I-MISC O
 options NP O O
 but NP O O
@@ -2834,7 +2834,7 @@ Hewitt NP I-PER I-PER
 Teams NP O O
 : NP O O
 
-Barbarians NP I-LOC I-ORG
+Barbarians NP I-ORG I-ORG
 - NP O O
 0 NP O O
 - NP O O
@@ -3044,7 +3044,7 @@ Crowley NP I-PER I-PER
 
 GOLF NP O O
 - NP O O
-ZIMBABWE NP I-MISC I-MISC
+ZIMBABWE NP I-LOC I-MISC
 OPEN NP I-MISC I-MISC
 SECOND NP O O
 ROUND NP O O
@@ -3282,8 +3282,8 @@ defender NP O O
 Liviu NP I-PER I-PER
 Ciobotariu NP I-PER I-PER
 of NP O O
-National NP I-LOC I-ORG
-Bucharest NP I-LOC I-ORG
+National NP I-ORG I-ORG
+Bucharest NP I-ORG I-ORG
 are NP O O
 the NP O O
 newcomers NP O O
@@ -3867,10 +3867,10 @@ CRICKET NP O O
 - NP O O
 AUSTRALIA NP I-LOC I-LOC
 V NP O O
-WEST NP I-LOC I-LOC
+WEST NP I-MISC I-LOC
 INDIES NP I-MISC I-LOC
-WORLD NP O I-MISC
-SERIES NP O I-MISC
+WORLD NP I-MISC I-MISC
+SERIES NP I-MISC I-MISC
 SCOREBOARD NP O O
 . NP O O
 
@@ -3941,7 +3941,7 @@ J. NP I-PER I-PER
 Adams NP I-PER I-PER
 lbw NP O O
 b NP O O
-Moody NP I-PER I-PER
+Moody NP I-ORG I-PER
 0 NP O O
 
 J. NP I-PER I-PER
@@ -4296,7 +4296,7 @@ Friday NP O O
 
 CRICKET NP O O
 - NP O O
-SHEFFIELD NP I-ORG I-MISC
+SHEFFIELD NP I-LOC I-MISC
 SHIELD NP O I-MISC
 SCORE NP O O
 . NP O O
@@ -5177,7 +5177,7 @@ CONTRACTORS NP O O
 WIN NP O O
 AFRICAN NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
-WINNERS NP I-MISC I-MISC
+WINNERS NP O I-MISC
 ' NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
 . NP O O
@@ -5266,7 +5266,7 @@ of NP O O
 National NP I-MISC I-ORG
 Hockey NP I-MISC I-ORG
 
-League NP O I-ORG
+League NP I-MISC I-ORG
 teams NP O O
 after NP O O
 games NP O O
@@ -5302,8 +5302,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 HARTFORD NP I-ORG I-ORG
@@ -5360,8 +5360,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 FLORIDA NP I-ORG I-ORG
@@ -5433,8 +5433,8 @@ DIVISION NP I-MISC I-MISC
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 DETROIT NP I-ORG I-ORG
@@ -5492,8 +5492,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 COLORADO NP I-ORG I-ORG
@@ -5592,7 +5592,7 @@ EDMONTON NP I-LOC I-LOC
 -DOCSTART- NP O O
 
 NHL NP I-MISC I-ORG
-ICE NP I-MISC O
+ICE NP O O
 HOCKEY NP O O
 - NP O O
 THURSDAY NP O O
@@ -5611,7 +5611,7 @@ YORK NP I-LOC I-LOC
 0 NP O O
 
 ( NP O O
-Corrects NP I-ORG O
+Corrects NP O O
 headline NP O O
 from NP O O
 NBA NP I-ORG I-ORG
@@ -5639,7 +5639,7 @@ of NP O O
 National NP I-MISC I-ORG
 Hockey NP I-MISC I-ORG
 
-League NP O I-ORG
+League NP I-MISC I-ORG
 games NP O O
 on NP O O
 Thursday NP O O
@@ -5686,8 +5686,8 @@ ANGELES NP I-ORG I-ORG
 NFL NP O I-ORG
 AMERICAN NP I-MISC O
 FOOTBALL-COLTS NP O O
-CLOBBER NP I-ORG O
-EAGLES NP I-ORG I-ORG
+CLOBBER NP O O
+EAGLES NP O I-ORG
 TO NP O O
 STAY NP O O
 IN NP O O
@@ -5841,7 +5841,7 @@ fell NP O O
 from NP O O
 an NP O O
 NFC NP I-ORG O
-East NP I-ORG O
+East NP I-MISC O
 tie NP O O
 with NP O O
 the NP O O
@@ -6396,13 +6396,13 @@ STATE NP I-LOC I-LOC
 ORLANDO NP I-ORG I-ORG
 AT NP O O
 LA NP I-LOC I-LOC
-LAKERS NP I-ORG I-LOC
+LAKERS NP I-LOC I-LOC
 
 -DOCSTART- NP O O
 
-NFL NP I-MISC I-ORG
+NFL NP O I-ORG
 AMERICAN NP I-MISC O
-FOOTBALL-STANDINGS NP I-MISC O
+FOOTBALL-STANDINGS NP O O
 AFTER NP O O
 THURSDAY NP O O
 'S NP O O
@@ -6454,7 +6454,7 @@ PF NP O O
 PA NP I-LOC O
 
 NEW NP I-ORG I-ORG
-ENGLAND NP I-LOC I-ORG
+ENGLAND NP I-ORG I-ORG
 0 NP O O
 0 NP O O
 0 NP O O
@@ -6582,7 +6582,7 @@ SEATTLE NP I-ORG I-ORG
 
 NATIONAL NP I-MISC O
 FOOTBALL NP I-MISC O
-CONFERENCE NP I-MISC O
+CONFERENCE NP O O
 
 EASTERN NP I-MISC O
 DIVISION NP I-MISC O
@@ -6730,7 +6730,7 @@ TITLE NP O O
 
 Y NP O O
 -- NP O O
-CLINCHED NP I-MISC O
+CLINCHED NP O O
 PLAYOFF NP O O
 BERTH NP O O
 
@@ -6812,7 +6812,7 @@ OAKLAND NP I-LOC I-LOC
 
 -DOCSTART- NP O O
 
-NFL NP I-MISC I-ORG
+NFL NP O I-ORG
 AMERICAN NP I-MISC O
 FOOTBALL-THURSDAY NP I-MISC O
 'S NP O O
@@ -6828,7 +6828,7 @@ of NP O O
 National NP I-MISC I-ORG
 Football NP I-MISC I-LOC
 
-League NP O I-LOC
+League NP I-MISC I-LOC
 game NP O O
 on NP O O
 Thursday NP O O
@@ -6906,7 +6906,7 @@ junior NP O O
 , NP O O
 helped NP O O
 Ohio NP I-LOC I-ORG
-State NP I-ORG I-ORG
+State NP I-LOC I-ORG
 to NP O O
 a NP O O
 0 NP O O
@@ -6916,7 +6916,7 @@ a NP O O
 berth NP O O
 in NP O O
 the NP O O
-Rose NP I-MISC I-MISC
+Rose NP I-LOC I-MISC
 Bowl NP I-MISC I-MISC
 against NP O O
 Arizona NP I-LOC I-ORG
@@ -7439,7 +7439,7 @@ Duisburg NP I-ORG I-ORG
 0 NP O O
 
 SV NP I-ORG I-ORG
-0 NP I-ORG I-ORG
+0 NP O I-ORG
 Munich NP I-ORG I-ORG
 0 NP O O
 0 NP O O
@@ -8334,7 +8334,7 @@ Barcelona NP I-ORG I-ORG
 Paulo NP I-PER I-PER
 Bento NP I-PER I-PER
 ( NP O O
-Oviedo NP I-PER I-ORG
+Oviedo NP I-ORG I-ORG
 , NP O O
 Spain NP I-LOC I-LOC
 ) NP O O
@@ -8618,7 +8618,7 @@ Roberto NP I-PER I-PER
 Carlos NP I-PER I-PER
 0 NP O O
 
-JosepGuardiola NP O I-PER
+JosepGuardiola NP I-ORG I-PER
 
 0 NP O O
 Fernando NP I-PER I-PER
@@ -8642,7 +8642,7 @@ Fernando NP I-PER I-PER
 Sanz NP I-PER I-PER
 0 NP O O
 
-AbelardoFernandez NP O I-PER
+AbelardoFernandez NP I-ORG I-PER
 
 0 NP O O
 Carlos NP I-PER I-PER
@@ -9105,7 +9105,7 @@ BOSS NP O O
 HAVELANGE NP I-PER I-PER
 STANDS NP O O
 BY NP O O
-WEAH NP O I-PER
+WEAH NP I-PER I-PER
 . NP O O
 
 ROME NP I-LOC I-LOC
@@ -9308,7 +9308,7 @@ has NP O O
 admitted NP O O
 head NP O O
 butting NP O O
-Costa NP I-PER I-PER
+Costa NP I-LOC I-PER
 but NP O O
 said NP O O
 he NP O O
@@ -9390,8 +9390,8 @@ Cup NP I-MISC I-MISC
 GUNMEN NP O O
 WOUND NP O O
 TWO NP O O
-MANCHESTER NP I-LOC I-ORG
-UNITED NP I-LOC I-ORG
+MANCHESTER NP I-ORG I-ORG
+UNITED NP I-ORG I-ORG
 FANS NP O O
 IN NP O O
 AUSTRIA NP I-LOC I-LOC
@@ -9537,7 +9537,7 @@ in NP O O
 parentheses NP O O
 , NP O O
 all NP O O
-kick- NP O O
+kick- NP I-PER O
 off NP O O
 times NP O O
 GMT NP I-MISC I-MISC
@@ -9898,7 +9898,7 @@ for NP O O
 second NP O O
 from NP O O
 bottom NP O O
-Verona NP I-LOC I-ORG
+Verona NP I-ORG I-ORG
 despite NP O O
 the NP O O
 absence NP O O
@@ -10168,7 +10168,7 @@ BRUSSELS NP I-LOC I-LOC
 Result NP O O
 of NP O O
 a NP O O
-EuroLeague NP I-MISC I-MISC
+EuroLeague NP I-ORG I-MISC
 basketball NP O O
 match NP O O
 on NP O O
@@ -10260,7 +10260,7 @@ scorers NP O O
 Partizan NP I-ORG I-ORG
 - NP O O
 Dejan NP I-ORG I-PER
-Koturovic NP I-ORG I-PER
+Koturovic NP I-PER I-PER
 0 NP O O
 
 Kinder NP I-ORG O
@@ -10402,8 +10402,8 @@ Nicol NP I-PER I-PER
 
 SQUASH NP O O
 - NP O O
-MAHINDRA NP I-MISC I-MISC
-INTERNATIONAL NP I-MISC I-MISC
+MAHINDRA NP I-LOC I-MISC
+INTERNATIONAL NP O I-MISC
 SEMIFINAL NP O O
 RESULTS NP O O
 . NP O O
@@ -10472,7 +10472,7 @@ GUNMEN NP O O
 KILL NP O O
 FOUR NP O O
 IN NP O O
-S.AFRICA NP I-PER I-MISC
+S.AFRICA NP I-MISC I-MISC
 'S NP O O
 ZULU NP I-LOC I-MISC
 PROVINCE NP I-LOC O
@@ -10788,7 +10788,7 @@ first NP O O
 woman NP O O
 Secretary NP O O
 of NP O O
-State NP O O
+State NP I-LOC O
 . NP O O
 
 In NP O O
@@ -10855,7 +10855,7 @@ position NP O O
 of NP O O
 Secretary NP O O
 of NP O O
-State NP O O
+State NP I-ORG O
 . NP O O
 
 I NP O O
@@ -11147,7 +11147,7 @@ Czechs NP I-MISC I-MISC
 RADIO NP O I-ORG
 ROMANIA NP I-LOC I-ORG
 AFTERNOON NP O O
-HEALINES NP I-ORG O
+HEALINES NP O O
 AT NP O O
 0 NP O O
 PM NP O O
@@ -11517,7 +11517,7 @@ party NP O O
 led NP O O
 by NP O O
 the NP O O
-vigorously-confident NP O O
+vigorously-confident NP I-PER O
 Klaus NP I-PER I-PER
 , NP O O
 took NP O O
@@ -12191,7 +12191,7 @@ name NP O O
 is NP O O
 Zaklady NP I-ORG I-ORG
 Piwowarskie NP I-ORG I-ORG
-w NP I-ORG I-ORG
+w NP O I-ORG
 Zywcu NP I-ORG I-ORG
 SA NP I-ORG I-ORG
 , NP O O
@@ -12216,8 +12216,8 @@ million NP O O
 hectolitres NP O O
 . NP O O
 
-Van NP I-PER I-PER
-Boxmeer NP I-PER I-PER
+Van NP I-ORG I-PER
+Boxmeer NP I-ORG I-PER
 would NP O O
 not NP O O
 say NP O O
@@ -12331,7 +12331,7 @@ Britain NP I-LOC I-LOC
 . NP O O
 
 Van NP I-PER I-PER
-Boxmeer NP I-PER I-PER
+Boxmeer NP I-ORG I-PER
 said NP O O
 Poland NP I-LOC I-LOC
 's NP O O
@@ -12387,7 +12387,7 @@ the NP O O
 same NP O O
 amount NP O O
 in NP O O
-Okocim NP I-MISC I-ORG
+Okocim NP I-ORG I-ORG
 . NP O O
 
 Earlier NP O O
@@ -12408,7 +12408,7 @@ the NP O O
 unlisted NP O O
 Lech NP I-ORG I-ORG
 and NP O O
-Tychy NP I-LOC I-ORG
+Tychy NP I-ORG I-ORG
 brewers NP O O
 , NP O O
 which NP O O
@@ -12447,7 +12447,7 @@ EB NP I-ORG I-ORG
 . NP O O
 
 Van NP I-PER I-PER
-Boxmeer NP I-PER I-PER
+Boxmeer NP I-ORG I-PER
 said NP O O
 the NP O O
 tough NP O O
@@ -12544,7 +12544,7 @@ Poland NP I-LOC I-LOC
 once NP O O
 tariffs NP O O
 for NP O O
-CEFTA NP I-MISC I-ORG
+CEFTA NP I-ORG I-ORG
 countries NP O O
 are NP O O
 lifted NP O O
@@ -12624,8 +12624,8 @@ he NP O O
 said NP O O
 . NP O O
 
-Van NP I-PER I-PER
-Boxmeer NP I-PER I-PER
+Van NP I-ORG I-PER
+Boxmeer NP I-ORG I-PER
 said NP O O
 Zywiec NP I-ORG I-ORG
 had NP O O
@@ -12733,8 +12733,8 @@ in NP O O
 Poland NP I-LOC I-LOC
 . NP O O
 
-Van NP I-PER I-PER
-Boxmeer NP I-PER I-PER
+Van NP I-ORG I-PER
+Boxmeer NP I-ORG I-PER
 also NP O O
 said NP O O
 Zywiec NP I-ORG I-ORG
@@ -12787,7 +12787,7 @@ Newsroom NP I-ORG I-ORG
 
 HAVEL NP I-PER I-PER
 HAS NP O O
-TRAECHEOTOMY NP I-PER O
+TRAECHEOTOMY NP O O
 AFTER NP O O
 CONDITIONS NP O O
 WORSENS NP O O
@@ -13130,7 +13130,7 @@ at NP O O
 $ NP O O
 0 NP O O
 per NP O O
-GDR NP I-ORG O
+GDR NP I-MISC O
 in NP O O
 London NP I-LOC I-LOC
 on NP O O
@@ -13194,7 +13194,7 @@ London NP I-LOC I-LOC
 LONDON NP I-LOC I-LOC
 0 NP O O
 
-PT NP O I-ORG
+PT NP I-ORG I-ORG
 Telekomunikasi NP I-ORG I-ORG
 Indonesia NP I-ORG I-ORG
 ( NP O O
@@ -13240,7 +13240,7 @@ $ NP O O
 . NP O O
 
 One NP O O
-ADS NP O O
+ADS NP I-ORG O
 represents NP O O
 0 NP O O
 ordinary NP O O
@@ -13811,7 +13811,7 @@ some NP O O
 slots NP O O
 on NP O O
 the NP O O
-London-to-Boston NP I-MISC I-MISC
+London-to-Boston NP I-LOC I-MISC
 route NP O O
 . NP O O
 
@@ -14247,9 +14247,9 @@ The NP O O
 0 NP O O
 who NP O O
 attended NP O O
-Sale NP O I-ORG
+Sale NP I-ORG I-ORG
 Grammar NP I-ORG I-ORG
-School NP O I-ORG
+School NP I-ORG I-ORG
 in NP O O
 the NP O O
 northern NP O O
@@ -14465,7 +14465,7 @@ lunch NP O O
 
 Major NP O I-PER
 's NP O O
-office-Conservatives NP I-MISC I-MISC
+office-Conservatives NP O I-MISC
 still NP O O
 have NP O O
 majority NP O O
@@ -14553,7 +14553,7 @@ Major NP I-ORG I-PER
 's NP O O
 office NP O O
 in NP O O
-Downing NP I-PER I-LOC
+Downing NP I-LOC I-LOC
 Street NP I-LOC I-LOC
 said NP O O
 . NP O O
@@ -14564,7 +14564,7 @@ office NP O O
 said NP O O
 later NP O O
 the NP O O
-MP NP I-ORG O
+MP NP O O
 would NP O O
 not NP O O
 feel NP O O
@@ -14846,7 +14846,7 @@ Newsroom NP I-ORG I-ORG
 
 RTRS NP I-ORG I-ORG
 - NP O O
-Cricket NP O O
+Cricket NP I-ORG O
 - NP O O
 Play NP O O
 restarts NP O O
@@ -15120,9 +15120,9 @@ Dec NP O O
 
 Manitoba NP I-LOC I-ORG
 's NP O O
-Hog NP I-MISC O
-Price NP I-MISC O
-Range NP I-MISC O
+Hog NP O O
+Price NP O O
+Range NP O O
 : NP O O
 0 NP O O
 per NP O O
@@ -15155,8 +15155,8 @@ bureau NP O O
 
 Canadian NP I-ORG I-MISC
 West NP I-ORG O
-Coast NP I-ORG O
-Vessel NP I-ORG O
+Coast NP I-LOC O
+Vessel NP I-LOC O
 Loadings NP O O
 - NP O O
 CWB NP I-ORG O
@@ -15239,7 +15239,7 @@ due NP O O
 
 Port NP I-ORG O
 Loading NP I-ORG O
-Waiting NP I-ORG O
+Waiting NP O O
 
 Vancouver NP I-ORG I-LOC
 0 NP O O
@@ -15314,15 +15314,15 @@ NEW NP I-LOC I-LOC
 YORK NP I-LOC I-LOC
 0 NP O O
 
-ORE NP O O
+ORE NP I-ORG O
 - NP O O
 Maritime NP I-ORG I-MISC
 Queen NP I-ORG I-MISC
 0 NP O O
 tonnes NP O O
-Dampier NP I-LOC I-LOC
+Dampier NP I-ORG I-LOC
 / NP O O
-Kaohsiung NP I-LOC I-LOC
+Kaohsiung NP I-ORG I-LOC
 0 NP O O
 $ NP O O
 0 NP O O
@@ -15330,7 +15330,7 @@ fio NP O O
 0 NP O O
 / NP O O
 0 NP O O
-China NP I-LOC I-ORG
+China NP I-ORG I-ORG
 Steel NP I-ORG I-ORG
 . NP O O
 
@@ -15428,9 +15428,9 @@ I NP O I-MISC
 0 NP O O
 0 NP O O
 Sidi NP I-LOC I-LOC
-Kreir NP O I-LOC
+Kreir NP I-LOC I-LOC
 / NP O O
-Augusta NP I-LOC I-LOC
+Augusta NP I-ORG I-LOC
 0 NP O O
 Exxon NP I-ORG I-ORG
 . NP O O
@@ -15438,10 +15438,10 @@ Exxon NP I-ORG I-ORG
 Spetses NP I-ORG I-MISC
 0 NP O O
 0 NP O O
-Sidi NP I-ORG I-LOC
-Kreir NP O I-LOC
+Sidi NP I-LOC I-LOC
+Kreir NP I-ORG I-LOC
 / NP O O
-Augusta NP I-LOC I-LOC
+Augusta NP I-ORG I-LOC
 0 NP O O
 Exxon NP I-ORG I-ORG
 . NP O O
@@ -15449,7 +15449,7 @@ Exxon NP I-ORG I-ORG
 Mesipia NP I-ORG I-MISC
 0 NP O O
 0 NP O O
-Bajaia NP I-PER I-LOC
+Bajaia NP I-LOC I-LOC
 / NP O O
 Fos NP I-ORG I-LOC
 0 NP O O
@@ -15528,7 +15528,7 @@ named NP O O
 explained NP O O
 that NP O O
 Goldman NP I-ORG I-ORG
-, NP O I-ORG
+, NP I-ORG I-ORG
 Sachs NP I-ORG I-ORG
 , NP O O
 which NP O O
@@ -15606,7 +15606,7 @@ its NP O O
 first NP O O
 issue NP O O
 of NP O O
-Euronotes NP O I-MISC
+Euronotes NP I-ORG I-MISC
 , NP O O
 a NP O O
 strategy NP O O
@@ -15788,8 +15788,8 @@ Homestake NP I-ORG I-ORG
 Mining NP I-ORG I-ORG
 Co NP I-ORG I-ORG
 tops NP O O
-Wall NP I-LOC I-LOC
-Street NP I-LOC I-LOC
+Wall NP I-ORG I-LOC
+Street NP I-ORG I-LOC
 's NP O O
 list NP O O
 as NP O O
@@ -15807,7 +15807,7 @@ Gold NP I-ORG I-ORG
 Corp NP I-ORG I-ORG
 if NP O O
 Santa NP I-ORG I-ORG
-Fe NP I-ORG I-ORG
+Fe NP I-LOC I-ORG
 rejects NP O O
 unsolicited NP O O
 suitor NP O O
@@ -16317,8 +16317,8 @@ out NP O O
 , NP O O
 ( NP O O
 a NP O O
-Newmont-Santa NP I-ORG I-MISC
-Fe NP I-ORG I-MISC
+Newmont-Santa NP I-LOC I-MISC
+Fe NP I-LOC I-MISC
 deal NP O O
 ) NP O O
 is NP O O
@@ -16380,15 +16380,15 @@ Stock NP I-ORG I-ORG
 Exchange NP I-ORG I-ORG
 trade NP O O
 , NP O O
-Newmonth NP I-ORG I-ORG
+Newmonth NP I-PER I-ORG
 was NP O O
 off NP O O
 0 NP O O
 to NP O O
 0 NP O O
 while NP O O
-Santa NP I-ORG I-ORG
-Fe NP I-ORG I-ORG
+Santa NP I-LOC I-ORG
+Fe NP I-LOC I-ORG
 added NP O O
 0 NP O O
 to NP O O
@@ -16898,7 +16898,7 @@ supporters NP O O
 . NP O O
 
 Canadian NP I-MISC I-MISC
-Defence NP O O
+Defence NP I-ORG O
 Minister NP O O
 Doug NP I-PER I-PER
 Young NP I-PER I-PER
@@ -16948,7 +16948,7 @@ significant NP O O
 way NP O O
 because NP O O
 the NP O O
-NGOs NP I-ORG O
+NGOs NP O O
 ( NP O O
 non-governmental NP O O
 organisations NP O O
@@ -17050,7 +17050,7 @@ means NP O O
 ( NP O O
 airdrops NP O O
 ) NP O O
-...It NP I-ORG O
+...It NP O O
 's NP O O
 complex NP O O
 , NP O O
@@ -17161,7 +17161,7 @@ mandate NP O O
 is NP O O
 also NP O O
 under NP O O
-Chapter NP I-MISC O
+Chapter NP I-ORG O
 Seven NP I-MISC O
 to NP O O
 operate NP O O
@@ -17448,7 +17448,7 @@ the NP O O
 intense NP O O
 tropical NP O O
 cyclone NP O O
-Daniella NP I-PER I-MISC
+Daniella NP I-LOC I-MISC
 was NP O O
 0 NP O O
 km NP O O
@@ -17935,8 +17935,8 @@ he NP O O
 said NP O O
 . NP O O
 
-Public NP O O
-Service NP O O
+Public NP I-ORG O
+Service NP I-ORG O
 Minister NP O O
 David NP I-PER I-PER
 Dofara NP I-PER I-PER
@@ -17960,7 +17960,7 @@ the NP O O
 bodies NP O O
 of NP O O
 former NP O O
-interior NP I-ORG O
+interior NP O O
 minister NP O O
 Christophe NP I-PER I-PER
 Grelombe NP I-PER I-PER
@@ -18129,14 +18129,14 @@ centre NP O O
 . NP O O
 
 A NP O O
-French-owned NP O I-MISC
+French-owned NP I-MISC I-MISC
 hotel NP O O
 was NP O O
 slightly NP O O
 damaged NP O O
 . NP O O
 
-Yakomas NP O I-MISC
+Yakomas NP I-PER I-MISC
 are NP O O
 hounded NP O O
 in NP O O
@@ -18294,7 +18294,7 @@ resign NP O O
 . NP O O
 
 Church-led NP O O
-meadiation NP O O
+meadiation NP I-PER O
 attempts NP O O
 hit NP O O
 deadlock NP O O
@@ -18388,7 +18388,7 @@ foreign NP O O
 forces NP O O
 knwon NP O O
 as NP O O
-Codos NP I-PER I-MISC
+Codos NP I-ORG I-MISC
 . NP O O
 
 Hospital NP I-LOC O
@@ -18478,7 +18478,7 @@ centre NP O O
 Five NP O O
 die NP O O
 as NP O O
-SAfrican NP O I-MISC
+SAfrican NP I-MISC I-MISC
 crop NP O O
 plane NP O O
 hits NP O O
@@ -18543,7 +18543,7 @@ and NP O O
 passengers NP O O
 of NP O O
 the NP O O
-van NP I-PER O
+van NP O O
 were NP O O
 killed NP O O
 . NP O O
@@ -18599,7 +18599,7 @@ Newsroom NP I-ORG I-ORG
 Skinheads NP I-ORG O
 attack NP O O
 Bratislava NP I-LOC I-LOC
-Rabbi NP O O
+Rabbi NP I-MISC O
 - NP O O
 police NP O O
 . NP O O
@@ -18941,7 +18941,7 @@ likely NP O O
 to NP O O
 visit NP O O
 Polish-born NP I-MISC O
-Pope NP O O
+Pope NP I-PER O
 John NP I-PER I-PER
 Paul NP I-PER I-PER
 in NP O O
@@ -19150,7 +19150,7 @@ liquidate NP O O
 it NP O O
 . NP O O
 
-Lynnley NP I-ORG I-PER
+Lynnley NP I-PER I-PER
 Browning NP I-PER I-PER
 
 MOSCOW NP I-LOC I-LOC
@@ -19306,7 +19306,7 @@ chief NP O O
 economist NP O O
 at NP O O
 United NP I-ORG I-ORG
-City NP I-LOC I-ORG
+City NP I-ORG I-ORG
 Bank NP I-ORG I-ORG
 in NP O O
 Moscow NP I-LOC I-LOC
@@ -19574,7 +19574,7 @@ quoted NP O O
 Livshits NP I-PER I-PER
 as NP O O
 telling NP O O
-Duma NP I-PER I-ORG
+Duma NP I-ORG I-ORG
 deputies NP O O
 about NP O O
 Norilsk NP I-ORG I-ORG
@@ -19704,7 +19704,7 @@ situation NP O O
 . NP O O
 
 " NP O O
-Uneximbank NP O I-ORG
+Uneximbank NP I-PER I-ORG
 has NP O O
 inherited NP O O
 a NP O O
@@ -20122,8 +20122,8 @@ part NP O O
 of NP O O
 the NP O O
 Soviet-led NP O I-MISC
-Warsaw NP I-LOC B-MISC
-Pact NP I-LOC I-MISC
+Warsaw NP I-ORG B-MISC
+Pact NP I-ORG I-MISC
 , NP O O
 saying NP O O
 such NP O O
@@ -20464,7 +20464,7 @@ ruling NP O O
 Movement NP I-ORG I-ORG
 for NP O I-ORG
 a NP O I-ORG
-Democratic NP I-MISC I-ORG
+Democratic NP I-LOC I-ORG
 Slovakia NP I-LOC I-ORG
 , NP O O
 was NP O O
@@ -20772,7 +20772,7 @@ Budapest NP I-ORG I-LOC
 Bank NP I-ORG O
 's NP O O
 Sandor NP I-PER I-PER
-Tolonics NP I-ORG I-PER
+Tolonics NP I-PER I-PER
 . NP O O
 " NP O O
 
@@ -21027,7 +21027,7 @@ Mexico NP I-LOC I-LOC
 Yields NP O O
 on NP O O
 U.S. NP I-LOC I-LOC
-0 NP I-MISC O
+0 NP O O
 Treasury NP I-ORG I-ORG
 bonds NP O O
 were NP O O
@@ -21093,7 +21093,7 @@ arm NP O O
 of NP O O
 the NP O O
 debt-ridden NP O O
-Sidek NP I-PER I-ORG
+Sidek NP I-ORG I-ORG
 group NP O O
 headed NP O O
 the NP O O
@@ -21589,7 +21589,7 @@ be NP O O
 members NP O O
 of NP O O
 the NP O O
-SBCP NP I-ORG I-ORG
+SBCP NP I-LOC I-ORG
 . NP O O
 
 Every NP O O
@@ -21766,7 +21766,7 @@ United NP I-LOC I-LOC
 States NP I-LOC I-LOC
 , NP O O
 " NP O O
-SBCP NP I-ORG I-ORG
+SBCP NP I-PER I-ORG
 Vice-President NP O O
 Oswaldo NP I-PER I-PER
 Saldanha NP I-PER I-PER
@@ -21863,7 +21863,7 @@ fix NP O O
 Buenos NP I-LOC I-LOC
 Aires NP I-LOC I-LOC
 Quequen NP O B-LOC
-Rosario NP I-LOC B-LOC
+Rosario NP I-ORG B-LOC
 Bahia NP I-ORG B-LOC
 Blanca NP I-ORG I-LOC
 
@@ -22003,7 +22003,7 @@ region NP O O
 from NP O O
 the NP O O
 ship NP O O
-Kenda NP I-PER I-MISC
+Kenda NP I-LOC I-MISC
 . NP O O
 
 The NP O O
@@ -22017,7 +22017,7 @@ warnings NP O O
 for NP O O
 the NP O O
 Gulf NP I-LOC I-LOC
-of NP I-LOC I-LOC
+of NP O I-LOC
 Mexico NP I-LOC I-LOC
 , NP O O
 Caribbean NP I-LOC I-LOC
@@ -22644,7 +22644,7 @@ next NP O O
 Tuesday NP O O
 with NP O O
 East NP I-LOC I-MISC
-Timorese-born NP I-ORG I-MISC
+Timorese-born NP I-LOC I-MISC
 activist NP O O
 Jose NP I-PER I-PER
 Ramos NP I-PER I-PER
@@ -22861,7 +22861,7 @@ been NP O O
 awarded NP O O
 solely NP O O
 to NP O O
-Belo NP I-ORG I-PER
+Belo NP I-LOC I-PER
 . NP O O
 
 Asked NP O O
@@ -22878,7 +22878,7 @@ the NP O O
 ceremony NP O O
 if NP O O
 only NP O O
-Belo NP I-ORG I-PER
+Belo NP I-LOC I-PER
 had NP O O
 been NP O O
 involved NP O O
@@ -22939,7 +22939,7 @@ had NP O O
 wanted NP O O
 to NP O O
 meet NP O O
-Belo NP I-ORG I-PER
+Belo NP I-LOC I-PER
 during NP O O
 the NP O O
 chancellor NP O O
@@ -23034,7 +23034,7 @@ foreign NP O O
 vessels NP O O
 . NP O O
 
-Wenchang NP I-LOC I-LOC
+Wenchang NP I-ORG I-LOC
 has NP O O
 built NP O O
 a NP O O
@@ -23230,7 +23230,7 @@ students NP O O
 , NP O O
 mostly NP O O
 from NP O O
-Rangoon NP I-LOC I-ORG
+Rangoon NP I-ORG I-ORG
 University NP I-ORG I-ORG
 , NP O O
 were NP O O
@@ -23490,7 +23490,7 @@ Wednesday NP O O
 opposition NP O O
 leader NP O O
 Aung NP I-PER I-PER
-San NP I-LOC I-PER
+San NP I-PER I-PER
 Suu NP I-PER I-PER
 Kyi NP I-PER I-PER
 was NP O O
@@ -23688,7 +23688,7 @@ Suu NP I-PER I-PER
 Kyi NP I-PER I-PER
 's NP O O
 National NP I-ORG I-ORG
-League NP I-MISC I-ORG
+League NP I-ORG I-ORG
 for NP I-ORG I-ORG
 Democracy NP I-ORG I-ORG
 ( NP O O
@@ -24809,7 +24809,7 @@ dollar NP O O
 " NP O O
 said NP O O
 Hank NP I-PER I-PER
-Note NP I-PER I-PER
+Note NP O I-PER
 , NP O O
 chief NP O O
 dealer NP O O
@@ -24883,7 +24883,7 @@ said NP O O
 It NP O O
 shows NP O O
 that NP O O
-Sakakibara NP I-ORG I-PER
+Sakakibara NP I-PER I-PER
 is NP O O
 not NP O O
 for NP O O
@@ -25034,7 +25034,7 @@ yen NP O O
 as NP O O
 the NP O O
 " NP O O
-Sakakibara NP I-ORG I-PER
+Sakakibara NP I-PER I-PER
 ceiling NP O O
 " NP O O
 for NP O O
@@ -25052,7 +25052,7 @@ comments NP O O
 by NP O O
 " NP O O
 Mr NP O I-PER
-Yen NP I-MISC I-PER
+Yen NP I-PER I-PER
 " NP O O
 , NP O O
 as NP O O
@@ -25117,7 +25117,7 @@ current NP O O
 levels NP O O
 , NP O O
 " NP O O
-Matsushita NP I-ORG I-PER
+Matsushita NP I-PER I-PER
 said NP O O
 in NP O O
 an NP O O
@@ -25495,7 +25495,7 @@ pursuit NP O O
 The NP O O
 charges NP O O
 against NP O O
-Lahd NP I-ORG I-PER
+Lahd NP I-PER I-PER
 were NP O O
 : NP O O
 forming NP O O
@@ -25611,7 +25611,7 @@ SLA NP I-ORG I-ORG
 -- NP O O
 a NP O O
 mixed NP O O
-Christian-Shi'ite NP I-MISC I-MISC
+Christian-Shi'ite NP O I-MISC
 Moslem NP I-MISC B-MISC
 force NP O O
 -- NP O O
@@ -25674,7 +25674,7 @@ taking NP O O
 legal NP O O
 action NP O O
 against NP O O
-Lahd NP I-ORG I-PER
+Lahd NP I-PER I-PER
 . NP O O
 
 Former NP O O
@@ -25771,10 +25771,10 @@ former NP O O
 head NP O O
 of NP O O
 the NP O O
-pro-Israeli NP O I-MISC
+pro-Israeli NP I-MISC I-MISC
 Guardians NP I-ORG I-ORG
-of NP I-ORG I-ORG
-the NP I-ORG I-ORG
+of NP O I-ORG
+the NP O I-ORG
 Cedars NP I-LOC I-ORG
 , NP O O
 a NP O O
@@ -25908,7 +25908,7 @@ shrink NP O O
 . NP O O
 
 Slaughter NP I-PER O
-Steers NP I-PER O
+Steers NP O O
 - NP O O
 Select NP O O
 and NP O O
@@ -26126,7 +26126,7 @@ $ NP O O
 mln NP O O
 . NP O O
 
-CITY NP I-LOC O
+CITY NP I-ORG O
 OF NP I-ORG O
 HARTFORD NP I-LOC I-LOC
 , NP O O
@@ -26690,11 +26690,11 @@ NEW NP I-LOC I-LOC
 YORK NP I-LOC I-LOC
 0 NP O O
 
-Mana NP O O
+Mana NP I-ORG O
 0 NP O O
 tonnes NP O O
 soybeans NP O O
-USG NP I-ORG O
+USG NP O O
 / NP O O
 China NP I-LOC I-LOC
 0 NP O O
@@ -26813,7 +26813,7 @@ no NP O O
 sales NP O O
 . NP O O
 
-Holstein NP O O
+Holstein NP I-LOC O
 - NP O O
 ( NP O O
 weight NP O O
@@ -26837,7 +26837,7 @@ grade NP O O
 and NP O O
 weight NP O O
 ) NP O O
-Choice NP I-ORG O
+Choice NP O O
 0 NP O O
 0 NP O O
 lbs NP O O
@@ -26967,7 +26967,7 @@ Thursday NP O O
 Outagmie NP I-ORG I-LOC
 County NP I-ORG I-LOC
 Circuit NP I-ORG O
-Court NP O O
+Court NP I-ORG O
 Judge NP O O
 Dennis NP I-PER I-PER
 Luebke NP I-PER I-PER
@@ -27122,8 +27122,8 @@ Canadian NP I-ORG I-ORG
 Grain NP I-ORG I-ORG
 Commission NP I-ORG I-ORG
 
-Visible NP O O
-Supplies NP O O
+Visible NP I-ORG O
+Supplies NP I-ORG O
 Farmers NP I-ORG O
 Deliveries NP O O
 
@@ -27312,9 +27312,9 @@ tonnes NP O O
 : NP O O
 
 Oats NP I-ORG O
-Rye NP I-ORG O
+Rye NP O O
 Flaxseed NP O O
-Canola NP I-ORG O
+Canola NP O O
 Corn NP O O
 
 Exports NP O O
@@ -27715,7 +27715,7 @@ $ NP O O
 
 On NP O O
 the NP O O
-KCBT NP O I-ORG
+KCBT NP I-ORG I-ORG
 , NP O O
 January NP O O
 finished NP O O
@@ -27761,7 +27761,7 @@ lower NP O O
 
 The NP O O
 East NP I-LOC O
-/ NP O O
+/ NP I-LOC O
 West NP I-LOC O
 spread NP O O
 narrowed NP O O
@@ -27780,7 +27780,7 @@ premium NP O O
 Physical NP O O
 prices NP O O
 at NP O O
-Waha NP I-ORG I-LOC
+Waha NP I-LOC I-LOC
 for NP O O
 the NP O O
 weekend NP O O
@@ -27931,7 +27931,7 @@ open NP O O
 , NP O O
 mid-Mississippi NP I-PER I-MISC
 ( NP O O
-McGregor NP I-PER I-PER
+McGregor NP I-LOC I-PER
 and NP O O
 south NP O O
 ) NP O O
@@ -28152,8 +28152,8 @@ Dec. NP O O
 0 NP O O
 , NP O O
 the NP O O
-White NP I-ORG I-LOC
-House NP I-ORG I-LOC
+White NP I-LOC I-LOC
+House NP I-LOC I-LOC
 said NP O O
 Friday NP O O
 . NP O O
@@ -28619,7 +28619,7 @@ shepherds NP O I-MISC
 cocker NP O I-MISC
 spaniels NP O I-MISC
 and NP O O
-Dalmatians NP I-MISC I-MISC
+Dalmatians NP O I-MISC
 . NP O O
 " NP O O
 
@@ -28730,7 +28730,7 @@ DES NP I-LOC I-LOC
 MOINES NP I-LOC I-LOC
 0 NP O O
 
-Steers NP O O
+Steers NP I-PER O
 and NP O O
 heifers NP O O
 were NP O O
@@ -28750,7 +28750,7 @@ said NP O O
 Reported NP O O
 sales NP O O
 for NP O O
-Fri- NP I-MISC O
+Fri- NP O O
 None NP O O
 . NP O O
 
@@ -28819,7 +28819,7 @@ Week NP O O
 to NP O O
 Date NP O O
 0 NP O O
-Sm NP I-ORG O
+Sm NP O O
 Pd NP O O
 Lst NP O O
 Wk NP O O
@@ -28847,7 +28847,7 @@ Steers NP O O
 Few NP O O
 Select NP O O
 and NP O O
-Choice NP I-ORG O
+Choice NP O O
 0 NP O O
 , NP O O
 0 NP O O
@@ -28866,7 +28866,7 @@ Heifers NP O O
 Few NP O O
 Select NP O O
 and NP O O
-Choice NP I-ORG O
+Choice NP O O
 0 NP O O
 , NP O O
 0 NP O O
@@ -29282,7 +29282,7 @@ the NP O O
 protest NP O O
 organised NP O O
 by NP O O
-Herri NP I-PER I-ORG
+Herri NP I-ORG I-ORG
 Batasuna NP I-ORG I-ORG
 , NP O O
 the NP O O
@@ -29371,7 +29371,7 @@ far-right NP O O
 National NP I-ORG I-ORG
 Alliance NP I-ORG I-ORG
 ( NP O O
-AN NP O I-ORG
+AN NP I-ORG I-ORG
 ) NP O O
 party NP O O
 she NP O O
@@ -29397,7 +29397,7 @@ radio NP O O
 show NP O O
 shortly NP O O
 after NP O O
-AN NP I-ORG I-ORG
+AN NP O I-ORG
 leader NP O O
 Gianfranco NP I-PER I-PER
 Fini NP I-PER I-PER
@@ -29511,7 +29511,7 @@ Loren NP I-PER I-PER
 , NP O O
 had NP O O
 accused NP O O
-AN NP I-ORG I-ORG
+AN NP O I-ORG
 leaders NP O O
 of NP O O
 stifling NP O O
@@ -29536,7 +29536,7 @@ last NP O O
 month NP O O
 after NP O O
 quitting NP O O
-AN NP I-ORG I-ORG
+AN NP O I-ORG
 's NP O O
 parliamentary NP O O
 party NP O O
@@ -29636,7 +29636,7 @@ receive NP O O
 small NP O O
 presents NP O O
 from NP O O
-Saint NP I-PER I-PER
+Saint NP I-LOC I-PER
 Nicholas NP I-PER I-PER
 , NP O O
 convinced NP O O
@@ -30057,7 +30057,7 @@ of NP O O
 Ayodhya NP I-LOC I-LOC
 triggered NP O O
 nationwide NP O O
-Hindu-Moslem NP I-MISC I-MISC
+Hindu-Moslem NP O I-MISC
 violence NP O O
 in NP O O
 which NP O O
@@ -30210,7 +30210,7 @@ petroleum NP O O
 0 NP O O
 0 NP O O
 
-Petroleum NP O O
+Petroleum NP I-ORG O
 products NP O O
 0 NP O O
 0 NP O O
@@ -30280,7 +30280,7 @@ The NP O O
 web NP O O
 site NP O O
 ( NP O O
-http://www.pt.lu/infoweb/kreschtmaart NP O O
+http://www.pt.lu/infoweb/kreschtmaart NP I-ORG O
 ) NP O O
 gives NP O O
 details NP O O
@@ -30327,7 +30327,7 @@ LONDON NP I-LOC I-LOC
 COAL NP O O
 - NP O O
 Lantau NP I-LOC I-MISC
-Peak NP I-LOC I-MISC
+Peak NP O I-MISC
 - NP O O
 0 NP O O
 tones NP O O
@@ -30335,7 +30335,7 @@ coal NP O O
 Hay NP I-LOC I-LOC
 Point NP I-LOC I-LOC
 or NP O O
-Newcastle NP I-LOC I-LOC
+Newcastle NP I-ORG I-LOC
 / NP O O
 Kaohsiung NP I-LOC I-LOC
 0 NP O O
@@ -30350,7 +30350,7 @@ respectively NP O O
 / NP O O
 0 NP O O
 shinc NP O O
-China NP I-LOC I-ORG
+China NP I-ORG I-ORG
 Steel NP I-ORG I-ORG
 . NP O O
 
@@ -30384,9 +30384,9 @@ TBN NP I-ORG O
 - NP O O
 0 NP O O
 tonnes NP O O
-Dampier NP I-LOC I-LOC
+Dampier NP I-ORG I-LOC
 / NP O O
-Kaohsiung NP I-LOC I-LOC
+Kaohsiung NP I-ORG I-LOC
 0 NP O O
 $ NP O O
 0 NP O O
@@ -30396,7 +30396,7 @@ shinc NP O O
 / NP O O
 0 NP O O
 shinc NP O O
-China NP I-LOC I-ORG
+China NP I-ORG I-ORG
 Steel NP I-ORG I-ORG
 . NP O O
 
@@ -30494,7 +30494,7 @@ meagre NP O O
 bond NP O O
 returns NP O O
 - NP O O
-Salomon NP I-ORG I-ORG
+Salomon NP I-PER I-ORG
 . NP O O
 
 LONDON NP I-LOC I-LOC
@@ -30528,7 +30528,7 @@ currency NP O O
 terms NP O O
 , NP O O
 Italian NP I-MISC I-MISC
-BTPs NP I-ORG O
+BTPs NP O O
 offered NP O O
 returns NP O O
 of NP O O
@@ -30543,7 +30543,7 @@ Thursday NP O O
 , NP O O
 with NP O O
 fellow NP O O
-high-yielder NP O O
+high-yielder NP I-LOC O
 Sweden NP I-LOC I-LOC
 close NP O O
 behind NP O O
@@ -30909,7 +30909,7 @@ Light NP I-LOC I-MISC
 Saudi NP I-LOC I-LOC
 Arabia NP I-LOC I-LOC
 's NP O O
-Arabian NP I-MISC I-MISC
+Arabian NP I-LOC I-MISC
 Light NP I-ORG I-MISC
 , NP O O
 Dubai NP I-LOC I-MISC
@@ -30941,7 +30941,7 @@ Relations NP O O
 between NP O O
 Clarke NP I-PER I-PER
 , NP O O
-Major NP O I-PER
+Major NP I-MISC I-PER
 good NP O O
 - NP O O
 spokesman NP O O
@@ -31004,7 +31004,7 @@ good NP O O
 
 Asked NP O O
 about NP O O
-Major NP I-ORG I-PER
+Major NP O I-PER
 's NP O O
 mood NP O O
 after NP O O
@@ -31052,7 +31052,7 @@ overnight NP O O
 between NP O O
 Clarke NP I-PER I-PER
 and NP O O
-Major NP I-PER I-PER
+Major NP I-MISC I-PER
 , NP O O
 nor NP O O
 of NP O O
@@ -31160,7 +31160,7 @@ telephone NP O O
 interview NP O O
 . NP O O
 
-Snow NP O I-PER
+Snow NP I-PER I-PER
 said NP O O
 the NP O O
 plane NP O O
@@ -32018,7 +32018,7 @@ two NP O O
 families NP O O
 , NP O O
 the NP O O
-Kesers NP I-PER I-PER
+Kesers NP I-LOC I-PER
 and NP O O
 Karabuluts NP I-PER I-PER
 , NP O O
@@ -32239,7 +32239,7 @@ this NP O O
 week NP O O
 . NP O O
 
-Slaughter NP I-PER O
+Slaughter NP O O
 Steers NP I-PER O
 : NP O O
 Pen NP I-ORG O
@@ -32403,7 +32403,7 @@ Dec NP O O
 0 NP O O
 
 Aaa NP O O
-Aa NP O O
+Aa NP I-ORG O
 A NP O O
 Baa NP I-ORG O
 
@@ -32528,7 +32528,7 @@ for NP O O
 colder NP O O
 temperatures NP O O
 in NP O O
-distillate-hungry NP I-LOC O
+distillate-hungry NP O O
 Northeastern NP I-LOC O
 markets NP O O
 raised NP O O
@@ -33156,7 +33156,7 @@ expelled NP O O
 from NP O O
 St NP I-ORG I-ORG
 Pius NP I-ORG I-ORG
-X NP O I-ORG
+X NP I-ORG I-ORG
 High NP O I-ORG
 School NP O I-ORG
 in NP O O
@@ -33454,7 +33454,7 @@ week NP O O
 
 Attempts NP O O
 by NP O O
-copyright-based NP I-ORG O
+copyright-based NP I-MISC O
 industries NP O O
 to NP O O
 ensure NP O O
@@ -33472,7 +33472,7 @@ storm NP O O
 of NP O O
 protests NP O O
 by NP O O
-Internet NP O I-MISC
+Internet NP I-ORG I-MISC
 companies NP O O
 and NP O O
 critics NP O O
@@ -33551,7 +33551,7 @@ consumer NP O O
 lobbyist NP O O
 heading NP O O
 the NP O O
-Washington-based NP I-MISC I-MISC
+Washington-based NP I-ORG I-MISC
 Consumer NP I-ORG I-PER
 Project NP I-ORG I-PER
 on NP I-ORG O
@@ -33635,7 +33635,7 @@ covered NP O O
 by NP O O
 the NP O O
 century-old NP O O
-Berne NP I-MISC I-MISC
+Berne NP I-LOC I-MISC
 Convention NP I-MISC I-MISC
 . NP O O
 
@@ -33758,7 +33758,7 @@ policy NP O O
 on NP O O
 copyright NP O O
 in NP O O
-cybersppace NP O O
+cybersppace NP I-LOC O
 . NP O O
 
 He NP O O
@@ -33809,7 +33809,7 @@ the NP O O
 computer NP O O
 centre NP O O
 offering NP O O
-Internet NP O I-MISC
+Internet NP I-ORG I-MISC
 services NP O O
 found NP O O
 a NP O O
@@ -33970,7 +33970,7 @@ the NP O O
 rulebooks NP O O
 . NP O O
 
-Network NP O I-MISC
+Network NP I-ORG I-MISC
 operators NP O O
 said NP O O
 the NP O O
@@ -34156,7 +34156,7 @@ seven NP O O
 Italians NP I-MISC I-MISC
 and NP O O
 six NP O O
-Zaireans NP I-PER I-MISC
+Zaireans NP O I-MISC
 , NP O O
 and NP O O
 four NP O O
@@ -34638,7 +34638,7 @@ a NP O O
 self-styled NP O O
 " NP O O
 Republic NP I-LOC I-LOC
-of NP I-LOC I-LOC
+of NP O I-LOC
 Padania NP I-LOC I-LOC
 " NP O O
 , NP O O
@@ -35070,7 +35070,7 @@ scheme NP O O
 -DOCSTART- NP O O
 
 German NP I-MISC I-MISC
-Jan-August NP I-ORG O
+Jan-August NP O O
 coffee NP O O
 imports NP O O
 detailed NP O O
@@ -35147,7 +35147,7 @@ in NP O O
 July NP O O
 , NP O O
 El NP I-PER I-LOC
-Salvador NP I-PER I-LOC
+Salvador NP I-LOC I-LOC
 0 NP O O
 ( NP O O
 0 NP O O
@@ -35379,7 +35379,7 @@ in NP O O
 all NP O O
 the NP O O
 EU NP I-ORG I-ORG
-languages NP I-MISC O
+languages NP O O
 , NP O O
 an NP O O
 EU NP I-ORG I-ORG
@@ -35623,7 +35623,7 @@ at NP O O
 $ NP O O
 0 NP O O
 per NP O O
-GDR NP I-ORG O
+GDR NP I-MISC O
 in NP O O
 London NP I-LOC I-LOC
 on NP O O
@@ -35699,7 +35699,7 @@ of NP O O
 the NP O O
 ruling NP O O
 Conservative NP I-ORG I-MISC
-party NP O O
+party NP I-ORG O
 said NP O O
 on NP O O
 Thursday NP O O
@@ -35770,7 +35770,7 @@ a NP O O
 divided NP O O
 and NP O O
 split NP O O
-Cabinet NP O I-ORG
+Cabinet NP I-ORG I-ORG
 . NP O O
 
 This NP O O
@@ -35863,7 +35863,7 @@ currency NP O O
 in NP O O
 the NP O O
 next NP O O
-Parliament NP I-ORG O
+Parliament NP O O
 . NP O O
 
 Clarke NP I-PER I-PER
@@ -35955,7 +35955,7 @@ him NP O O
 
 -DOCSTART- NP O O
 
-Court NP O O
+Court NP I-ORG O
 ejects NP O O
 head NP O O
 of NP O O
@@ -36147,7 +36147,7 @@ investigation NP O O
 A NP O O
 spokesman NP O O
 for NP O O
-Foreign NP O I-ORG
+Foreign NP I-ORG I-ORG
 Affairs NP O I-ORG
 Minister NP O O
 Alexander NP I-PER I-PER
@@ -36467,7 +36467,7 @@ Nats NP I-ORG I-PER
 to NP O O
 meet NP O O
 NZ NP I-LOC I-LOC
-First NP I-MISC O
+First NP I-ORG O
 on NP O O
 Sunday NP O O
 . NP O O
@@ -36528,7 +36528,7 @@ NZ NP I-LOC I-LOC
 's NP O O
 Peters NP I-PER I-PER
 says NP O O
-Nat NP I-PER I-PER
+Nat NP I-ORG I-PER
 , NP O O
 Lab NP I-ORG I-PER
 talks NP O O
@@ -36710,7 +36710,7 @@ in NP O O
 the NP O O
 Australian NP I-ORG I-MISC
 Capital NP I-ORG I-MISC
-Territory NP I-ORG I-MISC
+Territory NP I-LOC I-MISC
 , NP O O
 " NP O O
 his NP O O
@@ -36809,7 +36809,7 @@ policy NP O O
 , NP O O
 has NP O O
 been NP O O
-Labor NP I-MISC O
+Labor NP I-ORG O
 member NP O O
 for NP O O
 Fraser NP I-ORG I-PER
@@ -37192,8 +37192,8 @@ Ace NP I-ORG I-MISC
 0 NP O O
 Japan NP I-LOC I-LOC
 
-Tong NP I-ORG I-MISC
-Shun NP I-ORG I-MISC
+Tong NP I-PER I-MISC
+Shun NP I-PER I-MISC
 0 NP O O
 0 NP O O
 Vietnam NP I-LOC I-LOC
@@ -37259,7 +37259,7 @@ small NP O O
 room NP O O
 , NP O O
 the NP O O
-Wen NP I-ORG I-ORG
+Wen NP I-PER I-ORG
 Hui NP I-ORG I-ORG
 Bao NP I-ORG I-ORG
 newspaper NP O O
@@ -37727,7 +37727,7 @@ April NP O O
 
 -DOCSTART- NP O O
 
-Sangetsu NP O I-ORG
+Sangetsu NP I-ORG I-ORG
 - NP O O
 0 NP O O
 parent NP O O
@@ -37812,8 +37812,8 @@ Busang NP I-ORG I-LOC
 talks NP O O
 . NP O O
 
-K.T. NP I-PER I-LOC
-Arasu NP I-PER I-LOC
+K.T. NP I-ORG I-LOC
+Arasu NP I-ORG I-LOC
 
 JAKARTA NP I-LOC I-LOC
 0 NP O O
@@ -37980,7 +37980,7 @@ central NP O O
 region NP O O
 of NP O O
 the NP O O
-Busang NP I-LOC I-LOC
+Busang NP I-ORG I-LOC
 property NP O O
 , NP O O
 estimated NP O O
@@ -38054,7 +38054,7 @@ said NP O O
 
 He NP O O
 said NP O O
-Bre-X NP I-PER I-ORG
+Bre-X NP I-ORG I-ORG
 would NP O O
 then NP O O
 formally NP O O
@@ -38272,7 +38272,7 @@ a NP O O
 split NP O O
 in NP O O
 the NP O O
-Busang NP I-LOC I-ORG
+Busang NP I-ORG I-ORG
 gold NP O O
 property NP O O
 . NP O O
@@ -38331,7 +38331,7 @@ expedite NP O O
 development NP O O
 of NP O O
 the NP O O
-Busang NP I-LOC I-ORG
+Busang NP I-ORG I-ORG
 find NP O O
 . NP O O
 
@@ -38361,7 +38361,7 @@ Harjojudanto NP I-PER I-PER
 , NP O O
 under NP O O
 which NP O O
-Panutan NP I-PER I-PER
+Panutan NP O I-PER
 would NP O O
 receive NP O O
 $ NP O O
@@ -38853,11 +38853,11 @@ under NP O O
 its NP O O
 predecessor NP O O
 the NP O O
-General NP I-MISC I-MISC
+General NP I-ORG I-MISC
 Agreement NP I-MISC I-MISC
-on NP I-MISC I-MISC
+on NP O I-MISC
 Tariffs NP I-MISC I-MISC
-and NP I-MISC I-MISC
+and NP I-ORG I-MISC
 Trade NP I-MISC I-MISC
 ( NP O O
 GATT NP I-MISC I-MISC
@@ -39524,7 +39524,7 @@ both NP O O
 formats NP O O
 , NP O O
 making NP O O
-TOPS NP I-ORG I-MISC
+TOPS NP O I-MISC
 and NP O O
 BILO NP I-ORG I-MISC
 household NP O O
@@ -39609,12 +39609,12 @@ Fax NP O O
 
 -DOCSTART- NP O O
 
-ALPINE NP I-MISC O
-SKIING-WOMEN NP I-MISC O
+ALPINE NP I-LOC O
+SKIING-WOMEN NP O O
 'S NP O O
 WORLD NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
-SUPER NP I-MISC O
+SUPER NP O O
 G NP O O
 WINNER NP O O
 PROFILE NP O O
@@ -39637,7 +39637,7 @@ women NP O O
 World NP I-MISC I-MISC
 Cup NP I-MISC I-MISC
 super NP O O
-G NP I-MISC O
+G NP O O
 race NP O O
 : NP O O
 
@@ -39654,7 +39654,7 @@ Nation NP O O
 : NP O O
 Russia NP I-LOC I-LOC
 
-Previous NP I-MISC O
+Previous NP O O
 World NP I-MISC I-MISC
 Cup NP I-MISC I-MISC
 victories NP O O
@@ -39693,12 +39693,12 @@ Championships NP I-MISC I-MISC
 
 -DOCSTART- NP O O
 
-ALPINE NP I-MISC O
-SKIING-WOMEN NP I-MISC O
+ALPINE NP I-LOC O
+SKIING-WOMEN NP O O
 'S NP O O
 WORLD NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
-SUPER NP I-MISC O
+SUPER NP O O
 G NP O O
 RESULTS NP O O
 . NP O O
@@ -39719,7 +39719,7 @@ women NP O O
 World NP I-MISC I-MISC
 Cup NP I-MISC I-MISC
 super NP O O
-G NP I-MISC O
+G NP O O
 race NP O O
 : NP O O
 
@@ -39981,7 +39981,7 @@ SKIING-GLADISHIVA NP I-PER I-MISC
 WINS NP O O
 WORLD NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
-SUPER NP I-MISC O
+SUPER NP O O
 G NP O O
 . NP O O
 
@@ -40035,7 +40035,7 @@ GOLF NP O O
 THIRD NP O O
 ROUND NP O O
 OF NP O O
-JCPENNEY NP I-PER I-MISC
+JCPENNEY NP O I-MISC
 CLASSIC NP O I-MISC
 WASHED NP O O
 OUT NP O O
@@ -40154,7 +40154,7 @@ The NP O O
 tandem NP O O
 of NP O O
 reigning NP O O
-U.S. NP I-MISC I-LOC
+U.S. NP I-LOC I-LOC
 Amateur NP I-MISC O
 champions NP O O
 Kelli NP I-PER I-PER
@@ -40192,8 +40192,8 @@ pace NP O O
 
 -DOCSTART- NP O O
 
-ALPINE NP I-MISC O
-SKIING-WOMEN NP I-PER O
+ALPINE NP I-LOC O
+SKIING-WOMEN NP O O
 'S NP O O
 DOWNHILL NP O O
 WINNER NP O O
@@ -40264,7 +40264,7 @@ a NP O O
 qualifier NP O O
 for NP O O
 the NP O O
-0 NP I-MISC I-MISC
+0 NP O I-MISC
 World NP I-MISC I-MISC
 Cup NP I-MISC I-MISC
 finals NP O O
@@ -40290,8 +40290,8 @@ victor NP O O
 
 -DOCSTART- NP O O
 
-ALPINE NP I-MISC O
-SKIING-WOMEN NP I-MISC O
+ALPINE NP I-LOC O
+SKIING-WOMEN NP O O
 'S NP O O
 WORLD NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
@@ -40883,8 +40883,8 @@ States NP I-LOC I-LOC
 
 -DOCSTART- NP O O
 
-ALPINE NP I-MISC O
-SKIING-WOMEN NP I-MISC O
+ALPINE NP I-LOC O
+SKIING-WOMEN NP O O
 'S NP O O
 WORLD NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
@@ -41361,7 +41361,7 @@ Greiner-Petter-Memm NP I-PER I-PER
 -DOCSTART- NP O O
 
 ALPINE NP I-MISC O
-SKIING-GOETCHL NP I-MISC O
+SKIING-GOETCHL NP I-PER O
 WINS NP O O
 WORLD NP I-MISC I-MISC
 CUP NP I-MISC I-MISC
@@ -41484,7 +41484,7 @@ leaders NP O O
 Guenther NP I-PER I-PER
 Huber NP I-PER I-PER
 and NP O O
-breakman NP O O
+breakman NP I-PER O
 Antonio NP I-PER I-PER
 Tartaglia NP I-PER I-PER
 in NP O O
@@ -41593,7 +41593,7 @@ Saturday NP O O
 
 -DOCSTART- NP O O
 
-SKIING-CHINESE NP I-PER I-MISC
+SKIING-CHINESE NP O I-MISC
 MAKE NP O O
 PROMISING NP O O
 FREESTYLE NP O O
@@ -41967,7 +41967,7 @@ Acklin NP I-PER I-PER
 
 0 NP O O
 Germany NP I-LOC I-ORG
-III NP I-PER I-ORG
+III NP O I-ORG
 ( NP O O
 Dirk NP I-PER I-PER
 Wiese NP I-PER I-PER
@@ -42233,7 +42233,7 @@ Pradesh NP I-LOC I-LOC
 in NP O O
 India NP I-LOC I-LOC
 's NP O O
-Ranji NP I-MISC I-MISC
+Ranji NP O I-MISC
 Trophy NP I-MISC I-MISC
 national NP O O
 championship NP O O
@@ -43342,8 +43342,8 @@ China NP I-LOC I-LOC
 
 -DOCSTART- NP O O
 
-ALPINE NP I-MISC O
-SKIING-OFFICIALS NP I-MISC O
+ALPINE NP I-LOC O
+SKIING-OFFICIALS NP I-PER O
 HOPE NP O O
 TO NP O O
 SALVAGE NP O O
@@ -43993,7 +43993,7 @@ Harlequins NP I-ORG I-ORG
 Gloucester NP I-ORG I-ORG
 0 NP O O
 London NP I-ORG I-ORG
-Irish NP I-MISC I-ORG
+Irish NP I-ORG I-ORG
 0 NP O O
 
 Orrell NP I-ORG I-ORG
@@ -44238,7 +44238,7 @@ final NP O O
 game NP O O
 in NP O O
 a NP O O
-Wallaby NP I-MISC I-ORG
+Wallaby NP I-ORG I-ORG
 jersey NP O O
 on NP O O
 Saturday NP O O
@@ -44573,7 +44573,7 @@ Holdsworth NP I-PER I-PER
 SOCCER NP O O
 - NP O O
 SCOTTISH NP I-MISC I-MISC
-LEAGUE NP O O
+LEAGUE NP I-MISC O
 STANDINGS NP O O
 . NP O O
 
@@ -45903,7 +45903,7 @@ SAVES NP O O
 ARSENAL NP I-ORG I-ORG
 WITH NP O O
 LAST-MINUTE NP O O
-EQUALISER NP O O
+EQUALISER NP I-PER O
 . NP O O
 
 LONDON NP I-LOC I-LOC
@@ -46000,10 +46000,10 @@ Whittingham NP I-PER I-PER
 goal NP O O
 for NP O O
 Sheffield NP I-ORG I-ORG
-Wednesday NP O I-ORG
+Wednesday NP I-ORG I-ORG
 . NP O O
 
-Wimbledon NP I-MISC I-ORG
+Wimbledon NP I-ORG I-ORG
 leap-frogged NP O O
 over NP O O
 Liverpool NP I-ORG I-ORG
@@ -46049,7 +46049,7 @@ Holdsworth NP I-PER I-PER
 secured NP O O
 victory NP O O
 for NP O O
-Wimbledon NP I-MISC I-ORG
+Wimbledon NP I-ORG I-ORG
 , NP O O
 who NP O O
 trail NP O O
@@ -46432,7 +46432,7 @@ Stevenage NP I-ORG I-ORG
 Luton NP I-ORG I-ORG
 0 NP O O
 Boreham NP I-ORG I-ORG
-Wood NP I-ORG I-ORG
+Wood NP I-PER I-ORG
 0 NP O O
 
 Mansfield NP I-ORG I-ORG
@@ -46489,7 +46489,7 @@ OFF NP O O
 WITH NP O O
 TRY NP O O
 IN NP O O
-WALLABY NP I-ORG I-LOC
+WALLABY NP O I-LOC
 ROMP NP O O
 . NP O O
 
@@ -46556,7 +46556,7 @@ last NP O O
 touchdown NP O O
 in NP O O
 a NP O O
-Wallaby NP I-MISC I-ORG
+Wallaby NP I-ORG I-ORG
 jersey NP O O
 before NP O O
 departing NP O O
@@ -46708,7 +46708,7 @@ Burke NP I-PER I-PER
 ) NP O O
 . NP O O
 
-Barbarians NP O I-ORG
+Barbarians NP I-ORG I-ORG
 - NP O O
 Tries NP O O
 : NP O O
@@ -46729,7 +46729,7 @@ Andrew NP I-PER I-PER
 
 GOLF NP O O
 - NP O O
-ZIMBABWE NP I-MISC I-MISC
+ZIMBABWE NP I-LOC I-MISC
 OPEN NP I-MISC I-MISC
 THIRD NP O O
 ROUND NP O O
@@ -46746,7 +46746,7 @@ scores NP O O
 in NP O O
 the NP O O
 
-Zimbabwe NP I-MISC I-MISC
+Zimbabwe NP I-LOC I-MISC
 Open NP I-MISC I-MISC
 on NP O O
 Saturday NP O O
@@ -46921,7 +46921,7 @@ Waltman NP I-PER I-PER
 0 NP O O
 0 NP O O
 , NP O O
-Bradford NP I-ORG I-PER
+Bradford NP I-PER I-PER
 Vaughan NP I-PER I-PER
 0 NP O O
 0 NP O O
@@ -46995,7 +46995,7 @@ Northern NP I-LOC I-LOC
 Ireland NP I-LOC I-LOC
 . NP O O
 
-World NP I-MISC O
+World NP O O
 soccer NP O O
 's NP O O
 governing NP O O
@@ -47153,8 +47153,8 @@ Kola NP I-PER I-PER
 Altin NP I-PER I-PER
 Haxhi NP I-PER I-PER
 , NP O O
-Sokol NP I-PER I-PER
-Prenga NP I-PER I-PER
+Sokol NP I-ORG I-PER
+Prenga NP I-ORG I-PER
 , NP O O
 Ervin NP I-PER I-PER
 Fakaj NP I-PER I-PER
@@ -47180,7 +47180,7 @@ CRICKET NP O O
 - NP O O
 JONES NP I-PER I-PER
 HITS NP O O
-CENTURY NP I-MISC O
+CENTURY NP O O
 AS NP O O
 VICTORIA NP I-LOC I-ORG
 FIGHT NP O O
@@ -47231,7 +47231,7 @@ for NP O O
 eight NP O O
 declared NP O O
 , NP O O
-Victoria NP I-PER I-LOC
+Victoria NP I-ORG I-LOC
 reached NP O O
 0 NP O O
 for NP O O
@@ -47370,14 +47370,14 @@ three NP O O
 for NP O O
 0 NP O O
 for NP O O
-Victoria NP I-LOC I-LOC
+Victoria NP I-ORG I-LOC
 . NP O O
 
 -DOCSTART- NP O O
 
 CRICKET NP O O
 - NP O O
-SHEFFIELD NP I-ORG I-MISC
+SHEFFIELD NP I-LOC I-MISC
 SHIELD NP O I-MISC
 SCORE NP O O
 . NP O O
@@ -47454,7 +47454,7 @@ KOREA NP I-LOC I-LOC
 MOVE NP O O
 CLOSE NP O O
 TO NP O O
-QUARTER-FINAL NP I-PER O
+QUARTER-FINAL NP I-MISC O
 BERTH NP O O
 . NP O O
 
@@ -47562,7 +47562,7 @@ a NP O O
 rout NP O O
 as NP O O
 Hwang NP I-PER I-PER
-Sun NP I-PER I-PER
+Sun NP I-ORG I-PER
 Hong NP I-LOC I-PER
 rapidly NP O O
 added NP O O
@@ -47861,7 +47861,7 @@ Ju NP I-PER I-PER
 - NP O O
 Hwang NP I-PER I-PER
 Sun NP I-PER I-PER
-Hong NP I-LOC I-PER
+Hong NP I-PER I-PER
 ; NP O O
 0 NP O O
 - NP O O
@@ -48188,7 +48188,7 @@ Saturday NP O O
 
 United NP I-ORG I-LOC
 Arab NP I-ORG I-LOC
-Emirates NP I-LOC I-LOC
+Emirates NP I-ORG I-LOC
 0 NP O O
 Kuwait NP I-LOC I-LOC
 0 NP O O
@@ -48299,7 +48299,7 @@ points NP O O
 ) NP O O
 : NP O O
 
-South NP I-LOC I-LOC
+South NP I-ORG I-LOC
 Korea NP I-LOC I-LOC
 0 NP O O
 0 NP O O
@@ -48675,7 +48675,7 @@ of NP O O
 National NP I-MISC I-ORG
 Basketball NP I-MISC I-ORG
 
-Association NP O I-ORG
+Association NP I-ORG I-ORG
 games NP O O
 on NP O O
 Friday NP O O
@@ -48762,7 +48762,7 @@ of NP O O
 National NP I-MISC I-ORG
 Hockey NP I-MISC I-ORG
 
-League NP O I-ORG
+League NP I-MISC I-ORG
 teams NP O O
 after NP O O
 games NP O O
@@ -48798,8 +48798,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 HARTFORD NP I-ORG I-ORG
@@ -48856,8 +48856,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 FLORIDA NP I-ORG I-ORG
@@ -48929,8 +48929,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 DETROIT NP I-ORG I-ORG
@@ -48988,8 +48988,8 @@ DIVISION NP I-MISC O
 W NP O O
 L NP O O
 T NP O O
-GF NP O O
-GA NP I-LOC O
+GF NP I-ORG O
+GA NP I-ORG O
 PTS NP O O
 
 COLORADO NP I-ORG I-ORG
@@ -49105,7 +49105,7 @@ VANCOUVER NP I-LOC I-LOC
 -DOCSTART- NP O O
 
 NHL NP I-MISC I-ORG
-ICE NP I-MISC O
+ICE NP O O
 HOCKEY NP O O
 - NP O O
 FRIDAY NP O O
@@ -49122,7 +49122,7 @@ of NP O O
 National NP I-MISC I-ORG
 Hockey NP I-MISC I-ORG
 
-League NP O I-ORG
+League NP I-MISC I-ORG
 games NP O O
 on NP O O
 Friday NP O O
@@ -49176,7 +49176,7 @@ Ottawa NP I-ORG I-LOC
 
 -DOCSTART- NP O O
 
-NHL NP I-MISC I-ORG
+NHL NP I-ORG I-ORG
 ICE NP O O
 HOCKEY NP O O
 - NP O O
@@ -49207,8 +49207,8 @@ one NP O O
 game NP O O
 by NP O O
 the NP O O
-National NP I-MISC I-ORG
-Hockey NP I-MISC I-ORG
+National NP I-ORG I-ORG
+Hockey NP I-ORG I-ORG
 League NP I-MISC I-ORG
 and NP O O
 fined NP O O
@@ -49284,7 +49284,7 @@ a NP O O
 forearm NP O O
 blow NP O O
 to NP O O
-Mr NP O O
+Mr NP I-PER O
 Galley NP I-PER I-PER
 as NP O O
 he NP O O
@@ -49321,7 +49321,7 @@ from NP O O
 the NP O O
 videotape NP O O
 that NP O O
-Mr NP O O
+Mr NP I-PER O
 Bure NP I-PER I-PER
 's NP O O
 actions NP O O
@@ -49390,9 +49390,9 @@ BOXING NP O O
 - NP O O
 SCHULZ NP I-PER I-PER
 DEFEATS NP O O
-RIBALTA NP O I-PER
+RIBALTA NP I-PER I-PER
 IN NP O O
-IBF NP O I-ORG
+IBF NP I-MISC I-ORG
 HEAVYWEIGHT NP O O
 FIGHT NP O O
 . NP O O
@@ -49410,8 +49410,8 @@ Jose NP I-PER I-PER
 Ribalta NP I-PER I-PER
 in NP O O
 their NP O O
-International NP I-MISC I-ORG
-Boxing NP I-MISC I-ORG
+International NP I-LOC I-ORG
+Boxing NP I-LOC I-ORG
 Federation NP I-LOC I-ORG
 non-title NP O O
 0 NP O O
@@ -49476,7 +49476,7 @@ BALKAN NP I-ORG I-LOC
 STRIKE NP O O
 FORCE NP O O
 WIN NP O O
-OLD NP O O
+OLD NP I-MISC O
 FIRM NP O O
 GAME NP O O
 FOR NP O O
@@ -49487,9 +49487,9 @@ MADRID NP I-LOC I-LOC
 0 NP O O
 
 Real NP I-ORG I-ORG
-Madrid NP I-ORG I-ORG
+Madrid NP I-LOC I-ORG
 's NP O O
-Balkan NP I-MISC I-LOC
+Balkan NP I-LOC I-LOC
 strike NP O O
 force NP O O
 of NP O O
@@ -49531,7 +49531,7 @@ games NP O O
 four NP O O
 ahead NP O O
 of NP O O
-Barcelona NP I-ORG I-ORG
+Barcelona NP I-LOC I-ORG
 . NP O O
 
 With NP O O
@@ -50142,7 +50142,7 @@ made NP O O
 in NP O O
 recognition NP O O
 of NP O O
-Charlton NP I-PER I-PER
+Charlton NP I-ORG I-PER
 's NP O O
 achievements NP O O
 as NP O O
@@ -50244,7 +50244,7 @@ he NP O O
 added NP O O
 . NP O O
 
-Charlton NP I-PER I-PER
+Charlton NP I-ORG I-PER
 managed NP O O
 Ireland NP I-LOC I-LOC
 for NP O O
