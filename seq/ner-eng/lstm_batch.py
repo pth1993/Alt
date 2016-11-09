@@ -52,7 +52,7 @@ elif word_embedding_name == 'glove':
 elif word_embedding_name == 'senna':
     data_dim = 50
 if pos:
-    data_dim += 6
+    data_dim += 5
 if chunk:
     data_dim += 5
 num_hidden_node = int(args.num_hidden_node)
@@ -115,6 +115,36 @@ def create_data_old(word_file, tag_file, word_vector_dict):
     return input_data, output_data
 
 
+def pos(tag):
+    one_hot = np.zeros(5)
+    if tag == 20 or tag == 23:
+        one_hot[0] = 1
+    elif tag == 13:
+        one_hot[1] = 1
+    elif tag == 21 or tag == 22:
+        one_hot[2] = 1
+    elif tag in [36, 37, 38, 39, 40, 41]:
+        one_hot[3] = 1
+    else:
+        one_hot[4] = 1
+    return one_hot
+
+
+def chunk(tag):
+    one_hot = np.zeros(5)
+    if tag in [3, 12]:
+        one_hot[0] = 1
+    elif tag in [ 6, 16,  2,  8]:
+        one_hot[1] = 1
+    elif tag in [4, 13]:
+        one_hot[2] = 1
+    elif tag == 17:
+        one_hot[3] = 1
+    else:
+        one_hot[4] = 1
+    return one_hot
+
+
 def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
     input_data = []
     output_data = []
@@ -130,10 +160,10 @@ def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
         input_vector_word = [word_vector_dict[i] for i in input_word]
         #input_vector_pos = np.eye(num_pos + 1)[input_pos]
         input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
-        #input_vector_pos = [int(x) for x in input_vector_pos]
+        input_vector_pos = [pos(x) for x in input_pos]
         #input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
-        input_vector_chunk = [map(int, list(bin(x)[2:].zfill(5))) for x in input_chunk]
-        #input_vector_chunk = [int(x) for x in input_vector_chunk]
+        #input_vector_chunk = [map(int, list(bin(x)[2:].zfill(5))) for x in input_chunk]
+        input_vector_chunk = [chunk(x) for x in input_chunk]
         output_vector = np.eye(num_tag + 1)[output]
         input_vector = input_vector_word
         if pos:
