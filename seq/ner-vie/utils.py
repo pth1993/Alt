@@ -35,42 +35,31 @@ def convert_word_to_id(filename1, filename2, word_name):
     return word_dict
 
 
-def cut_data(filename1, filename2, max_len, num_word):
+def cut_data_old(filename1, filename2, max_len, num_word):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
     temp = ((unicode(num_word) + u' ') * max_len)[0:-1]
-    #if word_name == 'word':
-    #    temp = ((unicode(num_word) + u' ') * max_len)[0:-1]
-    #elif word_name == 'tag':
-    #    temp = ((unicode(num_tag) + u' ') * max_len)[0:-1]
-    #elif word_name == 'pos':
-    #    temp = ((unicode(num_pos) + u' ') * max_len)[0:-1]
-    #elif word_name == 'chunk':
-    #    temp = ((unicode(num_chunk) + u' ') * max_len)[0:-1]
     for line in f1:
         line = line.split()
         num_bulk = len(line)/max_len+1
         for i in range(max_len - len(line) % max_len):
             line.append(unicode(num_word))
-        #if word_name == 'word':
-        #    for i in range(max_len-len(line)%max_len):
-        #        line.append(unicode(num_word))
-        #elif word_name == 'tag':
-        #    for i in range(max_len-len(line)%max_len):
-        #        line.append(unicode(num_tag))
-        #elif word_name == 'pos':
-        #    for i in range(max_len - len(line) % max_len):
-        #        line.append(unicode(num_pos))
-        #elif word_name == 'chunk':
-        #    for i in range(max_len - len(line) % max_len):
-        #        line.append(unicode(num_chunk))
-        #print line
         for i in range(num_bulk):
-            #print line
-            #print line[(i*max_len):((i+1)*max_len)]
             new_line = ' '.join(line[(i*max_len):((i+1)*max_len)])
             if new_line != temp:
                 f2.write(new_line+'\n')
+    f1.close()
+    f2.close()
+
+
+def cut_data(filename1, filename2, max_len, num_word):
+    f1 = codecs.open(filename1, 'r', 'utf-8')
+    f2 = codecs.open(filename2, 'w', 'utf-8')
+    for line in f1:
+        line = line.split()
+        line += [unicode(num_word)] * (max_len - len(line))
+        new_line = ' '.join(line)
+        f2.write(new_line + '\n')
     f1.close()
     f2.close()
 
@@ -177,7 +166,7 @@ def create_word_vector_dict_senna(word_dict, filename, embedding, vector_length)
 
 
 def split_data(filename_corpus, filename_train, filename_dev, filename_test):
-    num_sent_train = 15127
+    num_sent_train = 14890
     num_sent_dev = 2000
     f1 = codecs.open(filename_corpus, 'r', 'utf-8')
     f2 = codecs.open(filename_train, 'w', 'utf-8')
@@ -310,6 +299,8 @@ def read_conll_format(filename1, filename2, filename3, filename4, filename5):
         #print count
         line = line.split()
         if len(line) > 0:
+            #if line[3] == 'B-VP':
+                #print line
             word_list.append(line[0].lower())
             pos_list.append(line[1])
             chunk_list.append(line[2])
@@ -323,6 +314,7 @@ def read_conll_format(filename1, filename2, filename3, filename4, filename5):
             chunk_list = []
             pos_list = []
             tag_list = []
+            #count += 1
     f1.close()
     f2.close()
     f3.close()

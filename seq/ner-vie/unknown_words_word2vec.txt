@@ -1259,7 +1259,6 @@ rouget
 tà_lung
 thuỷ_tề
 t.v.
-<s>sài_gòn
 ra_vô
 khen_gợi
 lawsuit
