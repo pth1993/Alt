@@ -115,7 +115,7 @@ def create_data_old(word_file, tag_file, word_vector_dict):
     return input_data, output_data
 
 
-def pos(tag):
+def gen_pos(tag):
     one_hot = np.zeros(5)
     if tag == 20 or tag == 23:
         one_hot[0] = 1
@@ -130,7 +130,7 @@ def pos(tag):
     return one_hot
 
 
-def chunk(tag):
+def gen_chunk(tag):
     one_hot = np.zeros(5)
     if tag in [3, 12]:
         one_hot[0] = 1
@@ -160,10 +160,10 @@ def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
         input_vector_word = [word_vector_dict[i] for i in input_word]
         #input_vector_pos = np.eye(num_pos + 1)[input_pos]
         input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
-        input_vector_pos = [pos(x) for x in input_pos]
+        input_vector_pos = [gen_pos(x) for x in input_pos]
         #input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
         #input_vector_chunk = [map(int, list(bin(x)[2:].zfill(5))) for x in input_chunk]
-        input_vector_chunk = [chunk(x) for x in input_chunk]
+        input_vector_chunk = [gen_chunk(x) for x in input_chunk]
         output_vector = np.eye(num_tag + 1)[output]
         input_vector = input_vector_word
         if pos:
