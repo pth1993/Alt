@@ -52,9 +52,9 @@ elif word_embedding_name == 'glove':
 elif word_embedding_name == 'senna':
     data_dim = 50
 if pos:
-    data_dim += 5
+    data_dim += 36
 if chunk:
-    data_dim += 5
+    data_dim += 14
 num_hidden_node = int(args.num_hidden_node)
 batch_size = int(args.batch_size)
 dropout = float(args.dropout)
@@ -158,12 +158,12 @@ def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
         input_chunk = map(int, line4.split())
         output = map(int, line2.split())
         input_vector_word = [word_vector_dict[i] for i in input_word]
-        #input_vector_pos = np.eye(num_pos + 1)[input_pos]
-        input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
-        input_vector_pos = [gen_pos(x) for x in input_pos]
-        #input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
+        input_vector_pos = np.eye(num_pos + 1)[input_pos]
+        #input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
+        #input_vector_pos = [gen_pos(x) for x in input_pos]
+        input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
         #input_vector_chunk = [map(int, list(bin(x)[2:].zfill(5))) for x in input_chunk]
-        input_vector_chunk = [gen_chunk(x) for x in input_chunk]
+        #input_vector_chunk = [gen_chunk(x) for x in input_chunk]
         output_vector = np.eye(num_tag + 1)[output]
         input_vector = input_vector_word
         if pos:
