@@ -166,7 +166,7 @@ def create_word_vector_dict_senna(word_dict, filename, embedding, vector_length)
 
 
 def split_data(filename_corpus, filename_train, filename_dev, filename_test):
-    num_sent_train = 14890
+    num_sent_train = 14861
     num_sent_dev = 2000
     f1 = codecs.open(filename_corpus, 'r', 'utf-8')
     f2 = codecs.open(filename_train, 'w', 'utf-8')
