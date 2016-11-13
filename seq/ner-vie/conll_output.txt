@@ -2718,8 +2718,8 @@ thời_trang NP O O
 nổi_tiếng NP O O
 <punct> NP O O
 từ NP O O
-louis NP B-PER B-ORG
-vuitton NP I-PER I-ORG
+louis NP B-ORG B-ORG
+vuitton NP I-ORG I-ORG
 <punct> NP O O
 gucci NP B-ORG B-ORG
 <punct> NP O O
@@ -2883,8 +2883,8 @@ lần NP O O
 còn NP O O
 dây NP O O
 nịt NP O O
-louis NP B-PER B-ORG
-vuitton NP I-PER I-ORG
+louis NP B-ORG B-ORG
+vuitton NP I-ORG I-ORG
 giá NP O O
 sỉ NP O O
 <number> NP O O
@@ -2936,7 +2936,7 @@ một NP O O
 gian_hàng NP O O
 trưng NP O O
 nhãn NP O O
-joyce NP B-LOC B-ORG
+joyce NP B-ORG B-ORG
 vì NP O O
 trông NP O O
 thấy NP O O
@@ -3021,7 +3021,7 @@ hay NP O O
 mở NP O O
 với NP O O
 hiệu NP O O
-joyce NP B-LOC B-ORG
+joyce NP B-ORG B-ORG
 được NP O O
 khắc NP O O
 sắc_sảo NP O O
@@ -3231,7 +3231,7 @@ gian_hàng NP O O
 hiệu NP O O
 charriol NP B-LOC O
 của NP O O
-geneva NP B-LOC B-ORG
+geneva NP B-ORG B-ORG
 <punct> NP O O
 tôi NP O O
 đề_nghị NP O O
@@ -3457,7 +3457,7 @@ qua NP O O
 bộ_đồ NP O O
 veste NP O O
 hiệu NP O O
-ungaro NP B-LOC B-ORG
+ungaro NP B-ORG B-ORG
 của NP O O
 nam NP O O
 <punct> NP O O
@@ -4664,7 +4664,7 @@ dàn NP O O
 karaoke NP O O
 <punct> NP O O
 tivi NP O O
-panasonic NP B-ORG B-ORG
+panasonic NP O B-ORG
 màn_hình NP O O
 phẳng NP O O
 như NP O O
@@ -5494,8 +5494,8 @@ trung NP I-LOC I-LOC
 
 bí_thư NP O O
 đảng_uỷ NP B-ORG B-ORG
-phường NP I-LOC I-ORG
-nghi_hải NP I-LOC I-ORG
+phường NP I-ORG I-ORG
+nghi_hải NP I-ORG I-ORG
 <punct> NP O O
 cửa_lò NP B-LOC B-LOC
 <punct> NP O O
@@ -5860,12 +5860,12 @@ tầng NP O O
 khang_trang NP O O
 <punct> NP O O
 bí_thư NP O O
-đảng_uỷ NP B-LOC B-ORG
+đảng_uỷ NP B-ORG B-ORG
 phường NP I-LOC I-ORG
 nghi_hải NP I-LOC I-ORG
 nguyễn NP B-PER B-PER
-văn NP I-LOC I-PER
-bích NP I-LOC I-PER
+văn NP I-PER I-PER
+bích NP I-PER I-PER
 vui_vẻ NP O O
 cho NP O O
 biết NP O O
@@ -6587,7 +6587,7 @@ nhật NP I-PER I-PER
 tân NP I-PER I-PER
 cho NP O O
 biết NP O O
-lod NP B-LOC B-ORG
+lod NP B-ORG B-ORG
 luôn NP O O
 có NP O O
 những NP O O
@@ -6936,7 +6936,7 @@ lý_do NP O O
 này NP O O
 mà NP O O
 hiện NP O O
-lod NP B-LOC B-ORG
+lod NP B-ORG B-ORG
 đã NP O O
 đặt NP O O
 trên NP O O
@@ -7331,7 +7331,7 @@ văn NP I-PER I-PER
 phùng NP I-PER I-PER
 <punct> NP O O
 trưởng_thôn NP O O
-nhân_ân NP B-LOC B-LOC
+nhân_ân NP B-PER B-LOC
 ở NP O O
 phước_thuận NP B-LOC B-LOC
 <punct> NP O O
@@ -7390,7 +7390,7 @@ cảnh NP O O
 màn_trời_chiếu_đất NP O O
 <punct> NP O O
 
-bình_định NP B-PER B-LOC
+bình_định NP B-LOC B-LOC
 <punct> NP O O
 tan_hoang NP O O
 <punct> NP O O
@@ -8874,7 +8874,7 @@ rất NP O O
 hút NP O O
 du_khách NP O O
 năm NP O O
-châu NP O O
+châu NP B-LOC O
 <punct> NP O O
 
 giá NP O O
@@ -8895,7 +8895,7 @@ usd NP O O
 <punct> NP O O
 
 khám_phá NP O O
-yangsuri NP O B-LOC
+yangsuri NP B-LOC B-LOC
 
 cả NP O O
 đoàn NP O O
@@ -9076,7 +9076,7 @@ bhd NP I-ORG I-ORG
 nếu NP O O
 một NP O O
 năm NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 sản_xuất NP O O
 trên NP O O
 <number> NP O O
@@ -9445,7 +9445,7 @@ nổi_tiếng NP O O
 jang NP B-PER B-PER
 seung NP I-PER I-PER
 của NP O O
-hq NP B-LOC B-LOC
+hq NP B-PER B-LOC
 thế_kỷ NP O O
 <number> NP O O
 <punct> NP O O
@@ -9841,7 +9841,7 @@ các NP O O
 nhà NP O O
 làm NP O O
 phim NP O O
-hq NP B-LOC B-LOC
+hq NP B-PER B-LOC
 rất NP O O
 nghiêm_túc NP O O
 <punct> NP O O
@@ -10093,7 +10093,7 @@ phim_trường NP O O
 quay NP O O
 ngoại_cảnh NP O O
 của NP O O
-yangsuri NP B-PER B-LOC
+yangsuri NP B-LOC B-LOC
 thì NP O O
 bát_ngát NP O O
 <punct> NP O O
@@ -10264,7 +10264,7 @@ lên NP O O
 hàng NP O O
 ngôi_sao NP O O
 phim NP O O
-hq NP B-LOC B-LOC
+hq NP B-PER B-LOC
 <punct> NP O O
 <punct> NP O O
 chúng_tôi NP O O
@@ -11195,7 +11195,7 @@ phim NP O O
 thứ NP O O
 ba NP O O
 của NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 bán NP O O
 cho NP O O
 nước_ngoài NP O O
@@ -11315,7 +11315,7 @@ có NP O O
 <number> NP O O
 bộ NP O O
 phim NP O O
-hq NP B-ORG B-LOC
+hq NP B-LOC B-LOC
 xuất_khẩu NP O O
 trong NP O O
 năm NP O O
@@ -11348,7 +11348,7 @@ bí_quyết NP O O
 thành_công NP O O
 của NP O O
 phim NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 là NP O O
 sự NP O O
 quan_tâm NP O O
@@ -11418,7 +11418,7 @@ hq NP B-LOC B-LOC
 anh_chàng NP O O
 hướng_dẫn_viên NP O O
 du_lịch NP O O
-melvin NP B-PER B-PER
+melvin NP B-LOC B-PER
 kim NP I-PER I-PER
 luôn NP O O
 tự_hào NP O O
@@ -11426,7 +11426,7 @@ khi NP O O
 nhắc NP O O
 đến NP O O
 phim NP O O
-hq NP B-LOC B-LOC
+hq NP B-PER B-LOC
 cũng NP O O
 như NP O O
 các NP O O
@@ -11489,7 +11489,7 @@ và NP O O
 bởi NP O O
 công_ty NP B-ORG B-ORG
 sony NP I-ORG I-ORG
-nhật NP I-ORG B-LOC
+nhật NP B-LOC B-LOC
 chưa NP O O
 bao_giờ NP O O
 sử_dụng NP O O
@@ -11652,7 +11652,7 @@ hơn NP O O
 nhất_là NP O O
 thời_kỳ NP O O
 phim_ảnh NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 đang NP O O
 nở_rộ NP O O
 <punct> NP O O
@@ -11665,7 +11665,7 @@ quyết_liệt NP O O
 tuy_nhiên NP O O
 giới NP O O
 điện_ảnh NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 cho NP O O
 biết NP O O
 <punct> NP O O
@@ -11805,7 +11805,7 @@ phim NP O O
 anh NP O O
 vừa NP O O
 tham_gia NP O O
-thái_vương_tứ_thần_ký NP B-PER O
+thái_vương_tứ_thần_ký NP B-LOC O
 dài NP O O
 <number> NP O O
 tập NP O O
@@ -12185,8 +12185,8 @@ của NP O O
 các NP O O
 bác NP O O
 hưu_trí NP O O
-p. NP B-ORG B-LOC
-<number> NP I-ORG I-LOC
+p. NP B-LOC B-LOC
+<number> NP I-LOC I-LOC
 <punct> NP O O
 gò_vấp NP B-LOC B-LOC
 <punct> NP O O
@@ -12965,7 +12965,7 @@ hiểu NP O O
 vì NP O O
 sao NP O O
 ông NP O O
-phó_kiến_trúc_sư_trưởng NP O O
+phó_kiến_trúc_sư_trưởng NP B-PER O
 cứ NP O O
 lắc_đầu NP O O
 mãi NP O O
@@ -13419,7 +13419,7 @@ kỳ NP O O
 <punct> NP O O
 “ NP O O
 sao NP O O
-hàn NP B-PER B-LOC
+hàn NP B-LOC B-LOC
 ” NP O O
 có NP O O
 khác NP O O
@@ -15950,7 +15950,7 @@ kể NP O O
 ngày_trước NP O O
 làm_gì NP O O
 có NP O O
-nhà_bè NP B-LOC O
+nhà_bè NP O O
 như NP O O
 bây_giờ NP O O
 <punct> NP O O
@@ -17026,7 +17026,7 @@ sẽ NP O O
 được NP O O
 bạn_bè NP O O
 năm NP O O
-châu NP O O
+châu NP B-LOC O
 biết NP O O
 đến NP O O
 <punct> NP O O
@@ -19115,7 +19115,7 @@ nhiều NP O O
 diễn_viên NP O O
 ngôi_sao NP O O
 của NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 xuất_thân NP O O
 từ NP O O
 những NP O O
@@ -19220,7 +19220,7 @@ bài_bản NP O O
 và NP O O
 hiện_đại NP O O
 nhất NP O O
-hq NP B-ORG B-LOC
+hq NP B-LOC B-LOC
 hiện_nay NP O O
 dành NP O O
 cho NP O O
@@ -19530,7 +19530,7 @@ biết NP O O
 “ NP O O
 làn_sóng NP O O
 phim NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 bùng_nổ NP O O
 khiến NP O O
 lượng NP O O
@@ -19617,7 +19617,7 @@ làm NP O O
 phim NP O O
 tương_lai NP O O
 của NP O O
-hq NP B-LOC B-LOC
+hq NP B-PER B-LOC
 <punct> NP O O
 
 và NP O O
@@ -19670,7 +19670,7 @@ seoul NP I-LOC I-LOC
 nơi NP O O
 tổ_chức NP O O
 world NP O O
-cup NP B-LOC O
+cup NP O O
 <number> NP O O
 ” NP O O
 <punct> NP O O
@@ -19791,7 +19791,7 @@ xem NP O O
 phim NP O O
 ở NP O O
 rạp NP B-ORG B-LOC
-gold NP I-ORG I-LOC
+gold NP I-LOC I-LOC
 class NP I-ORG I-LOC
 <punct> NP O O
 bạn NP O O
@@ -19906,7 +19906,7 @@ usd NP O O
 <punct> NP O O
 
 hiện NP O O
-cgv NP B-LOC O
+cgv NP B-ORG O
 có NP O O
 khoảng NP O O
 <number> NP O O
@@ -19981,7 +19981,7 @@ lịch_sử NP O O
 cho NP O O
 biết NP O O
 tương_lai NP O O
-cj-cgv NP B-LOC B-ORG
+cj-cgv NP B-PER B-ORG
 sẽ NP O O
 mở NP O O
 hệ_thống NP O O
@@ -20040,7 +20040,7 @@ giải_trí NP O O
 nhất_là NP O O
 phim_ảnh NP O O
 của NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 đang NP O O
 có NP O O
 chiều_hướng NP O O
@@ -20088,7 +20088,7 @@ cách NP O O
 <number> NP O O
 năm NP O O
 <punct> NP O O
-hq NP B-ORG B-LOC
+hq NP B-PER B-LOC
 chưa NP O O
 có NP O O
 thương_hiệu NP O O
@@ -20513,7 +20513,7 @@ bóng_bàn NP O O
 đơn NP O O
 nam NP O O
 thế_giới NP O O
-tanaka NP B-PER B-PER
+tanaka NP B-ORG B-PER
 <punct> NP O O
 nhật NP B-LOC B-LOC
 <punct> NP O O
@@ -21167,7 +21167,7 @@ nỗi NP O O
 nhất NP O O
 của NP O O
 thể_thao NP O O
-nhật_bản NP O B-LOC
+nhật_bản NP B-LOC B-LOC
 
 tìm NP O O
 lại NP O O
@@ -21417,7 +21417,7 @@ gồm NP O O
 vô_địch NP O O
 nam NP O O
 thế_giới NP O O
-tanaka NP B-PER B-PER
+tanaka NP B-ORG B-PER
 <punct> NP O O
 cựu NP O O
 vô_địch NP O O
@@ -21446,7 +21446,7 @@ nhật NP B-LOC B-LOC
 lúc NP O O
 đó NP O O
 là NP O O
-tsunoda NP B-PER B-PER
+tsunoda NP B-LOC B-PER
 <punct> NP O O
 
 phía NP O O
@@ -21460,7 +21460,7 @@ chủ_lực NP O O
 tung NP O O
 ra NP O O
 gồm NP O O
-hoà NP B-PER B-PER
+hoà NP B-LOC B-PER
 <punct> NP O O
 được NP B-PER B-PER
 và NP O O
@@ -21505,7 +21505,7 @@ nhật NP B-LOC B-LOC
 hạ NP O O
 vn NP B-LOC B-LOC
 <punct> NP O O
-hoà NP B-PER B-PER
+hoà NP B-LOC B-PER
 <punct> NP O O
 được NP B-PER B-PER
 <punct> NP O O
@@ -21700,7 +21700,7 @@ ra NP O O
 giữa NP O O
 được NP B-LOC B-PER
 với NP O O
-tsunoda NP B-PER B-PER
+tsunoda NP B-LOC B-PER
 <punct> NP O O
 
 tuy_nhiên NP O O
@@ -21821,7 +21821,7 @@ trận NP O O
 nhật NP B-LOC B-LOC
 <punct> NP O O
 tay_vợt NP O O
-ogimura NP B-PER B-PER
+ogimura NP B-LOC B-PER
 ngậm_ngùi NP O O
 nói NP O O
 <punct> NP O O
@@ -22016,7 +22016,7 @@ chính_quyền NP O O
 địa_phương NP O O
 và NP O O
 hội NP O O
-chữ_thập_đỏ NP B-ORG O
+chữ_thập_đỏ NP O O
 đưa NP O O
 đi NP O O
 tránh NP O O
@@ -23882,7 +23882,7 @@ các NP O O
 thương_hiệu NP O O
 <punct> NP O O
 
-vđv NP B-PER O
+vđv NP O O
 được NP O O
 xem NP O O
 là NP O O
@@ -23919,14 +23919,14 @@ văn NP I-PER I-PER
 hoà NP I-PER I-PER
 <punct> NP O O
 
-french NP B-PER B-MISC
+french NP B-ORG B-MISC
 style NP I-PER I-MISC
 <punct> NP O O
 mai NP B-PER B-PER
 văn NP I-PER I-PER
 hoà NP I-PER I-PER
 
-butterfly NP B-PER B-ORG
+butterfly NP B-ORG B-ORG
 là NP O O
 nhãn_hiệu NP O O
 số_một NP O O
@@ -24007,7 +24007,7 @@ thìa NP O O
 thì NP O O
 xài NP O O
 japanese NP B-PER B-MISC
-style NP I-ORG I-MISC
+style NP I-PER I-MISC
 <punct> NP O O
 
 tuy_nhiên NP O O
@@ -24090,7 +24090,7 @@ thế_nào NP O O
 phần NP O O
 mình NP O O
 <punct> NP O O
-butterfly NP B-PER B-ORG
+butterfly NP B-ORG B-ORG
 có NP O O
 xin NP O O
 phép NP O O
@@ -24333,7 +24333,7 @@ sau NP O O
 chuyến NP O O
 đoạt NP O O
 hcv NP O O
-asiad NP B-LOC O
+asiad NP O O
 <punct> NP O O
 anh NP O O
 có NP O O
@@ -24380,8 +24380,8 @@ của NP O O
 chủ NP O O
 butterfly NP B-ORG B-ORG
 là NP O O
-hikosuke NP B-PER B-PER
-tamasu NP I-PER I-PER
+hikosuke NP B-ORG B-PER
+tamasu NP I-ORG I-PER
 về NP O O
 việc NP O O
 khắc NP O O
@@ -25018,7 +25018,7 @@ thất_bại NP O O
 <punct> NP O O
 <number> NP O O
 của NP O O
-amouretti NP B-PER B-PER
+amouretti NP B-LOC B-PER
 trước NP O O
 mai NP B-PER B-PER
 văn NP I-PER I-PER
@@ -25124,7 +25124,7 @@ chỉ NP O O
 là NP O O
 hcv NP O O
 đồng_đội NP O O
-asiad NP B-LOC O
+asiad NP O O
 <number> NP O O
 <punct> NP O O
 mà NP O O
@@ -26031,7 +26031,7 @@ tuyển NP O O
 bóng_bàn NP O O
 vn NP B-LOC B-LOC
 dự NP O O
-asiad NP B-LOC O
+asiad NP O O
 <number> NP O O
 hay NP O O
 giải NP O O
@@ -26042,7 +26042,7 @@ thế_giới NP O O
 tại NP O O
 dormund NP B-LOC B-LOC
 <punct> NP O O
-đức NP B-PER B-LOC
+đức NP B-LOC B-LOC
 <punct> NP O O
 có NP O O
 tờ NP O O
@@ -26319,7 +26319,7 @@ tay_vợt NP O O
 người NP B-MISC B-MISC
 anh NP I-MISC I-MISC
 gốc NP O O
-áo NP B-PER B-LOC
+áo NP B-LOC B-LOC
 từng NP O O
 hai NP O O
 lần NP O O
@@ -26379,7 +26379,7 @@ tiết NP B-PER B-PER
 <punct> NP O O
 đoạt NP O O
 hcv NP O O
-asiad NP B-LOC O
+asiad NP O O
 <number> NP O O
 <punct> NP O O
 năm NP O O
@@ -26600,7 +26600,7 @@ thật_sự NP O O
 bàng_hoàng NP O O
 khi NP O O
 đài_phát_thanh NP B-ORG B-ORG
-trung_quốc NP I-ORG I-ORG
+trung_quốc NP I-LOC I-ORG
 bình_luận NP O O
 về NP O O
 môn NP O O
@@ -26849,7 +26849,7 @@ năm NP O O
 đkvđ NP O O
 châu NP B-LOC B-LOC
 á NP I-LOC I-LOC
-tiết NP B-LOC B-PER
+tiết NP B-PER B-PER
 thuỷ NP I-LOC I-PER
 sơ NP I-LOC I-PER
 <punct> NP O O
@@ -27215,8 +27215,8 @@ người NP O O
 từng NP O O
 được NP O O
 cây_bút NP O O
-robert NP B-ORG B-PER
-journal NP I-ORG I-PER
+robert NP B-PER B-PER
+journal NP I-PER I-PER
 <punct> NP O O
 báo NP B-ORG B-ORG
 j.e.o NP I-ORG I-ORG
@@ -27258,7 +27258,7 @@ lên_đường NP O O
 đi NP O O
 dortmund NP B-LOC B-LOC
 <punct> NP O O
-đức NP B-PER B-LOC
+đức NP B-LOC B-LOC
 <punct> NP O O
 dự NP O O
 giải NP O O
@@ -27404,7 +27404,7 @@ vn NP B-LOC B-LOC
 đứng NP O O
 đầu NP O O
 bảng NP O O
-d NP B-PER O
+d NP O O
 <punct> NP O O
 trong NP O O
 đó NP O O
@@ -27559,7 +27559,7 @@ hàn_quốc NP B-LOC B-LOC
 <punct> NP O O
 
 rời NP O O
-đức NP B-PER B-LOC
+đức NP B-LOC B-LOC
 <punct> NP O O
 tất_cả NP O O
 danh_thủ NP O O
@@ -27750,7 +27750,7 @@ tay_vợt NP O O
 huyền_thoại NP O O
 của NP O O
 nhật NP B-LOC B-LOC
-ogimura NP I-PER B-PER
+ogimura NP B-LOC B-PER
 chứng_kiến NP O O
 trận NP O O
 đấu NP O O
@@ -27841,7 +27841,7 @@ phản_công NP O O
 người NP B-MISC B-MISC
 nhật NP I-MISC I-MISC
 <punct> NP O O
-ấn_độ NP B-LOC B-LOC
+ấn_độ NP B-PER B-LOC
 đã NP O O
 mất NP O O
 không NP O O
@@ -28072,7 +28072,7 @@ một NP O O
 thầy NP O O
 khác NP O O
 là NP O O
-gaetan NP B-LOC B-PER
+gaetan NP B-PER B-PER
 <punct> NP O O
 
 đến NP O O
@@ -28126,7 +28126,7 @@ trong NP O O
 đội_tuyển NP O O
 để NP O O
 dự NP O O
-asiad NP B-LOC O
+asiad NP O O
 <number> NP O O
 <punct> NP O O
 
@@ -28204,7 +28204,7 @@ hayashi NP B-LOC B-PER
 <punct> NP O O
 fujii NP B-LOC B-PER
 <punct> NP O O
-tsunada NP B-LOC B-PER
+tsunada NP B-PER B-PER
 <punct> NP O O
 tanaka NP B-PER B-PER
 <punct> NP O O
@@ -28225,7 +28225,7 @@ quốc NP I-PER I-PER
 trung_quốc NP B-LOC B-LOC
 <punct> NP O O
 <punct> NP O O
-bergman NP B-PER B-PER
+bergman NP B-LOC B-PER
 <punct> NP O O
 johnny NP B-PER B-PER
 leach NP I-PER I-PER
@@ -28434,7 +28434,7 @@ từng NP O O
 dẫn_dắt NP O O
 đội_tuyển NP O O
 tp. NP B-LOC B-LOC
-hcm NP I-ORG I-LOC
+hcm NP I-LOC I-LOC
 <punct> NP O O
 
 tuy_nhiên NP O O
@@ -28835,7 +28835,7 @@ nam NP I-LOC I-LOC
 vn NP B-LOC B-LOC
 tấm NP O O
 hcv NP O O
-seap NP B-LOC O
+seap NP O O
 games NP O O
 trên NP O O
 đất NP O O
@@ -29109,7 +29109,7 @@ cùng NP O O
 trường NP B-ORG B-ORG
 huỳnh NP I-ORG I-ORG
 văn NP I-ORG I-ORG
-ngà NP I-PER I-ORG
+ngà NP I-ORG I-ORG
 <punct> NP O O
 rạng NP B-LOC B-PER
 xung_phong NP O O
@@ -29443,7 +29443,7 @@ phai NP O O
 để NP O O
 chuẩn_bị NP O O
 tham_dự NP O O
-seap NP B-LOC O
+seap NP O O
 games NP O O
 <number> NP O O
 tại NP O O
@@ -30177,7 +30177,7 @@ phạm NP B-PER B-PER
 văn NP I-PER I-PER
 rạng NP I-PER I-PER
 <punct> NP O O
-quan_thuế NP B-LOC B-ORG
+quan_thuế NP B-PER B-ORG
 <punct> NP O O
 bị NP O O
 chấn_thương NP O O
@@ -30555,7 +30555,7 @@ màu NP O O
 áo NP O O
 thể_công NP B-ORG B-ORG
 và NP O O
-đtqg NP O O
+đtqg NP B-LOC O
 trong NP O O
 khoảng NP O O
 thời_gian NP O O
@@ -30697,7 +30697,7 @@ sau NP O O
 được NP O O
 gọi NP O O
 vào NP O O
-đtqg NP O O
+đtqg NP B-LOC O
 <punct> NP O O
 
 khi NP O O
@@ -30885,7 +30885,7 @@ trận NP O O
 trên NP O O
 sân NP O O
 clb NP B-ORG B-ORG
-bresob NP I-LOC I-ORG
+bresob NP I-ORG I-ORG
 rất NP O O
 mạnh NP O O
 của NP O O
@@ -31289,7 +31289,7 @@ một NP O O
 trận NP O O
 giao_hữu NP O O
 <punct> NP O O
-thể_công NP B-LOC B-ORG
+thể_công NP B-ORG B-ORG
 đá NP O O
 thắng NP O O
 đội NP B-ORG B-ORG
@@ -32400,7 +32400,7 @@ như NP I-PER I-PER
 tâm NP I-PER I-PER
 của NP O O
 quân_khu NP B-ORG B-ORG
-<number> NP I-ORG I-ORG
+<number> NP I-LOC I-ORG
 <punct> NP O O
 tiền_thân NP O O
 của NP O O
@@ -33735,7 +33735,7 @@ bóng NP O O
 lừng_danh NP O O
 nước NP B-LOC B-LOC
 đức NP I-LOC I-LOC
-olympic NP B-PER B-ORG
+olympic NP B-LOC B-ORG
 hertha NP I-LOC I-ORG
 sẽ NP O O
 là NP O O
@@ -34025,7 +34025,7 @@ cánh_quạt NP O O
 <punct> NP O O
 đội_tuyển NP B-ORG B-ORG
 miền NP I-ORG I-ORG
-nam NP I-ORG I-ORG
+nam NP I-LOC I-ORG
 có_mặt NP O O
 ở NP O O
 malaysia NP B-LOC B-LOC
@@ -34169,7 +34169,7 @@ nv NP O O
 <punct> NP O O
 mua NP O O
 xe NP O O
-vespa NP B-ORG O
+vespa NP O O
 với NP O O
 giá NP O O
 rẻ NP O O
@@ -34429,7 +34429,7 @@ một NP O O
 trận NP O O
 duy_nhất NP O O
 trước NP O O
-ấn_độ NP B-LOC B-LOC
+ấn_độ NP B-PER B-LOC
 với NP O O
 tỉ_số NP O O
 <number> NP O O
@@ -34440,7 +34440,7 @@ tỉ_số NP O O
 
 do NP O O
 hơn NP O O
-ấn_độ NP B-LOC B-LOC
+ấn_độ NP B-PER B-LOC
 về NP O O
 hiệu_số NP O O
 bàn NP O O
@@ -34448,7 +34448,7 @@ thắng_bại NP O O
 nên NP O O
 tuyển NP B-ORG B-ORG
 miền NP I-ORG I-ORG
-nam NP I-ORG I-ORG
+nam NP I-LOC I-ORG
 lọt NP O O
 vào NP O O
 chung_kết NP O O
@@ -34509,7 +34509,7 @@ thì NP O O
 “ NP O O
 trình_độ NP O O
 của NP O O
-miến_điện NP B-PER B-LOC
+miến_điện NP B-LOC B-LOC
 ngày NP O O
 ấy NP O O
 <number> NP O O
@@ -34836,7 +34836,7 @@ những NP O O
 từ NP O O
 á NP B-LOC B-LOC
 đến NP O O
-âu NP B-PER B-LOC
+âu NP B-LOC B-LOC
 mà NP O O
 tuyển NP B-ORG B-ORG
 miền NP I-ORG I-ORG
@@ -35039,7 +35039,7 @@ sói NP I-PER I-PER
 <punct> NP O O
 thanh NP B-PER B-PER
 <punct> NP O O
-hội NP B-LOC B-PER
+hội NP B-ORG B-PER
 <punct> NP O O
 
 tiền_đạo NP O O
@@ -35108,7 +35108,7 @@ kỳ_lạ NP O O
 
 tuyển NP B-ORG B-ORG
 miền NP I-ORG I-ORG
-nam NP I-LOC I-ORG
+nam NP I-ORG I-ORG
 vào NP O O
 trận NP O O
 chung_kết NP O O
@@ -35183,7 +35183,7 @@ ba NP O O
 cú NP O O
 sút NP O O
 của NP O O
-miến_điện NP B-PER B-LOC
+miến_điện NP B-LOC B-LOC
 tìm NP O O
 đến NP O O
 cột_dọc NP O O
@@ -35219,7 +35219,7 @@ người NP O O
 qua NP O O
 một NP O O
 cầu_thủ NP O O
-miến_điện NP B-PER B-LOC
+miến_điện NP B-LOC B-LOC
 <punct> NP O O
 chiêu NP B-PER B-PER
 bất_ngờ NP O O
@@ -35441,7 +35441,7 @@ tấn_công NP O O
 liên_tục NP O O
 của NP O O
 đội NP B-ORG B-ORG
-miến_điện NP I-LOC I-ORG
+miến_điện NP I-ORG I-ORG
 <punct> NP O O
 
 trên NP O O
@@ -35520,7 +35520,7 @@ bóng NP O O
 bật NP O O
 cột_dọc NP O O
 của NP O O
-miến_điện NP B-PER B-LOC
+miến_điện NP B-LOC B-LOC
 <punct> NP O O
 và NP O O
 phút NP O O
@@ -35654,7 +35654,7 @@ vô_địch NP O O
 merdeka NP O O
 được NP O O
 đài_phát_thanh NP B-ORG B-ORG
-sài_gòn NP I-ORG I-ORG
+sài_gòn NP I-LOC I-ORG
 loan NP O O
 đi NP O O
 trong NP O O
@@ -35684,9 +35684,9 @@ là NP O O
 hlv NP O O
 người NP B-MISC B-MISC
 đức NP I-MISC I-MISC
-karl NP B-PER B-PER
-heinz NP I-PER I-PER
-weigang NP I-PER I-PER
+karl NP B-ORG B-PER
+heinz NP I-ORG I-PER
+weigang NP I-ORG I-PER
 <punct> NP O O
 người NP O O
 đã NP O O
@@ -35738,7 +35738,7 @@ có NP O O
 lời NP O O
 bình NP O O
 sau NP O O
-tiger NP O O
+tiger NP B-ORG O
 cup NP O O
 <number> NP O O
 <punct> NP O O
@@ -35975,7 +35975,7 @@ khi NP O O
 chia_tay NP O O
 tuyển NP B-ORG B-ORG
 miền NP I-ORG I-ORG
-nam NP I-ORG I-ORG
+nam NP I-LOC I-ORG
 năm NP O O
 <number> NP O O
 <punct> NP O O
@@ -36526,7 +36526,7 @@ làm_việc NP O O
 ở NP O O
 văn_phòng NP O O
 “ NP O O
-tổng_cuộc NP B-ORG B-ORG
+tổng_cuộc NP B-LOC B-ORG
 túc_cầu NP I-ORG I-ORG
 ” NP O O
 trước NP O O
@@ -36725,7 +36725,7 @@ lần NP O O
 thua NP O O
 trận NP O O
 trước NP O O
-miến_điện NP B-PER B-LOC
+miến_điện NP B-LOC B-LOC
 nên NP O O
 đêm NP O O
 trước NP O O
@@ -36873,7 +36873,7 @@ với NP O O
 đối_thủ NP O O
 xương_xẩu NP O O
 là NP O O
-miến_điện NP B-PER B-LOC
+miến_điện NP B-LOC B-LOC
 <punct> NP O O
 
 “ NP O O
@@ -40090,7 +40090,7 @@ thích NP O O
 nhưng NP O O
 bảo NP O O
 vào NP O O
-đồng_tháp_mười NP B-LOC B-LOC
+đồng_tháp_mười NP B-PER B-LOC
 thì NP O O
 ai NP O O
 cũng NP O O
@@ -40175,7 +40175,7 @@ sách_báo NP O O
 tôi NP O O
 cũng NP O O
 biết NP O O
-đồng_tháp_mười NP B-LOC B-LOC
+đồng_tháp_mười NP B-PER B-LOC
 là NP O O
 vùng NP O O
 phèn_chua NP O O
@@ -41054,7 +41054,7 @@ nổi NP O O
 những NP O O
 cánh NP O O
 đồng NP O O
-đồng_tháp_mười NP B-LOC B-LOC
+đồng_tháp_mười NP B-PER B-LOC
 vẫn NP O O
 trắng_xoá NP O O
 <punct> NP O O
@@ -41104,7 +41104,7 @@ hoang_vu NP O O
 <punct> NP O O
 
 giờ NP O O
-đồng_tháp_mười NP B-LOC B-LOC
+đồng_tháp_mười NP B-PER B-LOC
 không NP O O
 còn NP O O
 là NP O O
@@ -41175,7 +41175,7 @@ vẫn NP O O
 còn NP O O
 cái NP O O
 nhìn NP O O
-đồng_tháp_mười NP B-LOC B-LOC
+đồng_tháp_mười NP B-PER B-LOC
 như NP O O
 hồi NP O O
 chúng_tôi NP O O
@@ -42036,7 +42036,7 @@ cuộc NP O O
 ấy NP O O
 sử_dụng NP O O
 chiếc NP O O
-fregat NP B-LOC O
+fregat NP O O
 mang NP O O
 biển NP O O
 số NP O O
@@ -42528,7 +42528,7 @@ shibata NP I-PER I-PER
 nhờ NP O O
 tặng NP O O
 hội NP O O
-chữ_thập_đỏ NP B-ORG O
+chữ_thập_đỏ NP O O
 <punct> NP O O
 
 trên NP O O
@@ -44287,7 +44287,7 @@ tại NP O O
 thể_thao NP O O
 đông_nam_á NP B-LOC B-LOC
 <punct> NP O O
-sea NP B-ORG O
+sea NP O O
 games NP O O
 <punct> NP O O
 lần NP O O
@@ -45382,7 +45382,7 @@ như NP O O
 thi NP O O
 tuyển_chọn NP O O
 đi NP O O
-seap NP B-LOC O
+seap NP O O
 games NP O O
 lần NP O O
 <number> NP O O
@@ -45846,10 +45846,10 @@ thật NP O O
 tôi NP O O
 đến NP O O
 trường NP B-ORG B-LOC
-gà NP I-ORG I-LOC
-xuyên NP I-ORG I-LOC
-á NP I-ORG I-LOC
-bavet NP I-ORG I-LOC
+gà NP I-LOC I-LOC
+xuyên NP I-LOC I-LOC
+á NP I-LOC I-LOC
+bavet NP I-LOC I-LOC
 trên NP O O
 đất NP O O
 campuchia NP B-LOC B-LOC
@@ -46743,7 +46743,7 @@ trường NP B-ORG B-LOC
 gà NP I-ORG I-LOC
 xuyên NP I-ORG I-LOC
 á NP I-ORG I-LOC
-bavet NP I-LOC I-LOC
+bavet NP I-ORG I-LOC
 <punct> NP O O
 thở_dài NP O O
 <punct> NP O O
@@ -47815,8 +47815,8 @@ giám_thị NP O O
 ngành NP O O
 tiện NP O O
 trong NP O O
-nhà_máy NP B-ORG B-LOC
-ba_son NP I-ORG I-LOC
+nhà_máy NP B-LOC B-LOC
+ba_son NP I-LOC I-LOC
 <punct> NP O O
 sinh NP O O
 <number> NP O O
@@ -48047,7 +48047,7 @@ lên NP O O
 đến NP O O
 <number> NP O O
 đồng NP O O
-đông_dương NP B-LOC B-LOC
+đông_dương NP B-PER B-LOC
 <punct> NP O O
 rất NP O O
 lớn NP O O
@@ -48690,7 +48690,7 @@ trưởng NP O O
 bộ_môn NP O O
 xe_đạp NP O O
 tp. NP B-LOC B-LOC
-hcm NP I-ORG I-LOC
+hcm NP I-LOC I-LOC
 <punct> NP O O
 có NP O O
 kể NP O O
@@ -49108,7 +49108,7 @@ trưởng NP O O
 bộ_môn NP O O
 xe_đạp NP O O
 tp. NP B-LOC B-LOC
-hcm NP I-ORG I-LOC
+hcm NP I-LOC I-LOC
 <punct> NP O O
 
 ông NP O O
@@ -49600,7 +49600,7 @@ giữa NP O O
 minh NP B-PER B-PER
 cảnh NP I-PER I-PER
 và NP O O
-jean NP B-PER B-PER
+jean NP B-ORG B-PER
 leon NP I-PER I-PER
 <punct> NP O O
 phi NP B-PER B-PER
@@ -49612,7 +49612,7 @@ ra NP O O
 khá NP O O
 sôi_nổi NP O O
 <punct> NP O O
-jean NP B-PER B-PER
+jean NP B-ORG B-PER
 leon NP I-PER I-PER
 ở NP O O
 hai NP O O
@@ -50379,7 +50379,7 @@ huỳnh NP B-PER B-PER
 tiền NP I-PER I-PER
 trong NP O O
 trận NP O O
-tiền NP B-LOC B-PER
+tiền NP B-PER B-PER
 gặp NP O O
 võ_sĩ NP O O
 thạch NP B-PER B-PER
@@ -50389,7 +50389,7 @@ giữa NP O O
 khu NP O O
 hội_chợ NP O O
 giải_trí NP O O
-trường NP B-ORG B-LOC
+trường NP B-LOC B-LOC
 thị_nghè NP I-LOC I-LOC
 cạnh NP O O
 sở_thú NP O O
@@ -50426,7 +50426,7 @@ sang NP O O
 khu NP O O
 hội_chợ NP O O
 giải_trí NP O O
-trường NP B-ORG B-LOC
+trường NP B-LOC B-LOC
 thị_nghè NP I-LOC I-LOC
 <punct> NP O O
 
@@ -50520,7 +50520,7 @@ hàng NP O O
 ngàn NP O O
 khán_giả NP O O
 <punct> NP O O
-sang NP B-PER B-PER
+sang NP B-LOC B-PER
 tuyên_bố NP O O
 thách NP O O
 đấu NP O O
@@ -50559,7 +50559,7 @@ tiền NP I-PER I-PER
 và NP O O
 với NP O O
 võ_sĩ NP O O
-chà_lai NP B-PER O
+chà_lai NP O O
 mous NP B-PER B-PER
 fai NP I-PER I-PER
 fa NP I-PER I-PER
@@ -50666,7 +50666,7 @@ ai NP O O
 phải NP O O
 đụng NP O O
 với NP O O
-sang NP B-PER B-PER
+sang NP B-LOC B-PER
 <punct> NP O O
 
 minh NP B-PER B-PER
@@ -50714,11 +50714,11 @@ có NP O O
 đòn NP O O
 hiểm NP O O
 hơn NP O O
-sang NP B-PER B-PER
+sang NP B-LOC B-PER
 <punct> NP O O
 
 với NP O O
-sang NP B-PER B-PER
+sang NP B-LOC B-PER
 <punct> NP O O
 vũ_khí NP O O
 số_một NP O O
@@ -50943,7 +50943,7 @@ tuyệt_chiêu NP O O
 gối NP O O
 bay NP O O
 của NP O O
-sang NP B-PER B-PER
+sang NP B-LOC B-PER
 <punct> NP O O
 
 sau NP O O
@@ -53365,7 +53365,7 @@ phải NP O O
 sắm NP O O
 chiếc NP O O
 máy NP O O
-kohler NP B-LOC B-ORG
+kohler NP O B-ORG
 chạy NP O O
 xăng NP O O
 phát_điện NP O O
@@ -53656,7 +53656,7 @@ phan NP I-LOC I-LOC
 văn NP I-LOC I-LOC
 hớn NP I-LOC I-LOC
 <punct> NP O O
-bà NP B-PER B-LOC
+bà NP B-LOC B-LOC
 điểm NP I-LOC I-LOC
 <punct> NP O O
 hóc_môn NP B-LOC B-LOC
@@ -54703,7 +54703,7 @@ mà NP O O
 đại_uý NP O O
 lục_quân NP O O
 mỹ NP B-LOC B-LOC
-mcklein NP O B-PER
+mcklein NP B-LOC B-PER
 đang NP O O
 nắm NP O O
 giữ NP O O
@@ -55474,7 +55474,7 @@ là NP O O
 <punct> NP O O
 việt NP B-LOC B-PER
 <punct> NP O O
-tiệp NP B-PER B-PER
+tiệp NP B-LOC B-PER
 <punct> NP O O
 hoa NP B-PER B-PER
 <punct> NP O O
@@ -55757,8 +55757,8 @@ tại NP O O
 sân NP O O
 quần_vợt NP O O
 nhà_máy NP B-ORG B-LOC
-rượu NP I-LOC I-LOC
-bình_tây NP I-LOC I-LOC
+rượu NP I-ORG I-LOC
+bình_tây NP I-ORG I-LOC
 <punct> NP O O
 
 năm NP O O
@@ -55831,7 +55831,7 @@ thành NP I-PER I-PER
 hcv NP O O
 đơn NP O O
 nam NP O O
-seap NP B-LOC O
+seap NP O O
 games NP O O
 <punct> NP O O
 liên_đoàn NP B-ORG B-ORG
@@ -55869,9 +55869,9 @@ câu NP O O
 trả_lời NP O O
 phũ_phàng NP O O
 từ NP O O
-tổng_cuộc NP B-ORG B-ORG
-quần_vợt NP I-ORG I-ORG
-sài_gòn NP I-ORG I-ORG
+tổng_cuộc NP B-LOC B-ORG
+quần_vợt NP I-LOC I-ORG
+sài_gòn NP I-LOC I-ORG
 <punct> NP O O
 “ NP O O
 già NP O O
@@ -56009,7 +56009,7 @@ trận NP O O
 bán_kết NP O O
 <number> NP O O
 <punct> NP O O
-elwyn NP B-PER B-PER
+elwyn NP B-LOC B-PER
 mccabe NP I-PER I-PER
 <number> NP O O
 tuổi NP O O
@@ -56349,7 +56349,7 @@ năm NP O O
 đội_tuyển NP O O
 mỹ NP B-LOC B-LOC
 dự NP O O
-davis NP B-ORG O
+davis NP O O
 cup NP O O
 ghé NP O O
 sang NP O O
@@ -56423,8 +56423,8 @@ gặp NP O O
 indonesia NP B-LOC B-LOC
 ở NP O O
 khuôn_khổ NP O O
-davis NP B-LOC O
-cup NP B-LOC O
+davis NP O O
+cup NP O O
 <punct> NP O O
 
 lúc NP O O
@@ -56463,7 +56463,7 @@ tuổi NP O O
 nhưng NP O O
 chủ_lực NP O O
 là NP O O
-widjojo NP B-PER B-PER
+widjojo NP B-LOC B-PER
 nhỏ NP O O
 hơn NP O O
 bảy NP B-PER B-PER
@@ -56632,7 +56632,7 @@ thắng_lợi NP O O
 <punct> NP O O
 <number> NP O O
 trước NP O O
-widjojo NP B-PER B-PER
+widjojo NP B-LOC B-PER
 <punct> NP O O
 
 năm NP O O
@@ -56697,7 +56697,7 @@ tại NP O O
 xẹc_tây NP B-LOC B-LOC
 <punct> NP O O
 cung_văn_hoá NP B-LOC B-LOC
-lao_động NP I-LOC I-LOC
+lao_động NP I-ORG I-LOC
 bây_giờ NP O O
 <punct> NP O O
 <punct> NP O O
@@ -57034,7 +57034,7 @@ rít NP O O
 để NP O O
 một NP O O
 điếu NP O O
-đà_lạt NP B-LOC B-LOC
+đà_lạt NP B-PER B-LOC
 <punct> NP O O
 một NP O O
 loại NP O O
@@ -57618,13 +57618,13 @@ mù_mịt NP O O
 tại NP O O
 ngã NP O O
 tư NP O O
-trần NP B-PER B-LOC
+trần NP B-LOC B-LOC
 huy NP I-LOC I-LOC
 liệu NP I-LOC I-LOC
 <punct> NP O O
-nguyễn NP B-PER B-LOC
-trọng NP I-PER I-LOC
-tuyển NP I-PER I-LOC
+nguyễn NP B-LOC B-LOC
+trọng NP I-LOC I-LOC
+tuyển NP I-LOC I-LOC
 <punct> NP O O
 vừa NP O O
 lấp NP O O
@@ -57701,7 +57701,7 @@ mai NP I-LOC I-LOC
 lão NP I-LOC I-LOC
 bạng NP I-LOC I-LOC
 và NP O O
-trần NP B-PER B-PER
+trần NP B-LOC B-PER
 văn NP I-LOC I-PER
 dư NP I-LOC I-PER
 <punct> NP O O
@@ -58227,7 +58227,7 @@ phải NP O O
 hết NP O O
 cỡ NP O O
 chai NP O O
-hennessy NP B-LOC B-ORG
+hennessy NP B-ORG B-ORG
 mới NP O O
 nói_chuyện NP O O
 được NP O O
@@ -59700,7 +59700,7 @@ khác NP O O
 <punct> NP O O
 
 còn NP O O
-kh. NP B-LOC B-PER
+kh. NP B-PER B-PER
 <punct> NP O O
 dân_quê NP O O
 lên NP O O
@@ -59912,7 +59912,7 @@ thuê NP O O
 <punct> NP O O
 
 trước_đây NP O O
-kh. NP B-LOC B-PER
+kh. NP B-PER B-PER
 một NP O O
 mình NP O O
 đi NP O O
@@ -60237,7 +60237,7 @@ ngã NP O O
 tư NP O O
 ba_tháng_hai NP B-LOC B-LOC
 <punct> NP O O
-nguyễn NP B-PER B-LOC
+nguyễn NP B-LOC B-LOC
 kim NP I-LOC I-LOC
 cho NP O O
 tôi NP O O
@@ -62466,7 +62466,7 @@ long_phú NP B-LOC B-LOC
 sóc_trăng NP B-LOC B-LOC
 lại NP O O
 chạm_mặt NP O O
-t. NP B-PER B-PER
+t. NP B-LOC B-PER
 <punct> NP O O
 t. NP B-PER B-PER
 than_thở NP O O
@@ -62829,7 +62829,7 @@ với NP O O
 “ NP O O
 đại_lý NP O O
 ” NP O O
-ch. NP B-PER B-PER
+ch. NP B-LOC B-PER
 <punct> NP O O
 chúng_tôi NP O O
 đến NP O O
@@ -63007,7 +63007,7 @@ danh_thiếp NP O O
 in NP O O
 tên NP O O
 “ NP O O
-b.h. NP B-PER B-PER
+b.h. NP B-LOC B-PER
 <punct> NP O O
 ấp NP B-LOC B-LOC
 đa_hoà_nam NP I-LOC I-LOC
@@ -63962,7 +63962,7 @@ thầy_giáo NP O O
 
 đó NP O O
 là NP O O
-c.th. NP B-PER B-PER
+c.th. NP B-LOC B-PER
 <punct> NP O O
 nguyên NP O O
 là NP O O
@@ -64053,7 +64053,7 @@ và NP O O
 tố_cáo NP O O
 tội_ác NP O O
 của NP O O
-c.th. NP B-PER B-PER
+c.th. NP B-LOC B-PER
 <punct> NP O O
 
 ông NP O O
@@ -64536,7 +64536,7 @@ thái NP B-LOC B-LOC
 nhất NP O O
 sáu NP O O
 lần NP O O
-h. NP B-PER B-PER
+h. NP B-LOC B-PER
 và NP O O
 ph. NP B-PER B-PER
 bị NP O O
@@ -64593,7 +64593,7 @@ lên NP O O
 thành_phố NP O O
 là NP O O
 chị_em NP O O
-ph. NP B-PER B-PER
+ph. NP B-LOC B-PER
 <punct> NP O O
 h. NP B-PER B-PER
 lại NP O O
@@ -64819,7 +64819,7 @@ xây NP O O
 hà_tĩnh NP B-LOC B-LOC
 hỏi NP O O
 chuyện NP O O
-nhà_máy NP B-ORG B-ORG
+nhà_máy NP B-LOC B-ORG
 đường NP I-LOC I-ORG
 linh_cảm NP I-LOC I-ORG
 <punct> NP O O
@@ -65394,12 +65394,12 @@ nâng NP O O
 công_suất NP O O
 nhà_máy NP B-ORG B-ORG
 đường NP I-LOC I-ORG
-cam_ranh NP I-ORG I-ORG
+cam_ranh NP I-LOC I-ORG
 <punct> NP O O
 thuộc NP O O
 công_ty NP B-ORG B-ORG
-đường NP I-LOC I-ORG
-khánh_hoà NP I-LOC I-ORG
+đường NP I-ORG I-ORG
+khánh_hoà NP I-ORG I-ORG
 từ NP O O
 <number> NP O O
 lên NP O O
