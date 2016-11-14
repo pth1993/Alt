@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import codecs
+import numpy as np
 
 
 """f1 = codecs.open('test.txt', 'r', 'utf-8')
@@ -25,7 +26,7 @@ for line in f1:
     else:
         f2.write(line.strip() + u'\n')
 f1.close()
-f2.close()"""
+f2.close()
 f1 = codecs.open('train_new.txt', 'r', 'utf-8')
 word = []
 pos = []
@@ -46,4 +47,20 @@ for line in f1:
             print '\t'.join(line)
 print set(pos)
 print set(chunk)
-print set(tag)
+print set(tag)"""
+f1 = codecs.open('corpus-word-reduce-num.txt', 'r', 'utf-8')
+len_word = []
+count = 0
+list_char = []
+for line in f1:
+    line = line.split()
+    for word in line:
+        list_char += list(word)
+        len_word.append(len(word))
+f1.close()
+set_char = set(list_char)
+print len(set_char)
+#for char in set_char:
+#    print char
+print np.bincount(len_word)
+#print len_word

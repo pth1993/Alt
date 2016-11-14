@@ -191,6 +191,98 @@ def create_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vecto
     return input_data, output_data
 
 
+def generate_training_data(word_file, tag_file, word_vector_dict, batch):
+    while 1:
+        f1 = codecs.open(word_file, 'r', 'utf-8')
+        f2 = codecs.open(tag_file, 'r', 'utf-8')
+        input_batch = []
+        output_batch = []
+        for i in xrange(batch):
+            line1 = f1.readline()
+            line2 = f2.readline()
+            if line1 == '':
+                f1.seek(0)
+                line1 = f1.readline()
+            if line2 == '':
+                f2.seek(0)
+                line2 = f2.readline()
+            input = map(int, line1.strip().split())
+            output = map(int, line2.strip().split())
+            input_vector = [word_vector_dict[i] for i in input]
+            output_vector = np.eye(num_tag)[output]
+            input_batch.append(input_vector)
+            output_batch.append(output_vector)
+        input_batch = np.asarray(input_batch)
+        output_batch = np.asarray(output_batch)
+        #print np.shape(input_batch), np.shape(output_batch)
+        yield (input_batch, output_batch)
+        f1.close()
+        f2.close()
+
+
+def generate_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vector_dict, batch):
+    while(1):
+        f1 = codecs.open(word_file, 'r', 'utf-8')
+        f2 = codecs.open(tag_file, 'r', 'utf-8')
+        f3 = codecs.open(pos_file, 'r', 'utf-8')
+        f4 = codecs.open(chunk_file, 'r', 'utf-8')
+        f5 = codecs.open(case_file, 'r', 'utf-8')
+        input_data = []
+        output_data = []
+        for i in xrange(batch):
+            line1 = f1.readline()
+            line2 = f2.readline()
+            line3 = f3.readline()
+            line4 = f4.readline()
+            line5 = f5.readline()
+            if line1 == '':
+                f1.seek(0)
+                line1 = f1.readline()
+            if line2 == '':
+                f2.seek(0)
+                line2 = f2.readline()
+            if line3 == '':
+                f3.seek(0)
+                line3 = f3.readline()
+            if line4 == '':
+                f4.seek(0)
+                line4 = f4.readline()
+            if line5 == '':
+                f5.seek(0)
+                line5 = f5.readline()
+            input_word = map(int, line1.split())
+            input_pos = map(int, line3.split())
+            input_chunk = map(int, line4.split())
+            input_case = map(int, line5.split())
+            output = map(int, line2.split())
+            input_vector_word = [word_vector_dict[i] for i in input_word]
+            input_vector_pos = np.eye(num_pos + 1)[input_pos]
+            #input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
+            #input_vector_pos = [gen_pos(x) for x in input_pos]
+            input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
+            #input_vector_chunk = [map(int, list(bin(x)[2:].zfill(5))) for x in input_chunk]
+            #input_vector_chunk = [gen_chunk(x) for x in input_chunk]
+            input_vector_case = np.eye(3)[input_case]
+            output_vector = np.eye(num_tag + 1)[output]
+            input_vector = input_vector_word
+            if pos:
+                input_vector = np.concatenate((input_vector, input_vector_pos), axis=1)
+            if chunk:
+                input_vector = np.concatenate((input_vector, input_vector_chunk), axis=1)
+            if case:
+                input_vector = np.concatenate((input_vector, input_vector_case), axis=1)
+            input_data.append(input_vector)
+            output_data.append(output_vector)
+        input_data = np.asarray(input_data)
+        output_data = np.asarray(output_data)
+        yield input_data, output_data
+        f1.close()
+        f2.close()
+        f3.close()
+        f4.close()
+        f5.close()
+
+
 startTime = datetime.now()
 
 print 'Load word vector dict'
@@ -205,15 +297,15 @@ elif word_embedding_name == 'senna':
         word_vector_dict = cPickle.load(input)
 
 print 'Create data to train'
-input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt',
-                                        'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict)
-input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
-                                    'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict)
-input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
-                                      'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict)
+#input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt',
+#                                        'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict)
+#input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
+#                                    'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict)
+#input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
+#                                      'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict)
 
-print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev),\
-    np.shape(input_test), np.shape(output_test)
+#print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev),\
+#    np.shape(input_test), np.shape(output_test)
 
 print 'Create model'
 early_stopping = EarlyStopping(patience=3)
@@ -272,8 +364,11 @@ print model.summary()
 print np.shape(model.get_weights())
 
 print 'Training'
-history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=nb_epoch,
-                    validation_data=(input_dev, output_dev), callbacks=[early_stopping])
+#history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=nb_epoch,
+#                    validation_data=(input_dev, output_dev), callbacks=[early_stopping])
+history = model.fit_generator(generate_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict, 100),
+                              validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, 100),
+                              nb_val_samples=2000, samples_per_epoch=16861, nb_epoch=100)
 weights = model.get_weights()
 #np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
@@ -281,6 +376,7 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
         regularization_type + '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer +
         '_' + loss + '_batch_size_' + str(batch_size) + '_pos_' + str(pos) + '_chunk_' + str(chunk) +
         '_case_' + str(case), weights)
+"""
 answer = model.predict_classes(input_test, batch_size=batch_size)
 utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
 with open('le_word.pkl', 'rb') as input:
@@ -298,4 +394,4 @@ subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
 print "Running time: "
-print (endTime - startTime)
+print (endTime - startTime)"""
