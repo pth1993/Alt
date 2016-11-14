@@ -283,16 +283,18 @@ def count_corpus(filename):
     return num_line, max(num_word_list)
 
 
-def read_conll_format(filename1, filename2, filename3, filename4, filename5):
+def read_conll_format(filename1, filename2, filename3, filename4, filename5, filename6):
     f1 = codecs.open(filename1, 'r', 'utf-8')
     f2 = codecs.open(filename2, 'w', 'utf-8')
     f3 = codecs.open(filename3, 'w', 'utf-8')
     f4 = codecs.open(filename4, 'w', 'utf-8')
     f5 = codecs.open(filename5, 'w', 'utf-8')
+    f6 = codecs.open(filename6, 'w', 'utf-8')
     word_list = []
     chunk_list = []
     pos_list = []
     tag_list = []
+    case_list = []
     #count = 0
     for line in f1:
         #count += 1
@@ -305,28 +307,35 @@ def read_conll_format(filename1, filename2, filename3, filename4, filename5):
             pos_list.append(line[1])
             chunk_list.append(line[2])
             tag_list.append(line[3])
+            if line[0] == line[0].lower():
+                case_list.append(u'0')
+            else:
+                case_list.append(u'1')
         else:
             f2.write(' '.join(word_list) + u'\n')
             f3.write(' '.join(pos_list) + u'\n')
             f4.write(' '.join(chunk_list) + u'\n')
             f5.write(' '.join(tag_list) + u'\n')
+            f6.write(' '.join(case_list) + u'\n')
             word_list = []
             chunk_list = []
             pos_list = []
             tag_list = []
+            case_list = []
             #count += 1
     f1.close()
     f2.close()
     f3.close()
     f4.close()
     f5.close()
+    f6.close()
 
 
 if __name__ == "__main__":
     startTime = datetime.now()
     parameter = []
     read_conll_format('vlsp_corpus.txt', 'corpus-word.txt', 'corpus-pos.txt', 'corpus-chunk.txt',
-                      'corpus-tag.txt')
+                      'corpus-tag.txt', 'corpus-case.txt')
     print 'Read corpus'
     num_sent, max_len = count_corpus('corpus-tag.txt')
     print num_sent, max_len
@@ -368,6 +377,7 @@ if __name__ == "__main__":
     split_data('corpus-tag-id.txt', 'train-tag-id.txt', 'dev-tag-id.txt', 'test-tag-id.txt')
     split_data('corpus-pos-id.txt', 'train-pos-id.txt', 'dev-pos-id.txt', 'test-pos-id.txt')
     split_data('corpus-chunk-id.txt', 'train-chunk-id.txt', 'dev-chunk-id.txt', 'test-chunk-id.txt')
+    split_data('corpus-case.txt', 'train-case-id.txt', 'dev-case-id.txt', 'test-case-id.txt')
     print 'Padding data'
     cut_data('train-word-id.txt', 'train-word-id-pad.txt', max_len, num_word)
     cut_data('dev-word-id.txt', 'dev-word-id-pad.txt', max_len, num_word)
@@ -381,6 +391,9 @@ if __name__ == "__main__":
     cut_data('train-chunk-id.txt', 'train-chunk-id-pad.txt', max_len, num_chunk)
     cut_data('dev-chunk-id.txt', 'dev-chunk-id-pad.txt', max_len, num_chunk)
     cut_data('test-chunk-id.txt', 'test-chunk-id-pad.txt', max_len, num_chunk)
+    cut_data('train-case-id.txt', 'train-case-id-pad.txt', max_len, 2)
+    cut_data('dev-case-id.txt', 'dev-case-id-pad.txt', max_len, 2)
+    cut_data('test-case-id.txt', 'test-case-id-pad.txt', max_len, 2)
     with open('parameter.pkl', 'wb') as output:
         cPickle.dump(parameter, output, cPickle.HIGHEST_PROTOCOL)
     endTime = datetime.now()

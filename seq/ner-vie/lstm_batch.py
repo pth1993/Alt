@@ -29,6 +29,7 @@ parser.add_argument("optimizer", help="optimizer algorithm: sgd, rmsprop, adagra
 parser.add_argument("loss", help="loss function: categorical_crossentropy, categorical_crossentropy_bias")
 parser.add_argument("pos", help="pos feature: 1 for using and 0 for vice versa")
 parser.add_argument("chunk", help="chunk feature: 1 for using and 0 for vice versa")
+parser.add_argument("case", help="case feature: 1 for using and 0 for vice versa")
 args = parser.parse_args()
 with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
@@ -41,6 +42,7 @@ regularization_type = args.regularization_type
 regularization_number = float(args.regularization_number)
 pos = int(args.pos)
 chunk = int(args.chunk)
+case = int(args.case)
 time_step = parameter[0]
 num_tag = parameter[2]
 num_pos = parameter[3]
@@ -52,9 +54,11 @@ elif word_embedding_name == 'glove':
 elif word_embedding_name == 'senna':
     data_dim = 50
 if pos:
-    data_dim += 37
+    data_dim += (num_pos + 1)
 if chunk:
-    data_dim += 15
+    data_dim += (num_chunk + 1)
+if case:
+    data_dim += 3
 num_hidden_node = int(args.num_hidden_node)
 batch_size = int(args.batch_size)
 dropout = float(args.dropout)
@@ -145,17 +149,19 @@ def gen_chunk(tag):
     return one_hot
 
 
-def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
+def create_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vector_dict):
     input_data = []
     output_data = []
     f1 = codecs.open(word_file, 'r', 'utf-8')
     f2 = codecs.open(tag_file, 'r', 'utf-8')
     f3 = codecs.open(pos_file, 'r', 'utf-8')
     f4 = codecs.open(chunk_file, 'r', 'utf-8')
-    for line1, line2, line3, line4 in itertools.izip(f1, f2, f3, f4):
+    f5 = codecs.open(case_file, 'r', 'utf-8')
+    for line1, line2, line3, line4, line5 in itertools.izip(f1, f2, f3, f4, f5):
         input_word = map(int, line1.split())
         input_pos = map(int, line3.split())
         input_chunk = map(int, line4.split())
+        input_case = map(int, line5.split())
         output = map(int, line2.split())
         input_vector_word = [word_vector_dict[i] for i in input_word]
         input_vector_pos = np.eye(num_pos + 1)[input_pos]
@@ -164,18 +170,24 @@ def create_data(word_file, tag_file, pos_file, chunk_file, word_vector_dict):
         input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
         #input_vector_chunk = [map(int, list(bin(x)[2:].zfill(5))) for x in input_chunk]
         #input_vector_chunk = [gen_chunk(x) for x in input_chunk]
+        input_vector_case = np.eye(3)[input_case]
         output_vector = np.eye(num_tag + 1)[output]
         input_vector = input_vector_word
         if pos:
             input_vector = np.concatenate((input_vector, input_vector_pos), axis=1)
         if chunk:
             input_vector = np.concatenate((input_vector, input_vector_chunk), axis=1)
+        if case:
+            input_vector = np.concatenate((input_vector, input_vector_case), axis=1)
         input_data.append(input_vector)
         output_data.append(output_vector)
     input_data = np.asarray(input_data)
     output_data = np.asarray(output_data)
     f1.close()
     f2.close()
+    f3.close()
+    f4.close()
+    f5.close()
     return input_data, output_data
 
 
@@ -194,11 +206,11 @@ elif word_embedding_name == 'senna':
 
 print 'Create data to train'
 input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt',
-                                        'train-chunk-id-pad.txt', word_vector_dict)
+                                        'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict)
 input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
-                                    'dev-chunk-id-pad.txt', word_vector_dict)
+                                    'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict)
 input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
-                                      'test-chunk-id-pad.txt', word_vector_dict)
+                                      'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict)
 
 print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev),\
     np.shape(input_test), np.shape(output_test)
@@ -276,7 +288,7 @@ output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + 
                            '_' + 'num_lstm_layer_' + str(num_lstm_layer) + '_' 'num_hidden_node_' + str(num_hidden_node)
                            + '_' + 'regularization_' + regularization_type + '_' + str(regularization_number) + '_' +
                            'dropout_' + str(dropout) + '_' + optimizer + '_' + loss + '_batch_size_' + str(batch_size)
-                           + '_pos_' + str(pos) + '_chunk_' + str(chunk) + '.txt'), 'w')
+                           + '_pos_' + str(pos) + '_chunk_' + str(chunk) + '_case_' + str(case) + '.txt'), 'w')
 subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
