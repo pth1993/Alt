@@ -283,8 +283,62 @@ def generate_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vec
         f5.close()
 
 
+num_train = 14861
+num_dev = 2000
+num_test = 2831
+
+
+def append_line(word_file, tag_file, pos_file, chunk_file, case_file, word_file_new, tag_file_new, pos_file_new, chunk_file_new, case_file_new, batch_size, num_len):
+    f1 = codecs.open(word_file, 'r', 'utf-8')
+    f2 = codecs.open(tag_file, 'r', 'utf-8')
+    f3 = codecs.open(pos_file, 'r', 'utf-8')
+    f4 = codecs.open(chunk_file, 'r', 'utf-8')
+    f5 = codecs.open(case_file, 'r', 'utf-8')
+    f6 = codecs.open(word_file_new, 'w', 'utf-8')
+    f7 = codecs.open(tag_file_new, 'w', 'utf-8')
+    f8 = codecs.open(pos_file_new, 'w', 'utf-8')
+    f9 = codecs.open(chunk_file_new, 'w', 'utf-8')
+    f10 = codecs.open(case_file_new, 'w', 'utf-8')
+    num_len_add = batch_size - num_len % batch_size
+    print num_len_add
+    for line1, line2, line3, line4, line5 in itertools.izip(f1, f2, f3, f4, f5):
+        f6.write(line1)
+        f7.write(line2)
+        f8.write(line3)
+        f9.write(line4)
+        f10.write(line5)
+    for i in xrange(num_len_add):
+        temp_word = ((str(parameter[1]) + ' ') * time_step)[0:-1]
+        temp_tag = ((str(num_tag) + ' ') * time_step)[0:-1]
+        temp_pos = ((str(num_pos) + ' ') * time_step)[0:-1]
+        temp_chunk = ((str(num_chunk) + ' ') * time_step)[0:-1]
+        temp_case = ((str(2) + ' ') * time_step)[0:-1]
+        f6.write(temp_word + '\n')
+        f7.write(temp_tag + '\n')
+        f8.write(temp_pos + '\n')
+        f9.write(temp_chunk + '\n')
+        f10.write(temp_case + '\n')
+    f1.close()
+    f2.close()
+    f3.close()
+    f4.close()
+    f5.close()
+    f6.close()
+    f7.close()
+    f8.close()
+    f9.close()
+    f10.close()
+
+
+
+
+
 startTime = datetime.now()
 
+print 'append line'
+append_line('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', 'train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt', batch_size, num_train)
+#append_line('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', 'dev-word-id-pad-new.txt', 'dev-tag-id-pad-new.txt', 'dev-pos-id-pad-new.txt', 'dev-chunk-id-pad-new.txt', 'dev-case-id-pad-new.txt', batch_size, num_dev)
+append_line('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', 'test-word-id-pad-new.txt', 'test-tag-id-pad-new.txt', 'test-pos-id-pad-new.txt', 'test-chunk-id-pad-new.txt', 'test-case-id-pad-new.txt', batch_size, num_test)
 print 'Load word vector dict'
 if word_embedding_name == 'word2vec':
     with open('word_vector_dict_word2vec.pkl', 'rb') as input:
@@ -366,9 +420,9 @@ print np.shape(model.get_weights())
 print 'Training'
 #history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=nb_epoch,
 #                    validation_data=(input_dev, output_dev), callbacks=[early_stopping])
-history = model.fit_generator(generate_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict, batch_size),
+history = model.fit_generator(generate_data('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt', word_vector_dict, batch_size),
                               validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, batch_size),
-                              nb_val_samples=2000, samples_per_epoch=16861, nb_epoch=nb_epoch, callbacks=[early_stopping])
+                              nb_val_samples=2000, samples_per_epoch=16900, nb_epoch=nb_epoch, callbacks=[early_stopping])
 weights = model.get_weights()
 #np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
@@ -380,6 +434,7 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
 #answer = model.predict_classes(input_test, batch_size=batch_size)
 answer = model.predict_generator(generate_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict, 149), val_samples=2831)
 answer = np.argmax(answer, axis=2)
+answer = answer[0:2831]
 utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
 with open('le_word.pkl', 'rb') as input:
     le_word = cPickle.load(input)
