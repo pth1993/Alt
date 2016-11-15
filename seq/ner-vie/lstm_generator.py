@@ -368,7 +368,7 @@ print 'Training'
 #                    validation_data=(input_dev, output_dev), callbacks=[early_stopping])
 history = model.fit_generator(generate_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict, batch_size),
                               validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, batch_size),
-                              nb_val_samples=2000, samples_per_epoch=16861, nb_epoch=nb_epoch)
+                              nb_val_samples=2000, samples_per_epoch=16861, nb_epoch=nb_epoch, callbacks=[early_stopping])
 weights = model.get_weights()
 #np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
