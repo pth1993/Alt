@@ -379,10 +379,8 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
 
 #answer = model.predict_classes(input_test, batch_size=batch_size)
 answer = model.predict_generator(generate_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict, 149), val_samples=2831)
-#print np.shape(answer)
 answer = np.argmax(answer, axis=2)
-print answer
-"""utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
+utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
 with open('le_word.pkl', 'rb') as input:
     le_word = cPickle.load(input)
 with open('le_tag.pkl', 'rb') as input:
@@ -398,4 +396,4 @@ subprocess.Popen(shlex.split("perl conlleval.pl"), stdin=input, stdout=output)
 endTime = datetime.now()
 output.write('Running time: ' + str(endTime-startTime) + '\n')
 print "Running time: "
-print (endTime - startTime)"""
+print (endTime - startTime)
