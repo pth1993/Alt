@@ -378,7 +378,7 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
         '_case_' + str(case), weights)
 
 #answer = model.predict_classes(input_test, batch_size=batch_size)
-answer = model.predict_generator(generate_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict, batch_size), val_samples=2831)
+answer = model.predict_generator(generate_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict, batch_size), val_samples=2900)
 print np.shape(answer)
 """utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
 with open('le_word.pkl', 'rb') as input:
