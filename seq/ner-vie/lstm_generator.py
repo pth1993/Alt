@@ -366,9 +366,9 @@ print np.shape(model.get_weights())
 print 'Training'
 #history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=nb_epoch,
 #                    validation_data=(input_dev, output_dev), callbacks=[early_stopping])
-history = model.fit_generator(generate_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict, 100),
-                              validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, 100),
-                              nb_val_samples=2000, samples_per_epoch=16861, nb_epoch=100)
+history = model.fit_generator(generate_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict, batch_size),
+                              validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, batch_size),
+                              nb_val_samples=2000, samples_per_epoch=16861, nb_epoch=nb_epoch)
 weights = model.get_weights()
 #np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
@@ -376,9 +376,11 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
         regularization_type + '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer +
         '_' + loss + '_batch_size_' + str(batch_size) + '_pos_' + str(pos) + '_chunk_' + str(chunk) +
         '_case_' + str(case), weights)
-"""
-answer = model.predict_classes(input_test, batch_size=batch_size)
-utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
+
+#answer = model.predict_classes(input_test, batch_size=batch_size)
+answer = model.predict_generator(generate_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict, batch_size), val_samples=2831)
+print np.shape(answer)
+"""utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
 with open('le_word.pkl', 'rb') as input:
     le_word = cPickle.load(input)
 with open('le_tag.pkl', 'rb') as input:
