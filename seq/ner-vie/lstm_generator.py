@@ -256,7 +256,7 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
 
 
 
-def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch):
+def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch, num_len):
     index = 0
     p = np.random.permutation(len(word_matrix))
     word_matrix_shuffle = word_matrix[p]
@@ -268,8 +268,15 @@ def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix
         input_data = []
         output_data = []
         for i in xrange(batch):
-            if index == 14900:
+            temp = num_len + batch - num_len%batch
+            if index == temp:
                 index = 0
+                p = np.random.permutation(len(word_matrix))
+                word_matrix_shuffle = word_matrix[p]
+                tag_matrix_shuffle = tag_matrix[p]
+                pos_matrix_shuffle = pos_matrix[p]
+                chunk_matrix_shuffle = chunk_matrix[p]
+                case_matrix_shuffle = case_matrix[p]
             input_word = word_matrix_shuffle[index+i]
             input_pos = pos_matrix_shuffle[index+i]
             input_chunk = chunk_matrix_shuffle[index+i]
@@ -350,7 +357,7 @@ startTime = datetime.now()
 print 'append line'
 append_line('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt', 'train-chunk-id-pad.txt', 'train-case-id-pad.txt', 'train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt', batch_size, num_train)
 #append_line('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', 'dev-word-id-pad-new.txt', 'dev-tag-id-pad-new.txt', 'dev-pos-id-pad-new.txt', 'dev-chunk-id-pad-new.txt', 'dev-case-id-pad-new.txt', batch_size, num_dev)
-#append_line('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', 'test-word-id-pad-new.txt', 'test-tag-id-pad-new.txt', 'test-pos-id-pad-new.txt', 'test-chunk-id-pad-new.txt', 'test-case-id-pad-new.txt', batch_size, num_test)
+append_line('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', 'test-word-id-pad-new.txt', 'test-tag-id-pad-new.txt', 'test-pos-id-pad-new.txt', 'test-chunk-id-pad-new.txt', 'test-case-id-pad-new.txt', batch_size, num_test)
 print 'Load word vector dict'
 if word_embedding_name == 'word2vec':
     with open('word_vector_dict_word2vec.pkl', 'rb') as input:
@@ -363,11 +370,11 @@ elif word_embedding_name == 'senna':
         word_vector_dict = cPickle.load(input)
 
 print 'Create data to train'
-#input_train, output_train = create_data('train-word-id-pad.txt', 'train-tag-id-pad.txt', 'train-pos-id-pad.txt',
-#                                        'train-chunk-id-pad.txt', 'train-case-id-pad.txt', word_vector_dict)
-word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix = load_to_matrix('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt')
-input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
-                                    'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict)
+
+word_matrix_train, tag_matrix_train, pos_matrix_train, chunk_matrix_train, case_matrix_train = load_to_matrix('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt')
+word_matrix_dev, tag_matrix_dev, pos_matrix_dev, chunk_matrix_dev, case_matrix_dev = load_to_matrix('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt')
+#input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
+#                                    'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict)
 input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
                                       'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict)
 
@@ -436,11 +443,10 @@ print 'Training'
 #history = model.fit_generator(generate_data('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt', word_vector_dict, batch_size),
 #                              validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, batch_size),
  #                             nb_val_samples=2000, samples_per_epoch=16900, nb_epoch=nb_epoch, callbacks=[early_stopping])
-history = model.fit_generator(generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch_size),
-                              validation_data=(input_dev, output_dev),
-                              samples_per_epoch=14900, nb_epoch=nb_epoch, callbacks=[early_stopping])
+history = model.fit_generator(generate_data(word_matrix_train, tag_matrix_train, pos_matrix_train, chunk_matrix_train, case_matrix_train, word_vector_dict, batch_size, num_train),
+                              validation_data=generate_data(word_matrix_dev, tag_matrix_dev, pos_matrix_dev, chunk_matrix_dev, case_matrix_dev, word_vector_dict, batch_size, num_dev),
+                              nb_val_samples=2000, samples_per_epoch=14900, nb_epoch=nb_epoch, callbacks=[early_stopping])
 weights = model.get_weights()
-#np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
         str(num_lstm_layer) + '_' 'num_hidden_node_' + str(num_hidden_node) + '_' + 'regularization_' +
         regularization_type + '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer +

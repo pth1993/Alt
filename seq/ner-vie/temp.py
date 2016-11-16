@@ -104,20 +104,27 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
 
 def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, batch):
     index = 0
+    p = np.random.permutation(len(word_matrix))
     while(1):
-        p = np.random.permutation(len(word_matrix))
         word_matrix_shuffle = word_matrix
         tag_matrix_shuffle = tag_matrix
         pos_matrix_shuffle = pos_matrix
         chunk_matrix_shuffle = chunk_matrix
         case_matrix_shuffle = case_matrix
+        if index == 4:
+            p = np.random.permutation(len(word_matrix))
+            word_matrix_shuffle = word_matrix
+            tag_matrix_shuffle = tag_matrix
+            pos_matrix_shuffle = pos_matrix
+            chunk_matrix_shuffle = chunk_matrix
+            case_matrix_shuffle = case_matrix
         print index
-        print p
+        #print p
         input_data = []
         output_data = []
         try:
             for i in xrange(batch):
-                #print p
+                print p
                 #print index
                 input_word = word_matrix_shuffle[index+i]
                 input_pos = pos_matrix_shuffle[index+i]
@@ -129,14 +136,16 @@ def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix
             index += batch
         except IndexError:
             index = 0
+            print p
         input_data = np.asarray(input_data)
         output_data = np.asarray(output_data)
         #print input_data
         yield input_data, output_data
 
 
+
 word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix = load_to_matrix('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt')
 f = generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, 2)
 
-for i in range(5):
+for i in range(10):
     f.next()
