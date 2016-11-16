@@ -235,7 +235,7 @@ def generate_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vec
             line3 = f3.readline()
             line4 = f4.readline()
             line5 = f5.readline()
-            if line1 == '':
+            """if line1 == '':
                 f1.seek(0)
                 line1 = f1.readline()
             if line2 == '':
@@ -249,7 +249,7 @@ def generate_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vec
                 line4 = f4.readline()
             if line5 == '':
                 f5.seek(0)
-                line5 = f5.readline()
+                line5 = f5.readline()"""
             input_word = map(int, line1.split())
             input_pos = map(int, line3.split())
             input_chunk = map(int, line4.split())
@@ -425,7 +425,7 @@ print 'Training'
  #                             nb_val_samples=2000, samples_per_epoch=16900, nb_epoch=nb_epoch, callbacks=[early_stopping])
 history = model.fit_generator(generate_data('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt', word_vector_dict, batch_size),
                               validation_data=(input_dev, output_dev),
-                              samples_per_epoch=16900, nb_epoch=nb_epoch, callbacks=[early_stopping])
+                              samples_per_epoch=14900, nb_epoch=nb_epoch, callbacks=[early_stopping])
 weights = model.get_weights()
 #np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
