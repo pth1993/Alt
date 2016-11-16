@@ -271,7 +271,7 @@ def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix
             if num_len%batch != 0:
                 temp = num_len + batch - num_len%batch
             else:
-                temp = num_l
+                temp = num_len
             if index == temp:
                 index = 0
                 p = np.random.permutation(len(word_matrix))
