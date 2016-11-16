@@ -17,7 +17,7 @@ from theano.tensor import basic as tensor
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("word_embedding", help="word embedding type: word2vec, glove, senna")
+parser.add_argument("word_embedding", help="word embedding type: word2vec, onehot")
 parser.add_argument("num_epoch", help="number of epoch")
 parser.add_argument("num_lstm_layer", help="number of lstm layer")
 parser.add_argument("num_hidden_node", help="number of hidden node")
@@ -44,13 +44,14 @@ pos = int(args.pos)
 chunk = int(args.chunk)
 case = int(args.case)
 time_step = parameter[0]
+num_word = parameter[1]
 num_tag = parameter[2]
 num_pos = parameter[3]
 num_chunk = parameter[4]
 if word_embedding_name == 'word2vec':
     data_dim = 300
-elif word_embedding_name == 'glove':
-    data_dim = 300
+elif word_embedding_name == 'onehot':
+    data_dim = (num_word + 1)
 elif word_embedding_name == 'senna':
     data_dim = 50
 if pos:
@@ -74,7 +75,7 @@ print 'Optimizer: ' + optimizer
 print 'Batch size: ' + str(batch_size)
 print 'Time step: ' + str(time_step)
 print 'Data dim: ' + str(data_dim)
-print 'Word dict size: ' + str(parameter[1])
+print 'Word dict size: ' + str(num_word)
 print 'POS dict size: ' + str(num_pos)
 print 'Chunk dict size: ' + str(num_chunk)
 print 'Tag dict size: : ' + str(num_tag)
@@ -163,7 +164,7 @@ def create_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vecto
         input_chunk = map(int, line4.split())
         input_case = map(int, line5.split())
         output = map(int, line2.split())
-        input_vector_word = [word_vector_dict[i] for i in input_word]
+        #input_vector_word = [word_vector_dict[i] for i in input_word]
         input_vector_pos = np.eye(num_pos + 1)[input_pos]
         #input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
         #input_vector_pos = [gen_pos(x) for x in input_pos]
@@ -285,7 +286,46 @@ def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix
             input_chunk = chunk_matrix_shuffle[index+i]
             input_case = case_matrix_shuffle[index+i]
             output = tag_matrix_shuffle[index+i]
-            input_vector_word = [word_vector_dict[i] for i in input_word]
+            #input_vector_word = [word_vector_dict[i] for i in input_word]
+            input_vector_word = np.eye(num_word + 1)[input_word]
+            input_vector_pos = np.eye(num_pos + 1)[input_pos]
+            input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
+            input_vector_case = np.eye(3)[input_case]
+            output_vector = np.eye(num_tag + 1)[output]
+            input_vector = input_vector_word
+            if pos:
+                input_vector = np.concatenate((input_vector, input_vector_pos), axis=1)
+            if chunk:
+                input_vector = np.concatenate((input_vector, input_vector_chunk), axis=1)
+            if case:
+                input_vector = np.concatenate((input_vector, input_vector_case), axis=1)
+            input_data.append(input_vector)
+            output_data.append(output_vector)
+        index += batch
+        input_data = np.asarray(input_data)
+        output_data = np.asarray(output_data)
+        yield input_data, output_data
+
+
+def generate_data_test(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch, num_len):
+    index = 0
+    while(1):
+        input_data = []
+        output_data = []
+        for i in xrange(batch):
+            if num_len%batch != 0:
+                temp = num_len + batch - num_len%batch
+            else:
+                temp = num_len
+            if index == temp:
+                index = 0
+            input_word = word_matrix[index+i]
+            input_pos = pos_matrix[index+i]
+            input_chunk = chunk_matrix[index+i]
+            input_case = case_matrix[index+i]
+            output = tag_matrix[index+i]
+            #input_vector_word = [word_vector_dict[i] for i in input_word]
+            input_vector_word = np.eye(num_word + 1)[input_word]
             input_vector_pos = np.eye(num_pos + 1)[input_pos]
             input_vector_chunk = np.eye(num_chunk + 1)[input_chunk]
             input_vector_case = np.eye(3)[input_case]
@@ -330,7 +370,7 @@ def append_line(word_file, tag_file, pos_file, chunk_file, case_file, word_file_
         f9.write(line4)
         f10.write(line5)
     for i in xrange(num_len_add):
-        temp_word = ((str(parameter[1]) + ' ') * time_step)[0:-1]
+        temp_word = ((str(num_word) + ' ') * time_step)[0:-1]
         temp_tag = ((str(num_tag) + ' ') * time_step)[0:-1]
         temp_pos = ((str(num_pos) + ' ') * time_step)[0:-1]
         temp_chunk = ((str(num_chunk) + ' ') * time_step)[0:-1]
@@ -376,10 +416,11 @@ print 'Create data to train'
 
 word_matrix_train, tag_matrix_train, pos_matrix_train, chunk_matrix_train, case_matrix_train = load_to_matrix('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt')
 word_matrix_dev, tag_matrix_dev, pos_matrix_dev, chunk_matrix_dev, case_matrix_dev = load_to_matrix('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt')
+word_matrix_test, tag_matrix_test, pos_matrix_test, chunk_matrix_test, case_matrix_test = load_to_matrix('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt')
 #input_dev, output_dev = create_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt',
 #                                    'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict)
-input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
-                                      'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict)
+#input_test, output_test = create_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt',
+#                                      'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict)
 
 #print np.shape(input_train), np.shape(output_train), np.shape(input_dev), np.shape(output_dev),\
 #    np.shape(input_test), np.shape(output_test)
@@ -456,10 +497,10 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
         '_' + loss + '_batch_size_' + str(batch_size) + '_pos_' + str(pos) + '_chunk_' + str(chunk) +
         '_case_' + str(case), weights)
 
-answer = model.predict_classes(input_test, batch_size=batch_size)
-#answer = model.predict_generator(generate_data('test-word-id-pad.txt', 'test-tag-id-pad.txt', 'test-pos-id-pad.txt', 'test-chunk-id-pad.txt', 'test-case-id-pad.txt', word_vector_dict, 149), val_samples=2831)
-#answer = np.argmax(answer, axis=2)
-#answer = answer[0:2831]
+#answer = model.predict_classes(input_test, batch_size=batch_size)
+answer = model.predict_generator(generate_data_test('test-word-id-pad-new.txt', 'test-tag-id-pad-new.txt', 'test-pos-id-pad-new.txt', 'test-chunk-id-pad-new.txt', 'test-case-id-pad-new.txt', word_vector_dict, batch_size, num_test), val_samples=2900)
+answer = np.argmax(answer, axis=2)
+answer = answer[0:num_test]
 utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
 with open('le_word.pkl', 'rb') as input:
     le_word = cPickle.load(input)
