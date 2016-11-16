@@ -164,7 +164,7 @@ def create_data(word_file, tag_file, pos_file, chunk_file, case_file, word_vecto
         input_chunk = map(int, line4.split())
         input_case = map(int, line5.split())
         output = map(int, line2.split())
-        #input_vector_word = [word_vector_dict[i] for i in input_word]
+        input_vector_word = [word_vector_dict[i] for i in input_word]
         input_vector_pos = np.eye(num_pos + 1)[input_pos]
         #input_vector_pos = [map(int, list(bin(x)[2:].zfill(6))) for x in input_pos]
         #input_vector_pos = [gen_pos(x) for x in input_pos]
@@ -257,7 +257,7 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
 
 
 
-def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch, num_len):
+def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, batch, num_len):
     index = 0
     p = np.random.permutation(len(word_matrix))
     word_matrix_shuffle = word_matrix[p]
@@ -307,7 +307,7 @@ def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix
         yield input_data, output_data
 
 
-def generate_data_test(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch, num_len):
+def generate_data_test(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, batch, num_len):
     index = 0
     while(1):
         input_data = []
@@ -487,8 +487,8 @@ print 'Training'
 #history = model.fit_generator(generate_data('train-word-id-pad-new.txt', 'train-tag-id-pad-new.txt', 'train-pos-id-pad-new.txt', 'train-chunk-id-pad-new.txt', 'train-case-id-pad-new.txt', word_vector_dict, batch_size),
 #                              validation_data=generate_data('dev-word-id-pad.txt', 'dev-tag-id-pad.txt', 'dev-pos-id-pad.txt', 'dev-chunk-id-pad.txt', 'dev-case-id-pad.txt', word_vector_dict, batch_size),
  #                             nb_val_samples=2000, samples_per_epoch=16900, nb_epoch=nb_epoch, callbacks=[early_stopping])
-history = model.fit_generator(generate_data(word_matrix_train, tag_matrix_train, pos_matrix_train, chunk_matrix_train, case_matrix_train, word_vector_dict, batch_size, num_train),
-                              validation_data=generate_data(word_matrix_dev, tag_matrix_dev, pos_matrix_dev, chunk_matrix_dev, case_matrix_dev, word_vector_dict, batch_size, num_dev),
+history = model.fit_generator(generate_data(word_matrix_train, tag_matrix_train, pos_matrix_train, chunk_matrix_train, case_matrix_train, batch_size, num_train),
+                              validation_data=generate_data(word_matrix_dev, tag_matrix_dev, pos_matrix_dev, chunk_matrix_dev, case_matrix_dev, batch_size, num_dev),
                               nb_val_samples=2000, samples_per_epoch=14900, nb_epoch=nb_epoch, callbacks=[early_stopping])
 weights = model.get_weights()
 np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
@@ -498,7 +498,7 @@ np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb
         '_case_' + str(case), weights)
 
 #answer = model.predict_classes(input_test, batch_size=batch_size)
-answer = model.predict_generator(generate_data_test('test-word-id-pad-new.txt', 'test-tag-id-pad-new.txt', 'test-pos-id-pad-new.txt', 'test-chunk-id-pad-new.txt', 'test-case-id-pad-new.txt', word_vector_dict, batch_size, num_test), val_samples=2900)
+answer = model.predict_generator(generate_data_test('test-word-id-pad-new.txt', 'test-tag-id-pad-new.txt', 'test-pos-id-pad-new.txt', 'test-chunk-id-pad-new.txt', 'test-case-id-pad-new.txt', batch_size, num_test), val_samples=2900)
 answer = np.argmax(answer, axis=2)
 answer = answer[0:num_test]
 utils.predict_to_file('test-predict-id.txt', 'test-tag-id.txt', answer)
