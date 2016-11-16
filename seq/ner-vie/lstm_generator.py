@@ -268,6 +268,8 @@ def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix
         input_data = []
         output_data = []
         for i in xrange(batch):
+            if index == 14900:
+                index = 0
             input_word = word_matrix_shuffle[index+i]
             input_pos = pos_matrix_shuffle[index+i]
             input_chunk = chunk_matrix_shuffle[index+i]

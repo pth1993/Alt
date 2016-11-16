@@ -104,28 +104,31 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
 
 def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, batch):
     index = 0
-    p = np.random.permutation(len(word_matrix))
-    word_matrix_shuffle = word_matrix
-    tag_matrix_shuffle = tag_matrix
-    pos_matrix_shuffle = pos_matrix
-    chunk_matrix_shuffle = chunk_matrix
-    case_matrix_shuffle = case_matrix
     while(1):
+        p = np.random.permutation(len(word_matrix))
+        word_matrix_shuffle = word_matrix
+        tag_matrix_shuffle = tag_matrix
+        pos_matrix_shuffle = pos_matrix
+        chunk_matrix_shuffle = chunk_matrix
+        case_matrix_shuffle = case_matrix
+        print index
         print p
-        index = 0
         input_data = []
         output_data = []
-        for i in xrange(batch):
-            #print p
-            #print index
-            input_word = word_matrix_shuffle[index+i]
-            input_pos = pos_matrix_shuffle[index+i]
-            input_chunk = chunk_matrix_shuffle[index+i]
-            input_case = case_matrix_shuffle[index+i]
-            output = tag_matrix_shuffle[index+i]
-            input_data.append(input_word)
-            output_data.append(output)
-        index += batch
+        try:
+            for i in xrange(batch):
+                #print p
+                #print index
+                input_word = word_matrix_shuffle[index+i]
+                input_pos = pos_matrix_shuffle[index+i]
+                input_chunk = chunk_matrix_shuffle[index+i]
+                input_case = case_matrix_shuffle[index+i]
+                output = tag_matrix_shuffle[index+i]
+                input_data.append(input_word)
+                output_data.append(output)
+            index += batch
+        except IndexError:
+            index = 0
         input_data = np.asarray(input_data)
         output_data = np.asarray(output_data)
         #print input_data
