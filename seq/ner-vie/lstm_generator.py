@@ -258,13 +258,13 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
 
 def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, word_vector_dict, batch):
     index = 0
+    p = np.random.permutation(len(word_matrix))
+    word_matrix_shuffle = word_matrix[p]
+    tag_matrix_shuffle = tag_matrix[p]
+    pos_matrix_shuffle = pos_matrix[p]
+    chunk_matrix_shuffle = chunk_matrix[p]
+    case_matrix_shuffle = case_matrix[p]
     while(1):
-        p = np.random.permutation(len(word_matrix))
-        word_matrix_shuffle = word_matrix[p]
-        tag_matrix_shuffle = tag_matrix[p]
-        pos_matrix_shuffle = pos_matrix[p]
-        chunk_matrix_shuffle = chunk_matrix[p]
-        case_matrix_shuffle = case_matrix[p]
         input_data = []
         output_data = []
         for i in xrange(batch):

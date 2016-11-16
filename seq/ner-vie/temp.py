@@ -88,11 +88,11 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
         pos_matrix.append(input_pos)
         chunk_matrix.append(input_chunk)
         case_matrix.append(input_case)
-    word_matrix = np.asarray(word_matrix)
-    tag_matrix = np.asarray(tag_matrix)
-    pos_matrix = np.asarray(pos_matrix)
-    chunk_matrix = np.asarray(chunk_matrix)
-    case_matrix = np.asarray(case_matrix)
+    word_matrix = np.asarray(word_matrix)[0:4]
+    tag_matrix = np.asarray(tag_matrix)[0:4]
+    pos_matrix = np.asarray(pos_matrix)[0:4]
+    chunk_matrix = np.asarray(chunk_matrix)[0:4]
+    case_matrix = np.asarray(case_matrix)[0:4]
     f1.close()
     f2.close()
     f3.close()
@@ -104,17 +104,20 @@ def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
 
 def generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, batch):
     index = 0
+    p = np.random.permutation(len(word_matrix))
+    word_matrix_shuffle = word_matrix
+    tag_matrix_shuffle = tag_matrix
+    pos_matrix_shuffle = pos_matrix
+    chunk_matrix_shuffle = chunk_matrix
+    case_matrix_shuffle = case_matrix
     while(1):
-        #p = np.random.permutation(len(word_matrix))
-        word_matrix_shuffle = word_matrix
-        tag_matrix_shuffle = tag_matrix
-        pos_matrix_shuffle = pos_matrix
-        chunk_matrix_shuffle = chunk_matrix
-        case_matrix_shuffle = case_matrix
+        print p
+        index = 0
         input_data = []
         output_data = []
         for i in xrange(batch):
-            print index
+            #print p
+            #print index
             input_word = word_matrix_shuffle[index+i]
             input_pos = pos_matrix_shuffle[index+i]
             input_chunk = chunk_matrix_shuffle[index+i]
