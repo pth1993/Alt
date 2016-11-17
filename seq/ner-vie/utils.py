@@ -134,6 +134,16 @@ def create_word_vector_dict(word_dict, filename, embedding, vector_length):
         cPickle.dump(word_vector_dict, output, cPickle.HIGHEST_PROTOCOL)
 
 
+def create_word_vector_random():
+    with open('word_vector_dict_word2vec.pkl', 'rb') as input:
+        word_vector_dict_word2vec = cPickle.load(input)
+    vector_length = 300
+    word_vector_dict_random = np.random.uniform(-math.sqrt(3 / float(vector_length)), math.sqrt(3 / float(vector_length)),
+                                                size=np.shape(word_vector_dict_word2vec))
+    with open('word_vector_dict_random.pkl', 'wb') as output:
+        cPickle.dump(word_vector_dict_random, output, cPickle.HIGHEST_PROTOCOL)
+
+
 def create_word_vector_dict_senna(word_dict, filename, embedding, vector_length):
     vector_list = []
     index_list = []

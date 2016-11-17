@@ -30,10 +30,12 @@ parser.add_argument("loss", help="loss function: categorical_crossentropy, categ
 parser.add_argument("pos", help="pos feature: 1 for using and 0 for vice versa")
 parser.add_argument("chunk", help="chunk feature: 1 for using and 0 for vice versa")
 parser.add_argument("case", help="case feature: 1 for using and 0 for vice versa")
+parser.add_argument("fold", help="fold for experiment")
 args = parser.parse_args()
 with open('parameter.pkl', 'rb') as input:
     parameter = cPickle.load(input)
 num_lstm_layer = int(args.num_lstm_layer)
+fold = args.fold
 loss = args.loss
 optimizer = args.optimizer
 word_embedding_name = args.word_embedding
@@ -50,6 +52,8 @@ num_chunk = parameter[4]
 if word_embedding_name == 'word2vec':
     data_dim = 300
 elif word_embedding_name == 'glove':
+    data_dim = 300
+elif word_embedding_name == 'random':
     data_dim = 300
 elif word_embedding_name == 'senna':
     data_dim = 50
@@ -200,6 +204,9 @@ if word_embedding_name == 'word2vec':
 elif word_embedding_name == 'glove':
     with open('word_vector_dict_glove.pkl', 'rb') as input:
         word_vector_dict = cPickle.load(input)
+elif word_embedding_name == 'random':
+    with open('word_vector_dict_random.pkl', 'rb') as input:
+        word_vector_dict = cPickle.load(input)
 elif word_embedding_name == 'senna':
     with open('word_vector_dict_senna.pkl', 'rb') as input:
         word_vector_dict = cPickle.load(input)
@@ -276,7 +283,7 @@ history = model.fit(input_train, output_train, batch_size=batch_size, nb_epoch=n
                     validation_data=(input_dev, output_dev), callbacks=[early_stopping])
 weights = model.get_weights()
 #np.save('model/weight' + '_' + str(num_hidden_node) + '_' + str(dropout), weights)
-np.save('model/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
+np.save('model/' + fold + '/weight' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) + '_' + 'num_lstm_layer_' +
         str(num_lstm_layer) + '_' 'num_hidden_node_' + str(num_hidden_node) + '_' + 'regularization_' +
         regularization_type + '_' + str(regularization_number) + '_' + 'dropout_' + str(dropout) + '_' + optimizer +
         '_' + loss + '_batch_size_' + str(batch_size) + '_pos_' + str(pos) + '_chunk_' + str(chunk) +
@@ -289,7 +296,7 @@ with open('le_tag.pkl', 'rb') as input:
     le_tag = cPickle.load(input)
 utils.convert_to_conll_format('test-predict-id.txt', 'test-tag-id.txt', 'test-word-id.txt', le_word, le_tag, num_tag)
 input = open('conll_output.txt')
-output = open(os.path.join('evaluate', 'evaluate' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) +
+output = open(os.path.join('evaluate/'+fold+'/', 'evaluate' + '_' + word_embedding_name + '_' + 'num_epoch_' + str(nb_epoch) +
                            '_' + 'num_lstm_layer_' + str(num_lstm_layer) + '_' 'num_hidden_node_' + str(num_hidden_node)
                            + '_' + 'regularization_' + regularization_type + '_' + str(regularization_number) + '_' +
                            'dropout_' + str(dropout) + '_' + optimizer + '_' + loss + '_batch_size_' + str(batch_size)

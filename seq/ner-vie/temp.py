@@ -4,6 +4,8 @@
 import codecs
 import numpy as np
 import itertools
+import cPickle
+import math
 
 
 """f1 = codecs.open('test.txt', 'r', 'utf-8')
@@ -64,7 +66,7 @@ print len(set_char)
 #for char in set_char:
 #    print char
 print np.bincount(len_word)
-#print len_word"""
+#print len_word
 
 def load_to_matrix(word_file, tag_file, pos_file, chunk_file, case_file):
     f1 = codecs.open(word_file, 'r', 'utf-8')
@@ -148,4 +150,9 @@ word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix = load_to_matrix(
 f = generate_data(word_matrix, tag_matrix, pos_matrix, chunk_matrix, case_matrix, 2)
 
 for i in range(10):
-    f.next()
+    f.next()"""
+with open('word_vector_dict_word2vec.pkl', 'rb') as input:
+    word_vector_dict_word2vec = cPickle.load(input)
+word_vector_dict_random = np.random.uniform(-math.sqrt(3/float(300)), math.sqrt(3/float(300)), size=np.shape(word_vector_dict_word2vec))
+with open('word_vector_dict_random.pkl', 'wb') as output:
+    cPickle.dump(word_vector_dict_random, output, cPickle.HIGHEST_PROTOCOL)
